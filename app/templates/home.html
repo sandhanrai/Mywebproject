@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block title %}Home - MediCheck{% endblock %}
+{% block content %}
+<style>
+  .content {
+    max-width: none !important;
+    margin: 0 !important;
+    width: 100vw !important;
+    padding-bottom: 200px !important;
+  }
+  .hero-section {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    padding: 100px 0;
+  }
+  .hero-content {
+    text-align: center;
+    max-width: 800px;
+    padding: 20px;
+    animation: fadeIn 2s ease-in;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+  }
+  .hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+  .hero-content p em {
+    font-size: 1rem;
+    font-style: italic;
+  }
+  .btn-custom {
+    background-color: #007bff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+  }
+  .btn-custom:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  .features {
+    padding: 50px 0;
+    background-color: #f8f9fa;
+  }
+  .feature-card {
+    text-align: center;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  .feature-card:hover {
+    transform: translateY(-10px);
+  }
+  .feature-icon {
+    font-size: 3rem;
+    color: #007bff;
+    margin-bottom: 15px;
+  }
+</style>
+
+<div class="hero-section">
+  <div class="hero-content">
+    <h1><i class="fas fa-heartbeat"></i> Welcome to MediCheck</h1>
+    <p>Identify possible conditions and treatment related to your symptoms with our advanced AI-powered symptom checker.</p>
+    <p><em>This tool does not provide medical advice. Please consult a healthcare professional for accurate diagnosis.</em></p>
+  </div>
+</div>
+
+<div class="container-fluid features">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="feature-card bg-white">
+        <div class="feature-icon"><i class="fas fa-brain"></i></div>
+        <h4>AI-Powered Analysis</h4>
+        <p>Our machine learning model analyzes your symptoms to provide possible conditions.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="feature-card bg-white">
+        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+        <h4>Privacy First</h4>
+        <p>Your health data is secure and never shared without your consent.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="feature-card bg-white">
+        <div class="feature-icon"><i class="fas fa-user-md"></i></div>
+        <h4>Find Doctors</h4>
+        <p>Locate healthcare professionals near you for further consultation.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Dashboard - MediCheck</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+                Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+            background-color: #fff;
+            color: #000;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background: #000;
+            color: #fff;
+            padding: 20px 40px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        nav {
+            background: #111;
+            color: #ccc;
+            padding: 20px 40px;
+            display: flex;
+            gap: 20px;
+            font-weight: 600;
+        }
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        nav a:hover {
+            color: #fff;
+        }
+        main {
+            flex: 1;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .stats {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .stat-card {
+            background: #f5f5f5;
+            border-radius: 12px;
+            padding: 20px;
+            flex: 1;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .stat-card h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .stat-card p {
+            font-size: 1rem;
+            color: #555;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 8px;
+        }
+        .chart-container {
+            background: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background: #eee;
+        }
+        button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        button:hover {
+            background-color: #222;
+        }
+        .search-filter {
+            margin-bottom: 20px;
+        }
+        .search-filter input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>Admin Dashboard - MediCheck</header>
+    <nav>
+        <a href="#overview">Overview</a>
+        <a href="#user-management">User & Patient Management</a>
+        <a href="#symptom-analytics">Symptom Check & Health Data Analytics</a>
+        <a href="#system-performance">System Performance & Usage</a>
+        <a href="{{ url_for('logout') }}" style="color: #ff0000;">Logout</a>
+    </nav>
+    <main>
+        <section id="overview" class="section">
+            <h3>Dashboard Overview</h3>
+            <div class="stats">
+                <div class="stat-card">
+                    <h2>{{ total_users }}</h2>
+                    <p>Total Registered Users</p>
+                </div>
+                <div class="stat-card">
+                    <h2>{{ symptom_checks_today }}</h2>
+                    <p>Symptom Checks Today</p>
+                </div>
+                <div class="stat-card">
+                    <h2>{{ active_users }}</h2>
+                    <p>Active Users</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="user-management" class="section">
+            <h3>User & Patient Management</h3>
+            <div class="search-filter">
+                <input type="text" id="userSearch" placeholder="Search users by ID, email, symptoms...">
+                <button onclick="filterUsers()">Filter</button>
+            </div>
+            <div class="chart-container">
+                <canvas id="userDemographicsChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h4>User Activity Logs</h4>
+                <table id="userActivityTable">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Last Active</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userActivityBody">
+                        <!-- Data will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="symptom-analytics" class="section">
+            <h3>Symptom Check & Health Data Analytics</h3>
+            <div class="chart-container">
+                <canvas id="symptomTrendsChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h4>Most Common Symptoms</h4>
+                <table id="symptomTable">
+                    <thead>
+                        <tr>
+                            <th>Symptom</th>
+                            <th>Count</th>
+                        </tr>
+                    </thead>
+                    <tbody id="symptomBody">
+                        <!-- Data will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="system-performance" class="section">
+            <h3>System Performance & Usage</h3>
+            <div class="chart-container">
+                <canvas id="systemMetricsChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h4>System Metrics</h4>
+                <p>Total Symptom Checks: <span id="totalChecks">0</span></p>
+                <p>Daily Average: <span id="dailyAverage">0</span></p>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Fetch and display user demographics
+        fetch('/admin/data/user_demographics')
+            .then(response => response.json())
+            .then(data => {
+                const ctx = document.getElementById('userDemographicsChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: Object.keys(data.age_groups),
+                        datasets: [{
+                            data: Object.values(data.age_groups),
+                            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
+                        }]
+                    }
+                });
+            });
+
+        // Fetch and display symptom trends
+        fetch('/admin/data/symptom_trends')
+            .then(response => response.json())
+            .then(data => {
+                const ctx = document.getElementById('symptomTrendsChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: Object.keys(data),
+                        datasets: [{
+                            label: 'Symptom Count',
+                            data: Object.values(data),
+                            backgroundColor: '#36A2EB'
+                        }]
+                    }
+                });
+
+                // Populate symptom table
+                const tbody = document.getElementById('symptomBody');
+                Object.entries(data).forEach(([symptom, count]) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td>${symptom}</td><td>${count}</td>`;
+                    tbody.appendChild(row);
+                });
+            });
+
+        // Fetch and display system metrics
+        fetch('/admin/data/system_metrics')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('totalChecks').textContent = data.total_checks;
+                const dailyCount = Object.values(data.daily_checks).length;
+                document.getElementById('dailyAverage').textContent = dailyCount > 0 ? (data.total_checks / dailyCount).toFixed(1) : 0;
+
+                const ctx = document.getElementById('systemMetricsChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: Object.keys(data.daily_checks),
+                        datasets: [{
+                            label: 'Daily Checks',
+                            data: Object.values(data.daily_checks),
+                            borderColor: '#FF6384',
+                            fill: false
+                        }]
+                    }
+                });
+            });
+
+        // Fetch and display user activity
+        fetch('/admin/data/user_activity')
+            .then(response => response.json())
+            .then(data => {
+                const tbody = document.getElementById('userActivityBody');
+                data.forEach(log => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td>${log.username}</td><td>${new Date(log.created_at).toLocaleDateString()}</td>`;
+                    tbody.appendChild(row);
+                });
+            });
+
+        function filterUsers() {
+            const searchTerm = document.getElementById('userSearch').value.toLowerCase();
+            // Implement filtering logic here
+            console.log('Filtering users with term:', searchTerm);
+        }
+    </script>
+</body>
+</html>

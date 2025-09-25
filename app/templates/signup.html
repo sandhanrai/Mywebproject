@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Sign Up - MediCheck{% endblock %}
+{% block content %}
+<style>
+  .content {
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+    min-height: calc(100vh - 160px) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+  }
+</style>
+<div class="card p-4 shadow" style="max-width: 400px; width: 100%;">
+  <h1 class="mb-4 text-center">Sign Up</h1>
+  <form method="post">
+    <div class="mb-3">
+      <label for="username" class="form-label">Username:</label>
+      <input type="text" id="username" name="username" class="form-control" style="height: 38px;" required>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password:</label>
+      <input type="password" id="password" name="password" class="form-control" style="height: 38px;" required>
+    </div>
+    <div class="mb-3">
+      <label for="confirm_password" class="form-label">Confirm Password:</label>
+      <input type="password" id="confirm_password" name="confirm_password" class="form-control" style="height: 38px;" required>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Create Account</button>
+  </form>
+</div>
+<script>
+  // Simple password confirmation validation
+  document.querySelector('form').addEventListener('submit', function(e) {
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm_password').value;
+    if (password !== confirmPassword) {
+      e.preventDefault();
+      Swal.fire({
+        icon: 'error',
+        title: 'Password Mismatch',
+        text: 'Passwords do not match. Please try again.'
+      });
+    }
+  });
+</script>
+{% endblock %}

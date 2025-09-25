@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - MediCheck{% endblock %}
+{% block content %}
+<div class="container my-5">
+  <div class="row">
+    <div class="col-lg-8">
+      <h1 class="mb-4"><i class="fas fa-tachometer-alt"></i> Welcome to Your Dashboard, {{ current_user.username }}!</h1>
+
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h2 class="h5 mb-0"><i class="fas fa-user-edit"></i> Your Profile</h2>
+        </div>
+        <div class="card-body">
+          {% if profile %}
+            <form method="post" action="{{ url_for('dashboard') }}">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="age" class="form-label">Age:</label>
+                  <input type="number" id="age" name="age" value="{{ profile.age or 0 }}" min="0" max="120" class="form-control">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="gender" class="form-label">Gender:</label>
+                  <select id="gender" name="gender" class="form-select">
+                    <option value="Male" {% if profile.gender == 'Male' %}selected{% endif %}>Male</option>
+                    <option value="Female" {% if profile.gender == 'Female' %}selected{% endif %}>Female</option>
+                    <option value="Other" {% if profile.gender == 'Other' %}selected{% endif %}>Other</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="medical_history" class="form-label">Medical History:</label>
+                <textarea id="medical_history" name="medical_history" class="form-control" rows="3">{{ profile.medical_history or '' }}</textarea>
+              </div>
+              <div class="mb-3">
+                <label for="allergies" class="form-label">Allergies:</label>
+                <textarea id="allergies" name="allergies" class="form-control" rows="3">{{ profile.allergies or '' }}</textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Update Profile</button>
+            </form>
+          {% else %}
+            <p class="text-muted">Profile not found. Please update your information.</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="card mb-4">
+        <div class="card-header bg-success text-white">
+          <h2 class="h5 mb-0"><i class="fas fa-history"></i> Past Symptom Checks</h2>
+        </div>
+        <div class="card-body">
+          {% if past_checks %}
+            <div class="accordion" id="pastChecksAccordion">
+              {% for check in past_checks[:5] %}
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="heading{{ loop.index }}">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ loop.index }}" aria-expanded="false" aria-controls="collapse{{ loop.index }}">
+                      Check on {{ check.timestamp.strftime('%Y-%m-%d %H:%M') }}
+                    </button>
+                  </h2>
+                  <div id="collapse{{ loop.index }}" class="accordion-collapse collapse" aria-labelledby="heading{{ loop.index }}" data-bs-parent="#pastChecksAccordion">
+                    <div class="accordion-body">
+                      <p><strong>Age:</strong> {{ check.age }}, <strong>Sex:</strong> {{ check.sex }}</p>
+                      <p><strong>Symptoms:</strong> {{ check.symptoms | selectattr('1') | map(attribute='0') | join(', ') }}</p>
+                      {% if check.prediction.primary_prediction %}
+                        <p><strong>Predicted:</strong> {{ check.prediction.primary_prediction }} ({{ "%.1f"|format(check.prediction.primary_probability * 100) }}%)</p>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          {% else %}
+            <p class="text-muted">No past checks found.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card mb-4">
+        <div class="card-header bg-info text-white">
+          <h2 class="h5 mb-0"><i class="fas fa-chart-line"></i> Trends</h2>
+        </div>
+        <div class="card-body">
+          {% if past_checks %}
+            <canvas id="trendsChart" width="300" height="200"></canvas>
+          {% else %}
+            <p class="text-muted">No data for trends yet.</p>
+          {% endif %}
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header bg-warning text-white">
+          <h2 class="h5 mb-0"><i class="fas fa-lightbulb"></i> Quick Actions</h2>
+        </div>
+        <div class="card-body">
+          <a href="{{ url_for('symptom_checker') }}" class="btn btn-primary w-100 mb-2"><i class="fas fa-search"></i> New Symptom Check</a>
+          <a href="{{ url_for('find_doctor') }}" class="btn btn-secondary w-100"><i class="fas fa-user-md"></i> Find a Doctor</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  {% if past_checks %}
+    {% set dates = [] %}
+    {% set probs = [] %}
+    {% set conditions = [] %}
+    {% for check in past_checks[:10] %}
+      {% set dates = dates + [check.timestamp.strftime('%m/%d')] %}
+      {% set probs = probs + [check.prediction.primary_probability] %}
+      {% if check.prediction.primary_prediction %}
+        {% set conditions = conditions + [check.prediction.primary_prediction] %}
+      {% else %}
+        {% set conditions = conditions + ['Unknown'] %}
+      {% endif %}
+    {% endfor %}
+    const ctx = document.getElementById('trendsChart').getContext('2d');
+    const datesData = {{ dates | reverse | list | tojson }};
+    const probabilitiesData = {{ probs | reverse | list | tojson }};
+    const conditionsData = {{ conditions | reverse | list | tojson }};
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: datesData,
+        datasets: [{
+          label: 'Prediction Confidence (%)',
+          data: probabilitiesData.map(p => p * 100),
+          borderColor: 'rgba(75, 192, 192, 1)',
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          tension: 0.1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        },
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                const index = context.dataIndex;
+                const condition = conditionsData[index] || 'Unknown';
+                return context.dataset.label + ': ' + context.parsed.y.toFixed(1) + '% (Condition: ' + condition + ')';
+              }
+            }
+          }
+        }
+      }
+    });
+
+    // Additional pie chart for condition distribution
+    const ctxPie = document.getElementById('conditionPieChart').getContext('2d');
+    const conditionCounts = {};
+    conditionsData.forEach(cond => {
+      conditionCounts[cond] = (conditionCounts[cond] || 0) + 1;
+    });
+    const pieLabels = Object.keys(conditionCounts);
+    const pieData = Object.values(conditionCounts);
+    const pieColors = pieLabels.map((_, i) => `hsl(${i * 360 / pieLabels.length}, 70%, 60%)`);
+    new Chart(ctxPie, {
+      type: 'pie',
+      data: {
+        labels: pieLabels,
+        datasets: [{
+          data: pieData,
+          backgroundColor: pieColors,
+          borderColor: '#fff',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        plugins: {
+          legend: {
+            position: 'right'
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                const label = context.label || '';
+                const value = context.parsed || 0;
+                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                const percentage = total ? (value / total * 100).toFixed(1) : 0;
+                return label + ': ' + value + ' (' + percentage + '%)';
+              }
+            }
+          }
+        }
+      }
+    });
+  {% endif %}
+</script>
+<div class="container my-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-header bg-secondary text-white">
+          <h5 class="mb-0"><i class="fas fa-chart-pie"></i> Condition Distribution</h5>
+        </div>
+        <div class="card-body">
+          <canvas id="conditionPieChart" width="400" height="400"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

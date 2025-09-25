@@ -1,0 +1,116 @@
+2025-09-17 14:12:01,545 - INFO - Flask application started
+2025-09-17 14:12:01,618 - ERROR - Error loading model/data: [Errno 2] No such file or directory: '/home/sandhan-rai/Desktop/health-symptom-checker/app/../data/disease.csv'
+2025-09-17 14:12:02,707 - INFO - Flask application started
+2025-09-17 14:12:02,764 - ERROR - Error loading model/data: [Errno 2] No such file or directory: '/home/sandhan-rai/Desktop/health-symptom-checker/app/../data/disease.csv'
+2025-09-17 14:18:24,809 - INFO - Flask application started
+2025-09-17 14:18:24,886 - ERROR - Error loading model/data: [Errno 2] No such file or directory: '/home/sandhan-rai/Desktop/health-symptom-checker/app/../data/disease.csv'
+2025-09-17 14:18:25,947 - INFO - Flask application started
+2025-09-17 14:18:26,010 - ERROR - Error loading model/data: [Errno 2] No such file or directory: '/home/sandhan-rai/Desktop/health-symptom-checker/app/../data/disease.csv'
+2025-09-17 14:28:08,729 - INFO - Flask application started
+2025-09-17 14:28:08,794 - ERROR - Error loading model/data: [Errno 2] No such file or directory: '/home/sandhan-rai/Desktop/health-symptom-checker/app/../data/disease.csv'
+2025-09-17 14:47:28,730 - INFO - Prediction made - Symptoms: ['cough', 'headache', 'fever'], Primary Prediction: Paralysis (brain hemorrhage), Confidence: 34.00%
+2025-09-17 15:05:23,557 - INFO - Flask application started
+2025-09-17 15:05:23,751 - INFO - Model and data loaded successfully
+2025-09-17 15:05:23,751 - INFO - Model and data loaded successfully
+2025-09-17 15:05:24,837 - INFO - Flask application started
+2025-09-17 15:05:25,018 - INFO - Model and data loaded successfully
+2025-09-17 15:05:25,018 - INFO - Model and data loaded successfully
+2025-09-17 15:05:59,420 - INFO - Prediction made - Symptoms: ['vomiting', 'cough', 'high_fever'], Primary Prediction: AIDS, Confidence: 18.00%
+2025-09-17 15:05:59,420 - INFO - Prediction made - Symptoms: ['vomiting', 'cough', 'high_fever'], Primary Prediction: AIDS, Confidence: 18.00%
+2025-09-17 15:08:13,838 - INFO - Prediction made - Symptoms: ['cough', 'mild_fever', 'sinus_pressure'], Primary Prediction: Gastroenteritis, Confidence: 12.00%
+2025-09-17 15:08:13,838 - INFO - Prediction made - Symptoms: ['cough', 'mild_fever', 'sinus_pressure'], Primary Prediction: Gastroenteritis, Confidence: 12.00%
+2025-09-17 15:19:04,227 - INFO - Flask application started
+2025-09-17 15:19:04,422 - INFO - Model and data loaded successfully
+2025-09-17 15:19:04,422 - INFO - Model and data loaded successfully
+2025-09-17 15:24:53,567 - INFO - Flask application started
+2025-09-17 15:24:53,739 - INFO - Model and data loaded successfully
+2025-09-17 15:24:53,739 - INFO - Model and data loaded successfully
+2025-09-17 15:24:54,602 - INFO - Flask application started
+2025-09-17 15:24:54,769 - INFO - Model and data loaded successfully
+2025-09-17 15:24:54,769 - INFO - Model and data loaded successfully
+2025-09-17 15:25:10,027 - INFO - Prediction made - Symptoms: ['mild_fever'], Primary Prediction: Gastroenteritis, Confidence: 12.00%
+2025-09-17 15:25:10,027 - INFO - Prediction made - Symptoms: ['mild_fever'], Primary Prediction: Gastroenteritis, Confidence: 12.00%
+2025-09-23 13:20:20,107 - INFO - Flask application started
+2025-09-23 13:20:20,666 - INFO - Model and data loaded successfully
+2025-09-23 13:20:20,666 - INFO - Model and data loaded successfully
+2025-09-23 13:20:21,928 - INFO - Flask application started
+2025-09-23 13:20:22,183 - INFO - Model and data loaded successfully
+2025-09-23 13:20:22,183 - INFO - Model and data loaded successfully
+2025-09-23 13:20:54,959 - INFO - Prediction made - Symptoms: ['high_fever', 'nausea'], Primary Prediction: Impetigo, Confidence: 22.00%
+2025-09-23 13:20:54,959 - INFO - Prediction made - Symptoms: ['high_fever', 'nausea'], Primary Prediction: Impetigo, Confidence: 22.00%
+2025-09-23 13:21:45,265 - INFO - Prediction made - Symptoms: ['high_fever'], Primary Prediction: Impetigo, Confidence: 30.00%
+2025-09-23 13:21:45,265 - INFO - Prediction made - Symptoms: ['high_fever'], Primary Prediction: Impetigo, Confidence: 30.00%
+2025-09-23 13:33:48,529 - INFO - Flask application started
+2025-09-23 13:33:48,713 - INFO - Model and data loaded successfully
+2025-09-23 13:33:48,713 - INFO - Model and data loaded successfully
+2025-09-23 13:33:49,622 - INFO - Flask application started
+2025-09-23 13:33:49,805 - INFO - Model and data loaded successfully
+2025-09-23 13:33:49,805 - INFO - Model and data loaded successfully
+2025-09-23 13:37:07,258 - INFO - Prediction made - Symptoms: ['high_fever', 'mild_fever'], Primary Prediction: Impetigo, Confidence: 30.00%
+2025-09-23 13:37:07,258 - INFO - Prediction made - Symptoms: ['high_fever', 'mild_fever'], Primary Prediction: Impetigo, Confidence: 30.00%
+2025-09-24 13:47:24,141 - INFO - Flask application started
+2025-09-24 13:47:24,538 - INFO - Model and data loaded successfully
+2025-09-24 13:47:24,538 - INFO - Model and data loaded successfully
+2025-09-24 13:47:25,707 - INFO - Flask application started
+2025-09-24 13:47:25,909 - INFO - Model and data loaded successfully
+2025-09-24 13:47:25,909 - INFO - Model and data loaded successfully
+2025-09-24 13:48:19,997 - INFO - Flask application started
+2025-09-24 13:48:20,180 - INFO - Model and data loaded successfully
+2025-09-24 13:48:20,180 - INFO - Model and data loaded successfully
+2025-09-24 14:16:16,410 - INFO - Flask application started
+2025-09-24 14:16:16,605 - INFO - Model and data loaded successfully
+2025-09-24 14:16:16,605 - INFO - Model and data loaded successfully
+2025-09-24 14:16:17,641 - INFO - Flask application started
+2025-09-24 14:16:17,834 - INFO - Model and data loaded successfully
+2025-09-24 14:16:17,834 - INFO - Model and data loaded successfully
+2025-09-24 14:16:37,867 - INFO - Prediction made - Symptoms: ['nausea', 'mucoid_sputum'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 20.00%
+2025-09-24 14:16:37,867 - INFO - Prediction made - Symptoms: ['nausea', 'mucoid_sputum'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 20.00%
+2025-09-24 14:17:11,218 - INFO - Prediction made - Symptoms: ['high_fever', 'nausea'], Primary Prediction: Impetigo, Confidence: 22.00%
+2025-09-24 14:17:11,218 - INFO - Prediction made - Symptoms: ['high_fever', 'nausea'], Primary Prediction: Impetigo, Confidence: 22.00%
+2025-09-24 14:17:38,087 - INFO - Prediction made - Symptoms: ['high_fever'], Primary Prediction: Impetigo, Confidence: 30.00%
+2025-09-24 14:17:38,087 - INFO - Prediction made - Symptoms: ['high_fever'], Primary Prediction: Impetigo, Confidence: 30.00%
+2025-09-24 14:21:56,420 - INFO - Prediction made - Symptoms: ['high_fever'], Primary Prediction: Impetigo, Confidence: 30.00%
+2025-09-24 14:21:56,420 - INFO - Prediction made - Symptoms: ['high_fever'], Primary Prediction: Impetigo, Confidence: 30.00%
+2025-09-24 14:31:28,107 - INFO - Flask application started
+2025-09-24 14:31:28,326 - INFO - Model and data loaded successfully
+2025-09-24 14:31:28,326 - INFO - Model and data loaded successfully
+2025-09-24 14:31:39,946 - INFO - Flask application started
+2025-09-24 14:31:40,135 - INFO - Model and data loaded successfully
+2025-09-24 14:31:40,135 - INFO - Model and data loaded successfully
+2025-09-24 14:31:41,260 - INFO - Flask application started
+2025-09-24 14:31:41,447 - INFO - Model and data loaded successfully
+2025-09-24 14:31:41,447 - INFO - Model and data loaded successfully
+2025-09-24 14:38:15,400 - INFO - Prediction made - Symptoms: ['cold_hands_and_feets', 'high_fever'], Primary Prediction: Impetigo, Confidence: 30.00%
+2025-09-24 14:38:15,400 - INFO - Prediction made - Symptoms: ['cold_hands_and_feets', 'high_fever'], Primary Prediction: Impetigo, Confidence: 30.00%
+2025-09-24 14:38:40,359 - INFO - Prediction made - Symptoms: ['cold_hands_and_feets', 'high_fever'], Primary Prediction: Impetigo, Confidence: 30.00%
+2025-09-24 14:38:40,359 - INFO - Prediction made - Symptoms: ['cold_hands_and_feets', 'high_fever'], Primary Prediction: Impetigo, Confidence: 30.00%
+2025-09-24 14:44:14,400 - INFO - Flask application started
+2025-09-24 14:44:14,593 - INFO - Model and data loaded successfully
+2025-09-24 14:44:14,593 - INFO - Model and data loaded successfully
+2025-09-24 14:44:25,377 - INFO - Flask application started
+2025-09-24 14:44:25,566 - INFO - Model and data loaded successfully
+2025-09-24 14:44:25,566 - INFO - Model and data loaded successfully
+2025-09-24 14:44:47,156 - INFO - Flask application started
+2025-09-24 14:44:47,358 - INFO - Model and data loaded successfully
+2025-09-24 14:44:47,358 - INFO - Model and data loaded successfully
+2025-09-24 14:45:58,239 - INFO - Flask application started
+2025-09-24 14:45:58,421 - INFO - Model and data loaded successfully
+2025-09-24 14:45:58,421 - INFO - Model and data loaded successfully
+2025-09-24 14:45:59,572 - INFO - Flask application started
+2025-09-24 14:45:59,810 - INFO - Model and data loaded successfully
+2025-09-24 14:45:59,810 - INFO - Model and data loaded successfully
+2025-09-24 14:49:23,643 - INFO - Flask application started
+2025-09-24 14:49:23,841 - INFO - Model and data loaded successfully
+2025-09-24 14:49:23,841 - INFO - Model and data loaded successfully
+2025-09-24 14:49:42,937 - ERROR - Error fetching disease info: Expecting value: line 1 column 1 (char 0)
+2025-09-24 14:49:42,937 - ERROR - Error fetching disease info: Expecting value: line 1 column 1 (char 0)
+2025-09-25 13:59:15,732 - INFO - Flask application started
+2025-09-25 13:59:16,161 - INFO - Model and data loaded successfully
+2025-09-25 13:59:16,161 - INFO - Model and data loaded successfully
+2025-09-25 13:59:17,324 - INFO - Flask application started
+2025-09-25 13:59:17,508 - INFO - Model and data loaded successfully
+2025-09-25 13:59:17,508 - INFO - Model and data loaded successfully
+2025-09-25 14:00:17,662 - INFO - Prediction made - Symptoms: ['high_fever'], Primary Prediction: Impetigo, Confidence: 30.00%
+2025-09-25 14:00:17,662 - INFO - Prediction made - Symptoms: ['high_fever'], Primary Prediction: Impetigo, Confidence: 30.00%
+2025-09-25 14:00:22,930 - ERROR - Error fetching disease info: Expecting value: line 1 column 1 (char 0)
+2025-09-25 14:00:22,930 - ERROR - Error fetching disease info: Expecting value: line 1 column 1 (char 0)

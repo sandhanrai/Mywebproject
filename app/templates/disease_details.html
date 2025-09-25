@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}{{ disease_info.name }} - Disease Details{% endblock %}
+{% block content %}
+<style>
+  .content {
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+    min-height: calc(100vh - 160px) !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+  }
+  .disease-details {
+    background: #f5f5f5;
+    border-radius: 12px;
+    padding: 40px;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  .disease-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #000;
+  }
+  .disease-summary {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #333;
+  }
+  .external-link {
+    display: inline-block;
+    background-color: #000;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background-color 0.2s ease;
+  }
+  .external-link:hover {
+    background-color: #222;
+    color: #fff;
+  }
+  .back-button {
+    margin-top: 20px;
+    background-color: #666;
+  }
+  .back-button:hover {
+    background-color: #888;
+  }
+</style>
+<div class="disease-details">
+  <h1 class="disease-title">{{ disease_info.name }}</h1>
+  <div class="disease-summary">
+    {{ disease_info.summary | safe }}
+  </div>
+  <a href="{{ disease_info.url }}" target="_blank" class="external-link">Learn More on MedlinePlus</a>
+  <br>
+  <a href="{{ url_for('symptom_checker') }}" class="external-link back-button">Back to Symptom Checker</a>
+</div>
+{% endblock %}

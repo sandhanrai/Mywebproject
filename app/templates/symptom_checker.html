@@ -1,0 +1,238 @@
+{% extends "base.html" %}
+{% block title %}Symptom Checker - MediCheck{% endblock %}
+{% block content %}
+<div style="max-width: 600px; margin: 40px auto; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1c1c1c;">
+  {% if step %}
+    <div style="margin-bottom: 24px; height: 8px; background: #f5f5f5; border-radius: 4px; overflow: hidden;">
+      <div style="height: 8px; width: {{ (step / 5) * 100 }}%; background: #000000; transition: width 0.3s ease;"></div>
+    </div>
+  {% endif %}
+
+  {% if step == 1 %}
+    <h1 style="font-weight: 700; font-size: 2rem; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+      <i class="fas fa-user"></i> Symptom Checker - Personal Info
+    </h1>
+    <p style="margin-bottom: 8px;">Identify possible conditions and treatment related to your symptoms.</p>
+    <p style="color: #6b6b6b; font-style: italic; margin-bottom: 24px;">This tool does not provide medical advice.</p>
+    <form method="post" style="display: flex; flex-direction: column; gap: 16px;">
+      <label for="age" style="font-weight: 600;">Age:</label>
+      <input type="number" id="age" name="age" min="0" max="120" value="{{ session.get('age', 30) }}" required
+        style="padding: 12px 16px; border-radius: 8px; border: 1px solid #dcdcdc; background: #f5f5f5; font-size: 1rem; color: #1c1c1c; outline: none; transition: border-color 0.2s ease, background-color 0.2s ease;">
+      <label style="font-weight: 600;">Sex:</label>
+      <div style="display: flex; gap: 24px;">
+        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+          <input type="radio" id="male" name="sex" value="Male" required {% if session.get('sex') == 'Male' %}checked{% endif %}
+            style="width: 16px; height: 16px; accent-color: #000000;">
+          Male
+        </label>
+        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+          <input type="radio" id="female" name="sex" value="Female" {% if session.get('sex') == 'Female' %}checked{% endif %}
+            style="width: 16px; height: 16px; accent-color: #000000;">
+          Female
+        </label>
+      </div>
+      <button type="submit" name="continue_step1"
+        style="background-color: #000000; color: #ffffff; font-weight: 700; border: none; border-radius: 8px; padding: 12px 24px; font-size: 1rem; cursor: pointer; transition: background-color 0.2s ease;">
+        Continue
+      </button>
+    </form>
+  {% elif step == 2 %}
+    <h1 style="font-weight: 700; font-size: 2rem; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+      <i class="fas fa-list-check"></i> Select Your Symptoms
+    </h1>
+    <p style="margin-bottom: 8px;">Type your symptoms below and select from suggestions:</p>
+    <form method="post" style="display: flex; flex-direction: column; gap: 16px;">
+      <label for="symptom_input" style="font-weight: 600;">Enter Symptoms:</label>
+      <input type="text" id="symptom_input" placeholder="Start typing a symptom..." autocomplete="off"
+        style="padding: 12px 16px; border-radius: 8px; border: 1px solid #dcdcdc; background: #f5f5f5; font-size: 1rem; color: #1c1c1c; outline: none; transition: border-color 0.2s ease, background-color 0.2s ease;">
+      <div id="suggestions" style="max-height: 200px; overflow-y: auto; margin-top: 8px;"></div>
+      <label style="font-weight: 600;">Selected Symptoms:</label>
+      <ul id="selected_symptoms" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+        {% for symptom, selected in session.get('selected_symptoms', {}).items() %}
+          {% if selected %}
+            <li style="display: flex; justify-content: space-between; align-items: center; background: #f5f5f5; padding: 8px 12px; border-radius: 8px;">
+              {{ symptom.replace('_', ' ').title() }}
+              <button type="button" style="background: transparent; border: 1px solid #dc2626; color: #dc2626; border-radius: 6px; padding: 4px 8px; cursor: pointer;"
+                class="remove-symptom" data-symptom="{{ symptom }}">Remove</button>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+      <input type="hidden" id="selected_symptoms_hidden" name="selected_symptoms"
+        value="{% for s, sel in session.get('selected_symptoms', {}).items() if sel %}{{ s }}{% if not loop.last %},{% endif %}{% endfor %}">
+      <div style="display: flex; gap: 16px; margin-top: 24px;">
+        <button type="submit" name="back_step2"
+          style="background-color: #6b6b6b; color: #ffffff; font-weight: 700; border: none; border-radius: 8px; padding: 12px 24px; font-size: 1rem; cursor: pointer; transition: background-color 0.2s ease;">
+          Back
+        </button>
+        <button type="submit" name="get_prediction"
+          style="background-color: #000000; color: #ffffff; font-weight: 700; border: none; border-radius: 8px; padding: 12px 24px; font-size: 1rem; cursor: pointer; transition: background-color 0.2s ease;">
+          Get Prediction
+        </button>
+      </div>
+    </form>
+  {% elif step == 3 %}
+    <h1 style="font-weight: 700; font-size: 2rem; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+      <i class="fas fa-chart-bar"></i> Possible Conditions
+    </h1>
+    <p>Age: {{ session.get('age') }} | Sex: {{ session.get('sex') }}</p>
+    <p>Based on your symptoms, here are the possible conditions:</p>
+    {% set result = session.get('prediction_result') %}
+    {% if result %}
+      <div style="background: #e0e7ff; padding: 16px; border-radius: 8px; margin-bottom: 16px;">
+        <h2 style="font-weight: 600; font-size: 1.25rem; margin: 0 0 8px 0;">Most Likely Condition: {{ result.primary_prediction }}</h2>
+        <p style="margin: 0;">Confidence: {{ "%.1f"|format(result.primary_probability * 100) }}%</p>
+      </div>
+      <h3 style="font-weight: 700; font-size: 1.25rem; margin-bottom: 8px;">Probability Chart</h3>
+      <canvas id="predictionChart" width="400" height="200"></canvas>
+      <h3 style="font-weight: 700; font-size: 1.25rem; margin-top: 24px; margin-bottom: 8px;">Other Possible Conditions</h3>
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        {% for pred in result.all_predictions[1:4] %}
+          <li style="padding: 8px 12px; border-bottom: 1px solid #e5e7eb;">{{ pred.disease }} ({{ "%.1f"|format(pred.probability * 100) }}% confidence)</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    <form method="post">
+      <div style="margin-top: 24px; display: flex; gap: 16px;">
+        <button type="submit" name="back_step3"
+          style="background-color: #6b6b6b; color: #ffffff; font-weight: 700; border: none; border-radius: 8px; padding: 12px 24px; font-size: 1rem; cursor: pointer; transition: background-color 0.2s ease;">
+          Back
+        </button>
+        <button type="submit" name="next_step3"
+          style="background-color: #000000; color: #ffffff; font-weight: 700; border: none; border-radius: 8px; padding: 12px 24px; font-size: 1rem; cursor: pointer; transition: background-color 0.2s ease;">
+          Next
+        </button>
+      </div>
+    </form>
+  {% elif step == 4 %}
+    <h1 style="font-weight: 700; font-size: 2rem; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+      <i class="fas fa-info-circle"></i> Details
+    </h1>
+    <p>More information about the conditions and symptoms will be shown here.</p>
+    <form method="post">
+      <div style="margin-top: 24px; display: flex; gap: 16px;">
+        <button type="submit" name="back_step4"
+          style="background-color: #6b6b6b; color: #ffffff; font-weight: 700; border: none; border-radius: 8px; padding: 12px 24px; font-size: 1rem; cursor: pointer; transition: background-color 0.2s ease;">
+          Back
+        </button>
+        <button type="submit" name="next_step4"
+          style="background-color: #000000; color: #ffffff; font-weight: 700; border: none; border-radius: 8px; padding: 12px 24px; font-size: 1rem; cursor: pointer; transition: background-color 0.2s ease;">
+          Next
+        </button>
+      </div>
+    </form>
+  {% elif step == 5 %}
+    <h1 style="font-weight: 700; font-size: 2rem; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+      <i class="fas fa-pills"></i> Treatment
+    </h1>
+    <p>Treatment options and recommendations will be shown here.</p>
+    <form method="post">
+      <div style="margin-top: 24px; display: flex; gap: 16px;">
+        <button type="submit" name="back_step5"
+          style="background-color: #6b6b6b; color: #ffffff; font-weight: 700; border: none; border-radius: 8px; padding: 12px 24px; font-size: 1rem; cursor: pointer; transition: background-color 0.2s ease;">
+          Back
+        </button>
+        <button type="submit" name="restart"
+          style="background-color: #000000; color: #ffffff; font-weight: 700; border: none; border-radius: 8px; padding: 12px 24px; font-size: 1rem; cursor: pointer; transition: background-color 0.2s ease;">
+          Restart
+        </button>
+      </div>
+    </form>
+  {% endif %}
+</div>
+<script>
+  {% if step == 2 %}
+    const symptomInput = document.getElementById('symptom_input');
+    const suggestionsDiv = document.getElementById('suggestions');
+    const selectedSymptomsUl = document.getElementById('selected_symptoms');
+    const selectedSymptomsHidden = document.getElementById('selected_symptoms_hidden');
+    let selectedSymptoms = new Set({{ selected_list | tojson }});
+
+    function updateHiddenInput() {
+      selectedSymptomsHidden.value = Array.from(selectedSymptoms).join(',');
+    }
+
+    function addSymptom(symptom) {
+      if (!selectedSymptoms.has(symptom)) {
+        selectedSymptoms.add(symptom);
+        const li = document.createElement('li');
+        li.style.display = 'flex';
+        li.style.justifyContent = 'space-between';
+        li.style.alignItems = 'center';
+        li.style.background = '#f5f5f5';
+        li.style.padding = '8px 12px';
+        li.style.borderRadius = '8px';
+        li.innerHTML = `${symptom.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())} <button type="button" style="background: transparent; border: 1px solid #dc2626; color: #dc2626; border-radius: 6px; padding: 4px 8px; cursor: pointer;" class="remove-symptom" data-symptom="${symptom}">Remove</button>`;
+        selectedSymptomsUl.appendChild(li);
+        updateHiddenInput();
+      }
+      symptomInput.value = '';
+      suggestionsDiv.innerHTML = '';
+    }
+
+    symptomInput.addEventListener('input', function() {
+      const query = this.value.trim();
+      if (query.length < 2) {
+        suggestionsDiv.innerHTML = '';
+        return;
+      }
+      fetch(`/api/symptom_suggestions?q=${encodeURIComponent(query)}`)
+        .then(response => response.json())
+        .then(suggestions => {
+          suggestionsDiv.innerHTML = '';
+          suggestions.forEach(symptom => {
+            if (!selectedSymptoms.has(symptom)) {
+              const item = document.createElement('button');
+              item.className = 'list-group-item list-group-item-action';
+              item.textContent = symptom.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+              item.style.background = '#f5f5f5';
+              item.style.border = 'none';
+              item.style.padding = '8px 12px';
+              item.style.borderRadius = '8px';
+              item.style.marginBottom = '4px';
+              item.style.cursor = 'pointer';
+              item.addEventListener('click', () => addSymptom(symptom));
+              suggestionsDiv.appendChild(item);
+            }
+          });
+        });
+    });
+
+    selectedSymptomsUl.addEventListener('click', function(e) {
+      if (e.target.classList.contains('remove-symptom')) {
+        const symptom = e.target.dataset.symptom;
+        selectedSymptoms.delete(symptom);
+        e.target.closest('li').remove();
+        updateHiddenInput();
+      }
+    });
+  {% endif %}
+
+  {% if step == 3 %}
+    const ctx = document.getElementById('predictionChart').getContext('2d');
+    const result = {{ session.get('prediction_result') | tojson }};
+    const labels = result.all_predictions.slice(0, 5).map(p => p.disease);
+    const data = result.all_predictions.slice(0, 5).map(p => p.probability * 100);
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Confidence (%)',
+          data: data,
+          backgroundColor: 'rgba(54, 162, 235, 0.5)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  {% endif %}
+</script>
+{% endblock %}

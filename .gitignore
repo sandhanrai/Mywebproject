@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.env
+app/user_interactions.log
+models/*.joblib
+models/*.png
+models/*.txt
+data/*.csv
+.DS_Store
+.vscode/
