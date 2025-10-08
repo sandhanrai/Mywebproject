@@ -114,3 +114,644 @@
 2025-09-25 14:00:17,662 - INFO - Prediction made - Symptoms: ['high_fever'], Primary Prediction: Impetigo, Confidence: 30.00%
 2025-09-25 14:00:22,930 - ERROR - Error fetching disease info: Expecting value: line 1 column 1 (char 0)
 2025-09-25 14:00:22,930 - ERROR - Error fetching disease info: Expecting value: line 1 column 1 (char 0)
+2025-09-25 14:31:51,169 - INFO - Prediction made - Symptoms: ['high_fever'], Primary Prediction: Impetigo, Confidence: 30.00%
+2025-09-25 14:31:51,169 - INFO - Prediction made - Symptoms: ['high_fever'], Primary Prediction: Impetigo, Confidence: 30.00%
+2025-09-25 14:32:00,746 - ERROR - Error fetching disease info: Expecting value: line 1 column 1 (char 0)
+2025-09-25 14:32:00,746 - ERROR - Error fetching disease info: Expecting value: line 1 column 1 (char 0)
+2025-09-25 14:32:00,896 - ERROR - Error fetching disease info: Expecting value: line 1 column 1 (char 0)
+2025-09-25 14:32:00,896 - ERROR - Error fetching disease info: Expecting value: line 1 column 1 (char 0)
+2025-09-25 14:32:19,865 - ERROR - Error fetching disease info: Expecting value: line 1 column 1 (char 0)
+2025-09-25 14:32:19,865 - ERROR - Error fetching disease info: Expecting value: line 1 column 1 (char 0)
+2025-09-25 14:39:10,621 - ERROR - Error fetching disease info: Expecting value: line 1 column 1 (char 0)
+2025-09-25 14:39:10,621 - ERROR - Error fetching disease info: Expecting value: line 1 column 1 (char 0)
+2025-09-25 14:51:25,726 - ERROR - Error fetching disease info: Expecting value: line 1 column 1 (char 0)
+2025-09-25 14:51:25,726 - ERROR - Error fetching disease info: Expecting value: line 1 column 1 (char 0)
+2025-09-25 14:59:57,786 - INFO - Flask application started
+2025-09-25 14:59:58,017 - INFO - Model and data loaded successfully
+2025-09-25 14:59:58,017 - INFO - Model and data loaded successfully
+2025-09-25 15:07:59,360 - INFO - Flask application started
+2025-09-25 15:07:59,666 - INFO - Model and data loaded successfully
+2025-09-25 15:07:59,666 - INFO - Model and data loaded successfully
+2025-09-25 15:48:28,814 - INFO - Flask application started
+2025-09-25 15:48:29,079 - INFO - Model and data loaded successfully
+2025-09-25 15:48:29,079 - INFO - Model and data loaded successfully
+2025-09-26 11:34:11,541 - INFO - Flask application started
+2025-09-26 11:34:11,764 - INFO - Model and data loaded successfully
+2025-09-26 11:34:11,764 - INFO - Model and data loaded successfully
+2025-09-26 11:34:12,949 - INFO - Flask application started
+2025-09-26 11:34:13,155 - INFO - Model and data loaded successfully
+2025-09-26 11:34:13,155 - INFO - Model and data loaded successfully
+2025-09-26 11:36:01,012 - INFO - Prediction made - Symptoms: ['high_fever'], Primary Prediction: Impetigo, Confidence: 30.00%
+2025-09-26 11:36:01,012 - INFO - Prediction made - Symptoms: ['high_fever'], Primary Prediction: Impetigo, Confidence: 30.00%
+2025-09-26 11:36:03,939 - ERROR - Error fetching disease info: Expecting value: line 1 column 1 (char 0)
+2025-09-26 11:36:03,939 - ERROR - Error fetching disease info: Expecting value: line 1 column 1 (char 0)
+2025-09-26 13:35:55,951 - INFO - Flask application started
+2025-09-26 13:35:56,145 - INFO - Model and data loaded successfully
+2025-09-26 13:35:56,145 - INFO - Model and data loaded successfully
+2025-09-26 13:35:57,298 - INFO - Flask application started
+2025-09-26 13:35:57,501 - INFO - Model and data loaded successfully
+2025-09-26 13:35:57,501 - INFO - Model and data loaded successfully
+2025-09-26 13:38:44,368 - INFO - Flask application started
+2025-09-26 13:38:44,706 - INFO - Model and data loaded successfully
+2025-09-26 13:38:44,706 - INFO - Model and data loaded successfully
+2025-09-26 13:39:17,603 - INFO - Prediction made - Symptoms: ['high_fever'], Primary Prediction: Impetigo, Confidence: 30.00%
+2025-09-26 13:39:17,603 - INFO - Prediction made - Symptoms: ['high_fever'], Primary Prediction: Impetigo, Confidence: 30.00%
+2025-09-26 13:39:21,079 - ERROR - Error fetching disease info: Expecting value: line 1 column 1 (char 0)
+2025-09-26 13:39:21,079 - ERROR - Error fetching disease info: Expecting value: line 1 column 1 (char 0)
+2025-09-26 13:40:37,057 - INFO - Flask application started
+2025-09-26 13:40:37,295 - INFO - Model and data loaded successfully
+2025-09-26 13:40:37,295 - INFO - Model and data loaded successfully
+2025-09-26 13:40:40,753 - INFO - Flask application started
+2025-09-26 13:40:41,015 - INFO - Model and data loaded successfully
+2025-09-26 13:40:41,015 - INFO - Model and data loaded successfully
+2025-09-26 13:47:22,724 - INFO - Flask application started
+2025-09-26 13:47:22,919 - INFO - Model and data loaded successfully
+2025-09-26 13:47:22,919 - INFO - Model and data loaded successfully
+2025-09-26 13:47:24,061 - INFO - Flask application started
+2025-09-26 13:47:24,270 - INFO - Model and data loaded successfully
+2025-09-26 13:47:24,270 - INFO - Model and data loaded successfully
+2025-09-26 13:47:40,218 - ERROR - Error fetching disease info: Expecting value: line 1 column 1 (char 0)
+2025-09-26 13:47:40,218 - ERROR - Error fetching disease info: Expecting value: line 1 column 1 (char 0)
+2025-09-26 13:48:03,156 - INFO - Prediction made - Symptoms: ['cough', 'high_fever', 'mild_fever'], Primary Prediction: Impetigo, Confidence: 30.00%
+2025-09-26 13:48:03,156 - INFO - Prediction made - Symptoms: ['cough', 'high_fever', 'mild_fever'], Primary Prediction: Impetigo, Confidence: 30.00%
+2025-09-26 13:48:05,741 - ERROR - Error fetching disease info: Expecting value: line 1 column 1 (char 0)
+2025-09-26 13:48:05,741 - ERROR - Error fetching disease info: Expecting value: line 1 column 1 (char 0)
+2025-09-26 13:48:59,381 - INFO - Flask application started
+2025-09-26 13:48:59,695 - INFO - Model and data loaded successfully
+2025-09-26 13:48:59,695 - INFO - Model and data loaded successfully
+2025-09-26 13:49:07,539 - INFO - Flask application started
+2025-09-26 13:49:07,785 - INFO - Model and data loaded successfully
+2025-09-26 13:49:07,785 - INFO - Model and data loaded successfully
+2025-09-26 13:50:38,416 - INFO - Prediction made - Symptoms: ['nausea'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 20.00%
+2025-09-26 13:50:38,416 - INFO - Prediction made - Symptoms: ['nausea'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 20.00%
+2025-09-26 13:52:28,650 - INFO - Prediction made - Symptoms: ['vomiting', 'abdominal_pain'], Primary Prediction: Alcoholic hepatitis, Confidence: 18.00%
+2025-09-26 13:52:28,650 - INFO - Prediction made - Symptoms: ['vomiting', 'abdominal_pain'], Primary Prediction: Alcoholic hepatitis, Confidence: 18.00%
+2025-09-26 13:56:51,409 - INFO - Flask application started
+2025-09-26 13:56:51,660 - INFO - Model and data loaded successfully
+2025-09-26 13:56:51,660 - INFO - Model and data loaded successfully
+2025-09-26 13:56:59,244 - INFO - Flask application started
+2025-09-26 13:56:59,485 - INFO - Model and data loaded successfully
+2025-09-26 13:56:59,485 - INFO - Model and data loaded successfully
+2025-09-26 13:58:56,017 - INFO - Prediction made - Symptoms: ['vomiting', 'abdominal_pain'], Primary Prediction: Alcoholic hepatitis, Confidence: 18.00%
+2025-09-26 13:58:56,017 - INFO - Prediction made - Symptoms: ['vomiting', 'abdominal_pain'], Primary Prediction: Alcoholic hepatitis, Confidence: 18.00%
+2025-09-26 14:39:58,679 - INFO - Flask application started
+2025-09-26 14:39:58,905 - INFO - Model and data loaded successfully
+2025-09-26 14:39:58,905 - INFO - Model and data loaded successfully
+2025-09-26 14:43:41,918 - INFO - Flask application started
+2025-09-26 14:43:42,184 - INFO - Model and data loaded successfully
+2025-09-26 14:43:42,184 - INFO - Model and data loaded successfully
+2025-09-26 14:50:52,713 - INFO - Prediction made - Symptoms: ['nausea', 'abdominal_pain', 'abnormal_menstruation'], Primary Prediction: Chronic cholestasis, Confidence: 22.00%
+2025-09-26 14:50:52,713 - INFO - Prediction made - Symptoms: ['nausea', 'abdominal_pain', 'abnormal_menstruation'], Primary Prediction: Chronic cholestasis, Confidence: 22.00%
+2025-09-26 14:52:41,096 - INFO - Flask application started
+2025-09-26 14:52:41,461 - INFO - Model and data loaded successfully
+2025-09-26 14:52:41,461 - INFO - Model and data loaded successfully
+2025-09-26 14:52:45,305 - INFO - Flask application started
+2025-09-26 14:52:45,556 - INFO - Model and data loaded successfully
+2025-09-26 14:52:45,556 - INFO - Model and data loaded successfully
+2025-09-26 14:57:13,970 - INFO - Flask application started
+2025-09-26 14:57:14,225 - INFO - Model and data loaded successfully
+2025-09-26 14:57:14,225 - INFO - Model and data loaded successfully
+2025-09-26 14:57:15,783 - INFO - Flask application started
+2025-09-26 14:57:16,020 - INFO - Model and data loaded successfully
+2025-09-26 14:57:16,020 - INFO - Model and data loaded successfully
+2025-09-26 15:02:11,980 - INFO - Flask application started
+2025-09-26 15:02:12,288 - INFO - Model and data loaded successfully
+2025-09-26 15:02:12,288 - INFO - Model and data loaded successfully
+2025-09-26 15:06:29,158 - INFO - Flask application started
+2025-09-26 15:06:29,380 - INFO - Model and data loaded successfully
+2025-09-26 15:06:29,380 - INFO - Model and data loaded successfully
+2025-09-26 15:07:24,661 - INFO - Flask application started
+2025-09-26 15:07:24,876 - INFO - Model and data loaded successfully
+2025-09-26 15:07:24,876 - INFO - Model and data loaded successfully
+2025-09-26 15:08:38,486 - INFO - Prediction made - Symptoms: ['nausea'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 20.00%
+2025-09-26 15:08:38,486 - INFO - Prediction made - Symptoms: ['nausea'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 20.00%
+2025-09-26 15:12:14,509 - INFO - Flask application started
+2025-09-26 15:12:14,771 - INFO - Model and data loaded successfully
+2025-09-26 15:12:14,771 - INFO - Model and data loaded successfully
+2025-09-26 15:12:17,966 - INFO - Flask application started
+2025-09-26 15:12:18,182 - INFO - Model and data loaded successfully
+2025-09-26 15:12:18,182 - INFO - Model and data loaded successfully
+2025-09-26 15:15:28,262 - INFO - Flask application started
+2025-09-26 15:15:28,461 - INFO - Model and data loaded successfully
+2025-09-26 15:15:28,461 - INFO - Model and data loaded successfully
+2025-09-26 15:15:29,717 - INFO - Flask application started
+2025-09-26 15:15:29,933 - INFO - Model and data loaded successfully
+2025-09-26 15:15:29,933 - INFO - Model and data loaded successfully
+2025-09-26 15:15:55,758 - INFO - Prediction made - Symptoms: ['vomiting'], Primary Prediction: Gastroenteritis, Confidence: 24.00%
+2025-09-26 15:15:55,758 - INFO - Prediction made - Symptoms: ['vomiting'], Primary Prediction: Gastroenteritis, Confidence: 24.00%
+2025-09-26 15:17:45,838 - INFO - Prediction made - Symptoms: ['headache', 'nausea', 'pain_during_bowel_movements'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 40.00%
+2025-09-26 15:17:45,838 - INFO - Prediction made - Symptoms: ['headache', 'nausea', 'pain_during_bowel_movements'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 40.00%
+2025-09-26 15:27:44,085 - INFO - Flask application started
+2025-09-26 15:27:44,248 - INFO - Model and data loaded successfully
+2025-09-26 15:27:44,248 - INFO - Model and data loaded successfully
+2025-09-26 15:27:45,315 - INFO - Flask application started
+2025-09-26 15:27:45,497 - INFO - Model and data loaded successfully
+2025-09-26 15:27:45,497 - INFO - Model and data loaded successfully
+2025-09-26 15:28:13,620 - INFO - Flask application started
+2025-09-26 15:28:13,858 - INFO - Model and data loaded successfully
+2025-09-26 15:28:13,858 - INFO - Model and data loaded successfully
+2025-09-27 18:27:35,841 - INFO - Flask application started
+2025-09-27 18:27:36,262 - INFO - Model and data loaded successfully
+2025-09-27 18:27:36,262 - INFO - Model and data loaded successfully
+2025-09-27 18:27:37,472 - INFO - Flask application started
+2025-09-27 18:27:37,656 - INFO - Model and data loaded successfully
+2025-09-27 18:27:37,656 - INFO - Model and data loaded successfully
+2025-09-27 18:28:28,830 - INFO - Prediction made - Symptoms: ['indigestion', 'headache', 'dizziness'], Primary Prediction: Paralysis (brain hemorrhage), Confidence: 34.00%
+2025-09-27 18:28:28,830 - INFO - Prediction made - Symptoms: ['indigestion', 'headache', 'dizziness'], Primary Prediction: Paralysis (brain hemorrhage), Confidence: 34.00%
+2025-09-27 18:31:14,366 - INFO - Prediction made - Symptoms: ['dizziness'], Primary Prediction: Gastroenteritis, Confidence: 12.00%
+2025-09-27 18:31:14,366 - INFO - Prediction made - Symptoms: ['dizziness'], Primary Prediction: Gastroenteritis, Confidence: 12.00%
+2025-09-27 18:32:41,512 - INFO - Prediction made - Symptoms: ['muscle_pain'], Primary Prediction: Gastroenteritis, Confidence: 12.00%
+2025-09-27 18:32:41,512 - INFO - Prediction made - Symptoms: ['muscle_pain'], Primary Prediction: Gastroenteritis, Confidence: 12.00%
+2025-09-27 18:40:10,884 - INFO - Flask application started
+2025-09-27 18:40:11,088 - INFO - Model and data loaded successfully
+2025-09-27 18:40:11,088 - INFO - Model and data loaded successfully
+2025-09-27 18:40:17,126 - INFO - Flask application started
+2025-09-27 18:40:17,322 - INFO - Model and data loaded successfully
+2025-09-27 18:40:17,322 - INFO - Model and data loaded successfully
+2025-09-27 18:41:17,187 - INFO - Flask application started
+2025-09-27 18:41:17,397 - INFO - Model and data loaded successfully
+2025-09-27 18:41:17,397 - INFO - Model and data loaded successfully
+2025-09-27 18:41:24,427 - INFO - Flask application started
+2025-09-27 18:41:24,621 - INFO - Model and data loaded successfully
+2025-09-27 18:41:24,621 - INFO - Model and data loaded successfully
+2025-09-27 18:44:29,693 - INFO - Flask application started
+2025-09-27 18:44:29,873 - INFO - Model and data loaded successfully
+2025-09-27 18:44:29,873 - INFO - Model and data loaded successfully
+2025-09-27 19:14:42,723 - INFO - Flask application started
+2025-09-27 19:14:42,921 - INFO - Model and data loaded successfully
+2025-09-27 19:14:42,921 - INFO - Model and data loaded successfully
+2025-09-27 19:16:35,641 - INFO - Flask application started
+2025-09-27 19:16:35,820 - INFO - Model and data loaded successfully
+2025-09-27 19:16:35,820 - INFO - Model and data loaded successfully
+2025-09-27 19:17:01,598 - INFO - Flask application started
+2025-09-27 19:17:01,799 - INFO - Model and data loaded successfully
+2025-09-27 19:17:01,799 - INFO - Model and data loaded successfully
+2025-09-27 19:17:19,003 - INFO - Flask application started
+2025-09-27 19:17:19,194 - INFO - Model and data loaded successfully
+2025-09-27 19:17:19,194 - INFO - Model and data loaded successfully
+2025-09-27 19:19:53,476 - INFO - Flask application started
+2025-09-27 19:19:53,670 - INFO - Model and data loaded successfully
+2025-09-27 19:19:53,670 - INFO - Model and data loaded successfully
+2025-09-27 19:20:14,750 - INFO - Flask application started
+2025-09-27 19:20:14,933 - INFO - Model and data loaded successfully
+2025-09-27 19:20:14,933 - INFO - Model and data loaded successfully
+2025-09-27 19:20:56,912 - INFO - Flask application started
+2025-09-27 19:20:57,107 - INFO - Model and data loaded successfully
+2025-09-27 19:20:57,107 - INFO - Model and data loaded successfully
+2025-09-27 19:37:57,649 - INFO - Prediction made - Symptoms: ['nausea'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 20.00%
+2025-09-27 19:37:57,649 - INFO - Prediction made - Symptoms: ['nausea'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 20.00%
+2025-09-27 20:16:30,927 - INFO - Prediction made - Symptoms: ['spotting_ urination'], Primary Prediction: Gastroenteritis, Confidence: 12.00%
+2025-09-27 20:16:30,927 - INFO - Prediction made - Symptoms: ['spotting_ urination'], Primary Prediction: Gastroenteritis, Confidence: 12.00%
+2025-09-27 21:28:07,211 - INFO - Prediction made - Symptoms: ['nausea'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 20.00%
+2025-09-27 21:28:07,211 - INFO - Prediction made - Symptoms: ['nausea'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 20.00%
+2025-09-27 21:29:02,120 - INFO - Prediction made - Symptoms: ['nausea'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 20.00%
+2025-09-27 21:29:02,120 - INFO - Prediction made - Symptoms: ['nausea'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 20.00%
+2025-09-27 21:30:03,601 - INFO - Flask application started
+2025-09-27 21:30:03,785 - INFO - Model and data loaded successfully
+2025-09-27 21:30:03,785 - INFO - Model and data loaded successfully
+2025-09-29 15:00:16,526 - INFO - Flask application started
+2025-09-29 15:00:16,744 - INFO - Model and data loaded successfully
+2025-09-29 15:00:16,744 - INFO - Model and data loaded successfully
+2025-09-29 15:00:17,837 - INFO - Flask application started
+2025-09-29 15:00:18,041 - INFO - Model and data loaded successfully
+2025-09-29 15:00:18,041 - INFO - Model and data loaded successfully
+2025-09-29 15:00:38,610 - INFO - Prediction made - Symptoms: ['nausea'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 20.00%
+2025-09-29 15:00:38,610 - INFO - Prediction made - Symptoms: ['nausea'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 20.00%
+2025-09-29 15:23:39,549 - INFO - Flask application started
+2025-09-29 15:23:39,830 - INFO - Model and data loaded successfully
+2025-09-29 15:23:39,830 - INFO - Model and data loaded successfully
+2025-09-29 15:23:41,498 - INFO - Flask application started
+2025-09-29 15:23:41,789 - INFO - Model and data loaded successfully
+2025-09-29 15:23:41,789 - INFO - Model and data loaded successfully
+2025-10-05 19:03:09,541 - INFO - Flask application started
+2025-10-05 19:03:09,764 - INFO - Model and data loaded successfully
+2025-10-05 19:03:09,764 - INFO - Model and data loaded successfully
+2025-10-05 19:03:10,835 - INFO - Flask application started
+2025-10-05 19:03:11,020 - INFO - Model and data loaded successfully
+2025-10-05 19:03:11,020 - INFO - Model and data loaded successfully
+2025-10-05 19:03:43,363 - INFO - Prediction made - Symptoms: ['ulcers_on_tongue'], Primary Prediction: Gastroenteritis, Confidence: 12.00%
+2025-10-05 19:03:43,363 - INFO - Prediction made - Symptoms: ['ulcers_on_tongue'], Primary Prediction: Gastroenteritis, Confidence: 12.00%
+2025-10-05 19:06:43,170 - INFO - Prediction made - Symptoms: ['nausea'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 20.00%
+2025-10-05 19:06:43,170 - INFO - Prediction made - Symptoms: ['nausea'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 20.00%
+2025-10-05 19:17:10,230 - INFO - Flask application started
+2025-10-05 19:17:10,482 - INFO - Model and data loaded successfully
+2025-10-05 19:17:10,482 - INFO - Model and data loaded successfully
+2025-10-05 19:17:24,420 - INFO - Flask application started
+2025-10-05 19:17:24,604 - INFO - Model and data loaded successfully
+2025-10-05 19:17:24,604 - INFO - Model and data loaded successfully
+2025-10-05 19:17:25,803 - INFO - Flask application started
+2025-10-05 19:17:25,991 - INFO - Model and data loaded successfully
+2025-10-05 19:17:25,991 - INFO - Model and data loaded successfully
+2025-10-05 19:26:46,954 - INFO - Prediction made - Symptoms: ['passage_of_gases'], Primary Prediction: Gastroenteritis, Confidence: 12.00%
+2025-10-05 19:26:46,954 - INFO - Prediction made - Symptoms: ['passage_of_gases'], Primary Prediction: Gastroenteritis, Confidence: 12.00%
+2025-10-05 19:38:25,519 - INFO - Prediction made - Symptoms: ['nausea'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 20.00%
+2025-10-05 19:38:25,519 - INFO - Prediction made - Symptoms: ['nausea'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 20.00%
+2025-10-05 19:40:36,105 - INFO - Flask application started
+2025-10-05 19:40:36,270 - INFO - Model and data loaded successfully
+2025-10-05 19:40:36,270 - INFO - Model and data loaded successfully
+2025-10-05 19:40:37,282 - INFO - Flask application started
+2025-10-05 19:40:37,454 - INFO - Model and data loaded successfully
+2025-10-05 19:40:37,454 - INFO - Model and data loaded successfully
+2025-10-05 21:21:21,362 - INFO - Flask application started
+2025-10-05 21:21:21,552 - INFO - Model and data loaded successfully
+2025-10-05 21:21:21,552 - INFO - Model and data loaded successfully
+2025-10-05 21:21:22,627 - INFO - Flask application started
+2025-10-05 21:21:22,812 - INFO - Model and data loaded successfully
+2025-10-05 21:21:22,812 - INFO - Model and data loaded successfully
+2025-10-05 21:37:12,546 - INFO - Flask application started
+2025-10-05 21:37:12,715 - INFO - Model and data loaded successfully
+2025-10-05 21:37:12,715 - INFO - Model and data loaded successfully
+2025-10-05 21:37:13,747 - INFO - Flask application started
+2025-10-05 21:37:13,937 - INFO - Model and data loaded successfully
+2025-10-05 21:37:13,937 - INFO - Model and data loaded successfully
+2025-10-06 11:37:28,186 - INFO - Flask application started
+2025-10-06 11:37:28,407 - INFO - Model and data loaded successfully
+2025-10-06 11:37:28,407 - INFO - Model and data loaded successfully
+2025-10-06 11:37:29,693 - INFO - Flask application started
+2025-10-06 11:37:29,940 - INFO - Model and data loaded successfully
+2025-10-06 11:37:29,940 - INFO - Model and data loaded successfully
+2025-10-06 11:38:38,806 - INFO - Flask application started
+2025-10-06 11:38:39,290 - INFO - Model and data loaded successfully
+2025-10-06 11:38:39,290 - INFO - Model and data loaded successfully
+2025-10-06 11:39:46,758 - INFO - Flask application started
+2025-10-06 11:39:46,965 - INFO - Model and data loaded successfully
+2025-10-06 11:39:46,965 - INFO - Model and data loaded successfully
+2025-10-06 11:40:19,945 - INFO - Flask application started
+2025-10-06 11:40:20,143 - INFO - Model and data loaded successfully
+2025-10-06 11:40:20,143 - INFO - Model and data loaded successfully
+2025-10-06 11:40:21,318 - INFO - Flask application started
+2025-10-06 11:40:21,563 - INFO - Model and data loaded successfully
+2025-10-06 11:40:21,563 - INFO - Model and data loaded successfully
+2025-10-06 11:59:00,833 - INFO - Flask application started
+2025-10-06 11:59:01,034 - INFO - Model and data loaded successfully
+2025-10-06 11:59:01,034 - INFO - Model and data loaded successfully
+2025-10-06 11:59:23,585 - INFO - Flask application started
+2025-10-06 11:59:23,804 - INFO - Model and data loaded successfully
+2025-10-06 11:59:23,804 - INFO - Model and data loaded successfully
+2025-10-06 11:59:31,136 - INFO - Flask application started
+2025-10-06 11:59:31,370 - INFO - Model and data loaded successfully
+2025-10-06 11:59:31,370 - INFO - Model and data loaded successfully
+2025-10-06 12:03:02,110 - INFO - Flask application started
+2025-10-06 12:03:02,344 - INFO - Model and data loaded successfully
+2025-10-06 12:03:02,344 - INFO - Model and data loaded successfully
+2025-10-06 12:04:27,221 - INFO - Flask application started
+2025-10-06 12:04:27,441 - INFO - Model and data loaded successfully
+2025-10-06 12:04:27,441 - INFO - Model and data loaded successfully
+2025-10-06 12:04:58,195 - INFO - Flask application started
+2025-10-06 12:04:58,439 - INFO - Model and data loaded successfully
+2025-10-06 12:04:58,439 - INFO - Model and data loaded successfully
+2025-10-06 12:05:41,547 - INFO - Flask application started
+2025-10-06 12:05:41,758 - INFO - Model and data loaded successfully
+2025-10-06 12:05:41,758 - INFO - Model and data loaded successfully
+2025-10-06 12:05:49,952 - INFO - Flask application started
+2025-10-06 12:05:50,167 - INFO - Model and data loaded successfully
+2025-10-06 12:05:50,167 - INFO - Model and data loaded successfully
+2025-10-06 12:06:06,991 - INFO - Flask application started
+2025-10-06 12:06:07,220 - INFO - Model and data loaded successfully
+2025-10-06 12:06:07,220 - INFO - Model and data loaded successfully
+2025-10-06 12:06:08,677 - INFO - Flask application started
+2025-10-06 12:06:08,924 - INFO - Model and data loaded successfully
+2025-10-06 12:06:08,924 - INFO - Model and data loaded successfully
+2025-10-06 12:08:02,077 - INFO - Flask application started
+2025-10-06 12:08:02,311 - INFO - Model and data loaded successfully
+2025-10-06 12:08:02,311 - INFO - Model and data loaded successfully
+2025-10-06 12:08:03,821 - INFO - Flask application started
+2025-10-06 12:08:04,099 - INFO - Model and data loaded successfully
+2025-10-06 12:08:04,099 - INFO - Model and data loaded successfully
+2025-10-06 12:09:00,893 - INFO - Flask application started
+2025-10-06 12:09:01,166 - INFO - Model and data loaded successfully
+2025-10-06 12:09:01,166 - INFO - Model and data loaded successfully
+2025-10-06 12:09:11,606 - INFO - Flask application started
+2025-10-06 12:09:11,911 - INFO - Model and data loaded successfully
+2025-10-06 12:09:11,911 - INFO - Model and data loaded successfully
+2025-10-06 12:09:13,343 - INFO - Flask application started
+2025-10-06 12:09:13,590 - INFO - Model and data loaded successfully
+2025-10-06 12:09:13,590 - INFO - Model and data loaded successfully
+2025-10-06 12:13:23,832 - INFO - Flask application started
+2025-10-06 12:13:24,058 - INFO - Model and data loaded successfully
+2025-10-06 12:13:24,058 - INFO - Model and data loaded successfully
+2025-10-06 12:13:44,024 - INFO - Flask application started
+2025-10-06 12:13:44,263 - INFO - Model and data loaded successfully
+2025-10-06 12:13:44,263 - INFO - Model and data loaded successfully
+2025-10-06 12:13:51,404 - INFO - Flask application started
+2025-10-06 12:13:51,640 - INFO - Model and data loaded successfully
+2025-10-06 12:13:51,640 - INFO - Model and data loaded successfully
+2025-10-06 12:15:40,952 - INFO - Flask application started
+2025-10-06 12:15:41,186 - INFO - Model and data loaded successfully
+2025-10-06 12:15:41,186 - INFO - Model and data loaded successfully
+2025-10-06 12:15:49,410 - INFO - Flask application started
+2025-10-06 12:15:49,642 - INFO - Model and data loaded successfully
+2025-10-06 12:15:49,642 - INFO - Model and data loaded successfully
+2025-10-06 12:19:52,149 - INFO - Flask application started
+2025-10-06 12:19:52,364 - INFO - Model and data loaded successfully
+2025-10-06 12:19:52,364 - INFO - Model and data loaded successfully
+2025-10-06 12:20:04,435 - INFO - Flask application started
+2025-10-06 12:20:04,648 - INFO - Model and data loaded successfully
+2025-10-06 12:20:04,648 - INFO - Model and data loaded successfully
+2025-10-06 12:28:53,473 - INFO - Flask application started
+2025-10-06 12:28:53,689 - INFO - Model and data loaded successfully
+2025-10-06 12:28:53,689 - INFO - Model and data loaded successfully
+2025-10-06 12:29:54,930 - INFO - Flask application started
+2025-10-06 12:29:55,257 - INFO - Model and data loaded successfully
+2025-10-06 12:29:55,257 - INFO - Model and data loaded successfully
+2025-10-06 12:30:34,670 - INFO - Flask application started
+2025-10-06 12:30:35,014 - INFO - Model and data loaded successfully
+2025-10-06 12:30:35,014 - INFO - Model and data loaded successfully
+2025-10-06 12:31:25,529 - INFO - Flask application started
+2025-10-06 12:31:25,747 - INFO - Model and data loaded successfully
+2025-10-06 12:31:25,747 - INFO - Model and data loaded successfully
+2025-10-06 12:31:31,753 - INFO - Flask application started
+2025-10-06 12:31:31,975 - INFO - Model and data loaded successfully
+2025-10-06 12:31:31,975 - INFO - Model and data loaded successfully
+2025-10-06 12:32:02,780 - INFO - Flask application started
+2025-10-06 12:32:02,997 - INFO - Model and data loaded successfully
+2025-10-06 12:32:02,997 - INFO - Model and data loaded successfully
+2025-10-06 12:32:09,796 - INFO - Flask application started
+2025-10-06 12:32:10,055 - INFO - Model and data loaded successfully
+2025-10-06 12:32:10,055 - INFO - Model and data loaded successfully
+2025-10-06 12:32:15,982 - INFO - Flask application started
+2025-10-06 12:32:16,210 - INFO - Model and data loaded successfully
+2025-10-06 12:32:16,210 - INFO - Model and data loaded successfully
+2025-10-06 12:33:02,637 - INFO - Flask application started
+2025-10-06 12:33:02,850 - INFO - Model and data loaded successfully
+2025-10-06 12:33:02,850 - INFO - Model and data loaded successfully
+2025-10-06 12:33:04,115 - INFO - Flask application started
+2025-10-06 12:33:04,324 - INFO - Model and data loaded successfully
+2025-10-06 12:33:04,324 - INFO - Model and data loaded successfully
+2025-10-06 12:35:42,526 - INFO - Flask application started
+2025-10-06 12:35:42,804 - INFO - Model and data loaded successfully
+2025-10-06 12:35:42,804 - INFO - Model and data loaded successfully
+2025-10-06 12:41:31,645 - INFO - Flask application started
+2025-10-06 12:41:31,857 - INFO - Model and data loaded successfully
+2025-10-06 12:41:31,857 - INFO - Model and data loaded successfully
+2025-10-06 12:43:24,511 - INFO - Flask application started
+2025-10-06 12:43:24,721 - INFO - Model and data loaded successfully
+2025-10-06 12:43:24,721 - INFO - Model and data loaded successfully
+2025-10-06 12:43:58,747 - INFO - Flask application started
+2025-10-06 12:43:58,995 - INFO - Model and data loaded successfully
+2025-10-06 12:43:58,995 - INFO - Model and data loaded successfully
+2025-10-06 12:44:00,262 - INFO - Flask application started
+2025-10-06 12:44:00,474 - INFO - Model and data loaded successfully
+2025-10-06 12:44:00,474 - INFO - Model and data loaded successfully
+2025-10-06 12:44:54,042 - INFO - Flask application started
+2025-10-06 12:44:54,254 - INFO - Model and data loaded successfully
+2025-10-06 12:44:54,254 - INFO - Model and data loaded successfully
+2025-10-06 13:00:13,632 - INFO - Flask application started
+2025-10-06 13:00:13,874 - INFO - Model and data loaded successfully
+2025-10-06 13:00:13,874 - INFO - Model and data loaded successfully
+2025-10-06 13:00:19,516 - INFO - Flask application started
+2025-10-06 13:00:19,732 - INFO - Model and data loaded successfully
+2025-10-06 13:00:19,732 - INFO - Model and data loaded successfully
+2025-10-06 13:00:43,024 - INFO - Flask application started
+2025-10-06 13:00:43,260 - INFO - Model and data loaded successfully
+2025-10-06 13:00:43,260 - INFO - Model and data loaded successfully
+2025-10-06 13:00:49,630 - INFO - Flask application started
+2025-10-06 13:00:49,851 - INFO - Model and data loaded successfully
+2025-10-06 13:00:49,851 - INFO - Model and data loaded successfully
+2025-10-06 13:00:57,622 - INFO - Flask application started
+2025-10-06 13:00:57,834 - INFO - Model and data loaded successfully
+2025-10-06 13:00:57,834 - INFO - Model and data loaded successfully
+2025-10-06 13:01:16,731 - INFO - Flask application started
+2025-10-06 13:01:16,952 - INFO - Model and data loaded successfully
+2025-10-06 13:01:16,952 - INFO - Model and data loaded successfully
+2025-10-06 13:01:26,820 - INFO - Flask application started
+2025-10-06 13:01:27,216 - INFO - Model and data loaded successfully
+2025-10-06 13:01:27,216 - INFO - Model and data loaded successfully
+2025-10-06 13:01:31,115 - INFO - Flask application started
+2025-10-06 13:01:31,325 - INFO - Model and data loaded successfully
+2025-10-06 13:01:31,325 - INFO - Model and data loaded successfully
+2025-10-06 13:01:39,544 - INFO - Flask application started
+2025-10-06 13:01:39,765 - INFO - Model and data loaded successfully
+2025-10-06 13:01:39,765 - INFO - Model and data loaded successfully
+2025-10-06 13:11:02,775 - INFO - Prediction made - Symptoms: ['vomiting', 'abdominal_pain'], Primary Prediction: Alcoholic hepatitis, Confidence: 18.00%
+2025-10-06 13:11:02,775 - INFO - Prediction made - Symptoms: ['vomiting', 'abdominal_pain'], Primary Prediction: Alcoholic hepatitis, Confidence: 18.00%
+2025-10-06 13:18:00,886 - INFO - Flask application started
+2025-10-06 13:18:01,218 - INFO - Model and data loaded successfully
+2025-10-06 13:18:01,218 - INFO - Model and data loaded successfully
+2025-10-06 13:21:46,900 - INFO - Flask application started
+2025-10-06 13:21:47,115 - INFO - Model and data loaded successfully
+2025-10-06 13:21:47,115 - INFO - Model and data loaded successfully
+2025-10-06 19:00:30,557 - INFO - Prediction made - Symptoms: ['cough', 'fever'], Primary Prediction: Gastroenteritis, Confidence: 12.00%
+2025-10-06 19:02:19,578 - INFO - Prediction made - Symptoms: ['cough', 'fever'], Primary Prediction: Gastroenteritis, Confidence: 12.00%
+2025-10-06 19:04:33,725 - INFO - Prediction made - Symptoms: ['cough', 'fever'], Primary Prediction: Gastroenteritis, Confidence: 12.00%
+2025-10-06 19:11:23,841 - INFO - Prediction made - Symptoms: ['cough', 'headache', 'fever'], Primary Prediction: Paralysis (brain hemorrhage), Confidence: 34.00%
+2025-10-06 19:43:16,299 - INFO - Flask application started
+2025-10-06 19:43:16,498 - INFO - Model and data loaded successfully
+2025-10-06 19:43:16,498 - INFO - Model and data loaded successfully
+2025-10-06 21:24:04,598 - INFO - Flask application started
+2025-10-06 21:24:04,815 - INFO - Model and data loaded successfully
+2025-10-06 21:24:04,815 - INFO - Model and data loaded successfully
+2025-10-06 21:24:06,520 - INFO - Flask application started
+2025-10-06 21:24:06,837 - INFO - Model and data loaded successfully
+2025-10-06 21:24:06,837 - INFO - Model and data loaded successfully
+2025-10-06 21:24:26,627 - INFO - Scraping data for disease: Fungal infection
+2025-10-06 21:24:26,627 - INFO - Scraping data for disease: Fungal infection
+2025-10-06 21:24:26,658 - INFO - Scraping data for disease: Allergy
+2025-10-06 21:24:26,658 - INFO - Scraping data for disease: Allergy
+2025-10-06 21:24:28,228 - INFO - Scraping data for disease: GERD
+2025-10-06 21:24:28,228 - INFO - Scraping data for disease: GERD
+2025-10-06 21:24:28,242 - INFO - Scraping data for disease: Chronic cholestasis
+2025-10-06 21:24:28,242 - INFO - Scraping data for disease: Chronic cholestasis
+2025-10-06 21:24:28,252 - INFO - Scraping data for disease: Drug Reaction
+2025-10-06 21:24:28,252 - INFO - Scraping data for disease: Drug Reaction
+2025-10-06 21:24:29,340 - INFO - Scraping data for disease: Peptic ulcer disease
+2025-10-06 21:24:29,340 - INFO - Scraping data for disease: Peptic ulcer disease
+2025-10-06 21:24:29,355 - INFO - Scraping data for disease: AIDS
+2025-10-06 21:24:29,355 - INFO - Scraping data for disease: AIDS
+2025-10-06 21:24:29,368 - INFO - Scraping data for disease: Diabetes
+2025-10-06 21:24:29,368 - INFO - Scraping data for disease: Diabetes
+2025-10-06 21:24:30,352 - INFO - Scraping data for disease: Gastroenteritis
+2025-10-06 21:24:30,352 - INFO - Scraping data for disease: Gastroenteritis
+2025-10-06 21:24:31,365 - INFO - Scraping data for disease: Bronchial Asthma
+2025-10-06 21:24:31,365 - INFO - Scraping data for disease: Bronchial Asthma
+2025-10-06 21:24:32,816 - INFO - Scraping data for disease: Hypertension
+2025-10-06 21:24:32,816 - INFO - Scraping data for disease: Hypertension
+2025-10-06 21:24:34,089 - INFO - Scraping data for disease: Migraine
+2025-10-06 21:24:34,089 - INFO - Scraping data for disease: Migraine
+2025-10-06 21:24:35,184 - INFO - Scraping data for disease: Cervical spondylosis
+2025-10-06 21:24:35,184 - INFO - Scraping data for disease: Cervical spondylosis
+2025-10-06 21:24:35,195 - INFO - Scraping data for disease: Paralysis (brain hemorrhage)
+2025-10-06 21:24:35,195 - INFO - Scraping data for disease: Paralysis (brain hemorrhage)
+2025-10-06 21:24:35,206 - INFO - Scraping data for disease: Jaundice
+2025-10-06 21:24:35,206 - INFO - Scraping data for disease: Jaundice
+2025-10-06 21:24:36,728 - INFO - Scraping data for disease: Malaria
+2025-10-06 21:24:36,728 - INFO - Scraping data for disease: Malaria
+2025-10-06 21:24:37,806 - INFO - Scraping data for disease: Chicken pox
+2025-10-06 21:24:37,806 - INFO - Scraping data for disease: Chicken pox
+2025-10-06 21:24:37,819 - INFO - Scraping data for disease: Dengue
+2025-10-06 21:24:37,819 - INFO - Scraping data for disease: Dengue
+2025-10-06 21:24:38,794 - INFO - Scraping data for disease: Typhoid
+2025-10-06 21:24:38,794 - INFO - Scraping data for disease: Typhoid
+2025-10-06 21:24:40,736 - INFO - Scraping data for disease: Hepatitis A
+2025-10-06 21:24:40,736 - INFO - Scraping data for disease: Hepatitis A
+2025-10-06 21:24:41,839 - INFO - Scraping data for disease: Hepatitis B
+2025-10-06 21:24:41,839 - INFO - Scraping data for disease: Hepatitis B
+2025-10-06 21:24:42,940 - INFO - Scraping data for disease: Hepatitis C
+2025-10-06 21:24:42,940 - INFO - Scraping data for disease: Hepatitis C
+2025-10-06 21:24:43,959 - INFO - Scraping data for disease: Alcoholic hepatitis
+2025-10-06 21:24:43,959 - INFO - Scraping data for disease: Alcoholic hepatitis
+2025-10-06 21:24:43,972 - INFO - Scraping data for disease: Tuberculosis
+2025-10-06 21:24:43,972 - INFO - Scraping data for disease: Tuberculosis
+2025-10-06 21:24:45,034 - INFO - Scraping data for disease: Common Cold
+2025-10-06 21:24:45,034 - INFO - Scraping data for disease: Common Cold
+2025-10-06 21:24:46,103 - INFO - Scraping data for disease: Pneumonia
+2025-10-06 21:24:46,103 - INFO - Scraping data for disease: Pneumonia
+2025-10-06 21:24:46,940 - INFO - Scraping data for disease: Dimorphic hemorrhoids (piles)
+2025-10-06 21:24:46,940 - INFO - Scraping data for disease: Dimorphic hemorrhoids (piles)
+2025-10-06 21:24:46,951 - INFO - Scraping data for disease: Heart attack
+2025-10-06 21:24:46,951 - INFO - Scraping data for disease: Heart attack
+2025-10-06 21:24:46,963 - INFO - Scraping data for disease: Varicose veins
+2025-10-06 21:24:46,963 - INFO - Scraping data for disease: Varicose veins
+2025-10-06 21:24:46,974 - INFO - Scraping data for disease: Hypothyroidism
+2025-10-06 21:24:46,974 - INFO - Scraping data for disease: Hypothyroidism
+2025-10-06 21:24:47,636 - INFO - Scraping data for disease: Hyperthyroidism
+2025-10-06 21:24:47,636 - INFO - Scraping data for disease: Hyperthyroidism
+2025-10-06 21:24:48,656 - INFO - Scraping data for disease: Hypoglycemia
+2025-10-06 21:24:48,656 - INFO - Scraping data for disease: Hypoglycemia
+2025-10-06 21:24:49,776 - INFO - Scraping data for disease: Osteoarthritis
+2025-10-06 21:24:49,776 - INFO - Scraping data for disease: Osteoarthritis
+2025-10-06 21:24:50,813 - INFO - Scraping data for disease: Arthritis
+2025-10-06 21:24:50,813 - INFO - Scraping data for disease: Arthritis
+2025-10-06 21:24:51,845 - INFO - Scraping data for disease: Vertigo (Benign Paroxysmal Positional Vertigo)
+2025-10-06 21:24:51,845 - INFO - Scraping data for disease: Vertigo (Benign Paroxysmal Positional Vertigo)
+2025-10-06 21:24:52,875 - INFO - Scraping data for disease: Acne
+2025-10-06 21:24:52,875 - INFO - Scraping data for disease: Acne
+2025-10-06 21:24:53,895 - INFO - Scraping data for disease: Urinary tract infection
+2025-10-06 21:24:53,895 - INFO - Scraping data for disease: Urinary tract infection
+2025-10-06 21:24:53,905 - INFO - Scraping data for disease: Psoriasis
+2025-10-06 21:24:53,905 - INFO - Scraping data for disease: Psoriasis
+2025-10-06 21:24:55,027 - INFO - Scraping data for disease: Impetigo
+2025-10-06 21:24:55,027 - INFO - Scraping data for disease: Impetigo
+2025-10-06 21:27:42,749 - INFO - Using cached data for disease: Fungal infection
+2025-10-06 21:27:42,749 - INFO - Using cached data for disease: Fungal infection
+2025-10-06 21:27:42,762 - INFO - Using cached data for disease: Allergy
+2025-10-06 21:27:42,762 - INFO - Using cached data for disease: Allergy
+2025-10-06 21:27:42,774 - INFO - Using cached data for disease: GERD
+2025-10-06 21:27:42,774 - INFO - Using cached data for disease: GERD
+2025-10-06 21:27:42,786 - INFO - Using cached data for disease: Chronic cholestasis
+2025-10-06 21:27:42,786 - INFO - Using cached data for disease: Chronic cholestasis
+2025-10-06 21:27:42,799 - INFO - Using cached data for disease: Drug Reaction
+2025-10-06 21:27:42,799 - INFO - Using cached data for disease: Drug Reaction
+2025-10-06 21:27:42,811 - INFO - Using cached data for disease: Peptic ulcer disease
+2025-10-06 21:27:42,811 - INFO - Using cached data for disease: Peptic ulcer disease
+2025-10-06 21:27:42,822 - INFO - Using cached data for disease: AIDS
+2025-10-06 21:27:42,822 - INFO - Using cached data for disease: AIDS
+2025-10-06 21:27:42,833 - INFO - Using cached data for disease: Diabetes
+2025-10-06 21:27:42,833 - INFO - Using cached data for disease: Diabetes
+2025-10-06 21:27:42,843 - INFO - Using cached data for disease: Gastroenteritis
+2025-10-06 21:27:42,843 - INFO - Using cached data for disease: Gastroenteritis
+2025-10-06 21:27:42,854 - INFO - Using cached data for disease: Bronchial Asthma
+2025-10-06 21:27:42,854 - INFO - Using cached data for disease: Bronchial Asthma
+2025-10-06 21:27:42,865 - INFO - Using cached data for disease: Hypertension
+2025-10-06 21:27:42,865 - INFO - Using cached data for disease: Hypertension
+2025-10-06 21:27:42,876 - INFO - Using cached data for disease: Migraine
+2025-10-06 21:27:42,876 - INFO - Using cached data for disease: Migraine
+2025-10-06 21:27:42,887 - INFO - Using cached data for disease: Cervical spondylosis
+2025-10-06 21:27:42,887 - INFO - Using cached data for disease: Cervical spondylosis
+2025-10-06 21:27:42,897 - INFO - Using cached data for disease: Paralysis (brain hemorrhage)
+2025-10-06 21:27:42,897 - INFO - Using cached data for disease: Paralysis (brain hemorrhage)
+2025-10-06 21:27:42,907 - INFO - Using cached data for disease: Jaundice
+2025-10-06 21:27:42,907 - INFO - Using cached data for disease: Jaundice
+2025-10-06 21:27:42,918 - INFO - Using cached data for disease: Malaria
+2025-10-06 21:27:42,918 - INFO - Using cached data for disease: Malaria
+2025-10-06 21:27:42,929 - INFO - Using cached data for disease: Chicken pox
+2025-10-06 21:27:42,929 - INFO - Using cached data for disease: Chicken pox
+2025-10-06 21:27:42,940 - INFO - Using cached data for disease: Dengue
+2025-10-06 21:27:42,940 - INFO - Using cached data for disease: Dengue
+2025-10-06 21:27:42,950 - INFO - Using cached data for disease: Typhoid
+2025-10-06 21:27:42,950 - INFO - Using cached data for disease: Typhoid
+2025-10-06 21:27:42,960 - INFO - Using cached data for disease: Hepatitis A
+2025-10-06 21:27:42,960 - INFO - Using cached data for disease: Hepatitis A
+2025-10-06 21:27:42,971 - INFO - Using cached data for disease: Hepatitis B
+2025-10-06 21:27:42,971 - INFO - Using cached data for disease: Hepatitis B
+2025-10-06 21:27:42,981 - INFO - Using cached data for disease: Hepatitis C
+2025-10-06 21:27:42,981 - INFO - Using cached data for disease: Hepatitis C
+2025-10-06 21:27:42,992 - INFO - Using cached data for disease: Alcoholic hepatitis
+2025-10-06 21:27:42,992 - INFO - Using cached data for disease: Alcoholic hepatitis
+2025-10-06 21:27:43,003 - INFO - Using cached data for disease: Tuberculosis
+2025-10-06 21:27:43,003 - INFO - Using cached data for disease: Tuberculosis
+2025-10-06 21:27:43,014 - INFO - Using cached data for disease: Common Cold
+2025-10-06 21:27:43,014 - INFO - Using cached data for disease: Common Cold
+2025-10-06 21:27:43,025 - INFO - Using cached data for disease: Pneumonia
+2025-10-06 21:27:43,025 - INFO - Using cached data for disease: Pneumonia
+2025-10-06 21:27:43,035 - INFO - Using cached data for disease: Dimorphic hemorrhoids (piles)
+2025-10-06 21:27:43,035 - INFO - Using cached data for disease: Dimorphic hemorrhoids (piles)
+2025-10-06 21:27:43,046 - INFO - Using cached data for disease: Heart attack
+2025-10-06 21:27:43,046 - INFO - Using cached data for disease: Heart attack
+2025-10-06 21:27:43,057 - INFO - Using cached data for disease: Varicose veins
+2025-10-06 21:27:43,057 - INFO - Using cached data for disease: Varicose veins
+2025-10-06 21:27:43,068 - INFO - Using cached data for disease: Hypothyroidism
+2025-10-06 21:27:43,068 - INFO - Using cached data for disease: Hypothyroidism
+2025-10-06 21:27:43,078 - INFO - Using cached data for disease: Hyperthyroidism
+2025-10-06 21:27:43,078 - INFO - Using cached data for disease: Hyperthyroidism
+2025-10-06 21:27:43,088 - INFO - Using cached data for disease: Hypoglycemia
+2025-10-06 21:27:43,088 - INFO - Using cached data for disease: Hypoglycemia
+2025-10-06 21:27:43,099 - INFO - Using cached data for disease: Osteoarthritis
+2025-10-06 21:27:43,099 - INFO - Using cached data for disease: Osteoarthritis
+2025-10-06 21:27:43,110 - INFO - Using cached data for disease: Arthritis
+2025-10-06 21:27:43,110 - INFO - Using cached data for disease: Arthritis
+2025-10-06 21:27:43,121 - INFO - Using cached data for disease: Vertigo (Benign Paroxysmal Positional Vertigo)
+2025-10-06 21:27:43,121 - INFO - Using cached data for disease: Vertigo (Benign Paroxysmal Positional Vertigo)
+2025-10-06 21:27:43,131 - INFO - Using cached data for disease: Acne
+2025-10-06 21:27:43,131 - INFO - Using cached data for disease: Acne
+2025-10-06 21:27:43,142 - INFO - Using cached data for disease: Urinary tract infection
+2025-10-06 21:27:43,142 - INFO - Using cached data for disease: Urinary tract infection
+2025-10-06 21:27:43,154 - INFO - Using cached data for disease: Psoriasis
+2025-10-06 21:27:43,154 - INFO - Using cached data for disease: Psoriasis
+2025-10-06 21:27:43,165 - INFO - Using cached data for disease: Impetigo
+2025-10-06 21:27:43,165 - INFO - Using cached data for disease: Impetigo
+2025-10-06 22:18:13,527 - INFO - Flask application started
+2025-10-06 22:18:13,708 - INFO - Model and data loaded successfully
+2025-10-06 22:18:13,708 - INFO - Model and data loaded successfully
+2025-10-06 22:25:38,074 - INFO - Flask application started
+2025-10-06 22:25:38,262 - INFO - Model and data loaded successfully
+2025-10-06 22:25:38,262 - INFO - Model and data loaded successfully
+2025-10-06 22:25:59,335 - INFO - Flask application started
+2025-10-06 22:25:59,504 - INFO - Model and data loaded successfully
+2025-10-06 22:25:59,504 - INFO - Model and data loaded successfully
+2025-10-06 22:26:00,736 - INFO - Flask application started
+2025-10-06 22:26:00,935 - INFO - Model and data loaded successfully
+2025-10-06 22:26:00,935 - INFO - Model and data loaded successfully
+2025-10-06 22:26:06,884 - INFO - Disease info fetched for Alcoholic hepatitis: {'name': 'Alcoholic hepatitis', 'summary': "Hepatitis is inflammation of theliver. Inflammation is swelling that happens when tissues of the body are injured or infected. It can damage your liver. This swelling and damage can affect how well your liver functions. Hepatitis can be an acute (short-term) infection or a chronic (long-term) infection. Some types of hepatitis cause only acute infections. Other types can cause both acute and chronic infections. There are different types of hepatitis, with different causes: Hepatitis A and hepatitis E usually spread through contact withfoodor water that was contaminated with an infected person's stool. You can also get hepatitis E by eating undercooked pork, deer, or shellfish. Hepatitis B, hepatitis C, and hepatitis D spread through contact with the blood of someone who has the disease. Hepatitis B and D may also spread through contact with other body fluids. This can happen in many ways, such as sharing drug needles or having unprotected sex. The risks are different for the different types of hepatitis. For example, with most of the viral types, your risk is higher if you have unprotected sex.  People who drink a lot over long periods of time are at risk for alcoholic hepatitis. Some people with hepatitis do not have symptoms and do not know they are infected. If you do have symptoms, they may include: If you have an acute infection, your symptoms can start anywhere between 2 weeks to 6 months after you got infected. If you have a chronic infection, you may not have symptoms until many years later. Chronic hepatitis can lead to complications such ascirrhosis(scarring of the liver), liver failure, andliver cancer. Early diagnosis and treatment of chronic hepatitis may prevent these complications. To diagnose hepatitis, your health care provider: Treatment for hepatitis depends on which type you have and whether it is acute or chronic. Acute viral hepatitis often goes away on its own. To feel better, you may just need to rest and get enough fluids. But in some cases, it may be more serious. You might even need treatment in a hospital. There are different medicines to treat the different chronic types of hepatitis. Possible other treatments may include surgery and other medical procedures. People who have alcoholic hepatitis need to stop drinking. If your chronic hepatitis leads to liver failure or liver cancer, you may need aliver transplant. There are different ways to prevent or lower your risk for hepatitis, depending on the type of hepatitis. For example, not drinking too much alcohol can prevent alcoholic hepatitis. There are vaccines to prevent hepatitis A and B. Autoimmune hepatitis cannot be prevented. NIH: National Institute of Diabetes and Digestive and Kidney Diseases", 'causes': ['There are different types of hepatitis, with different causes:', 'Viral hepatitis is the most common type. It is caused by one of several viruses -- hepatitis virusesA,B,C, D, and E. In the United States, A, B, and C are the most common.', 'Alcoholic hepatitis is caused byheavy alcohol use', 'Toxic hepatitis can be caused by certain poisons, chemicals, medicines, or supplements', "Autoimmune hepatitis is a chronic type in which your body's immune system attacks your liver. The cause is not known, but genetics and your environment may play a role."], 'symptoms': ['Some people with hepatitis do not have symptoms and do not know they are infected. If you do have symptoms, they may include:', 'Fever', 'Fatigue', 'Loss of appetite', 'Nausea and/or vomiting', 'Abdominal pain', 'Dark urine', 'Clay-colored bowel movements', 'Joint pain', 'Jaundice, yellowing of your skin and eyes', 'If you have an acute infection, your symptoms can start anywhere between 2 weeks to 6 months after you got infected. If you have a chronic infection, you may not have symptoms until many years later.'], 'diagnosis': ['Hepatitis is inflammation of theliver. Inflammation is swelling that happens when tissues of the body are injured or infected. It can damage your liver. This swelling and damage can affect how well your liver functions.', 'Hepatitis can be an acute (short-term) infection or a chronic (long-term) infection. Some types of hepatitis cause only acute infections. Other types can cause both acute and chronic infections.'], 'prevention': ['Hepatitis is inflammation of theliver. Inflammation is swelling that happens when tissues of the body are injured or infected. It can damage your liver. This swelling and damage can affect how well your liver functions.', 'Hepatitis can be an acute (short-term) infection or a chronic (long-term) infection. Some types of hepatitis cause only acute infections. Other types can cause both acute and chronic infections.'], 'related': ['No links available'], 'treatments': ['Treatment for hepatitis depends on which type you have and whether it is acute or chronic. Acute viral hepatitis often goes away on its own. To feel better, you may just need to rest and get enough fluids. But in some cases, it may be more serious. You might even need treatment in a hospital.', 'There are different medicines to treat the different chronic types of hepatitis. Possible other treatments may include surgery and other medical procedures. People who have alcoholic hepatitis need to stop drinking. If your chronic hepatitis leads to liver failure or liver cancer, you may need aliver transplant.'], 'source': 'https://medlineplus.gov/hepatitis.html'}
+2025-10-06 22:26:06,884 - INFO - Disease info fetched for Alcoholic hepatitis: {'name': 'Alcoholic hepatitis', 'summary': "Hepatitis is inflammation of theliver. Inflammation is swelling that happens when tissues of the body are injured or infected. It can damage your liver. This swelling and damage can affect how well your liver functions. Hepatitis can be an acute (short-term) infection or a chronic (long-term) infection. Some types of hepatitis cause only acute infections. Other types can cause both acute and chronic infections. There are different types of hepatitis, with different causes: Hepatitis A and hepatitis E usually spread through contact withfoodor water that was contaminated with an infected person's stool. You can also get hepatitis E by eating undercooked pork, deer, or shellfish. Hepatitis B, hepatitis C, and hepatitis D spread through contact with the blood of someone who has the disease. Hepatitis B and D may also spread through contact with other body fluids. This can happen in many ways, such as sharing drug needles or having unprotected sex. The risks are different for the different types of hepatitis. For example, with most of the viral types, your risk is higher if you have unprotected sex.  People who drink a lot over long periods of time are at risk for alcoholic hepatitis. Some people with hepatitis do not have symptoms and do not know they are infected. If you do have symptoms, they may include: If you have an acute infection, your symptoms can start anywhere between 2 weeks to 6 months after you got infected. If you have a chronic infection, you may not have symptoms until many years later. Chronic hepatitis can lead to complications such ascirrhosis(scarring of the liver), liver failure, andliver cancer. Early diagnosis and treatment of chronic hepatitis may prevent these complications. To diagnose hepatitis, your health care provider: Treatment for hepatitis depends on which type you have and whether it is acute or chronic. Acute viral hepatitis often goes away on its own. To feel better, you may just need to rest and get enough fluids. But in some cases, it may be more serious. You might even need treatment in a hospital. There are different medicines to treat the different chronic types of hepatitis. Possible other treatments may include surgery and other medical procedures. People who have alcoholic hepatitis need to stop drinking. If your chronic hepatitis leads to liver failure or liver cancer, you may need aliver transplant. There are different ways to prevent or lower your risk for hepatitis, depending on the type of hepatitis. For example, not drinking too much alcohol can prevent alcoholic hepatitis. There are vaccines to prevent hepatitis A and B. Autoimmune hepatitis cannot be prevented. NIH: National Institute of Diabetes and Digestive and Kidney Diseases", 'causes': ['There are different types of hepatitis, with different causes:', 'Viral hepatitis is the most common type. It is caused by one of several viruses -- hepatitis virusesA,B,C, D, and E. In the United States, A, B, and C are the most common.', 'Alcoholic hepatitis is caused byheavy alcohol use', 'Toxic hepatitis can be caused by certain poisons, chemicals, medicines, or supplements', "Autoimmune hepatitis is a chronic type in which your body's immune system attacks your liver. The cause is not known, but genetics and your environment may play a role."], 'symptoms': ['Some people with hepatitis do not have symptoms and do not know they are infected. If you do have symptoms, they may include:', 'Fever', 'Fatigue', 'Loss of appetite', 'Nausea and/or vomiting', 'Abdominal pain', 'Dark urine', 'Clay-colored bowel movements', 'Joint pain', 'Jaundice, yellowing of your skin and eyes', 'If you have an acute infection, your symptoms can start anywhere between 2 weeks to 6 months after you got infected. If you have a chronic infection, you may not have symptoms until many years later.'], 'diagnosis': ['Hepatitis is inflammation of theliver. Inflammation is swelling that happens when tissues of the body are injured or infected. It can damage your liver. This swelling and damage can affect how well your liver functions.', 'Hepatitis can be an acute (short-term) infection or a chronic (long-term) infection. Some types of hepatitis cause only acute infections. Other types can cause both acute and chronic infections.'], 'prevention': ['Hepatitis is inflammation of theliver. Inflammation is swelling that happens when tissues of the body are injured or infected. It can damage your liver. This swelling and damage can affect how well your liver functions.', 'Hepatitis can be an acute (short-term) infection or a chronic (long-term) infection. Some types of hepatitis cause only acute infections. Other types can cause both acute and chronic infections.'], 'related': ['No links available'], 'treatments': ['Treatment for hepatitis depends on which type you have and whether it is acute or chronic. Acute viral hepatitis often goes away on its own. To feel better, you may just need to rest and get enough fluids. But in some cases, it may be more serious. You might even need treatment in a hospital.', 'There are different medicines to treat the different chronic types of hepatitis. Possible other treatments may include surgery and other medical procedures. People who have alcoholic hepatitis need to stop drinking. If your chronic hepatitis leads to liver failure or liver cancer, you may need aliver transplant.'], 'source': 'https://medlineplus.gov/hepatitis.html'}
+2025-10-06 22:26:15,070 - INFO - Disease info fetched for Alcoholic hepatitis: {'name': 'Alcoholic hepatitis', 'summary': "Hepatitis is inflammation of theliver. Inflammation is swelling that happens when tissues of the body are injured or infected. It can damage your liver. This swelling and damage can affect how well your liver functions. Hepatitis can be an acute (short-term) infection or a chronic (long-term) infection. Some types of hepatitis cause only acute infections. Other types can cause both acute and chronic infections. There are different types of hepatitis, with different causes: Hepatitis A and hepatitis E usually spread through contact withfoodor water that was contaminated with an infected person's stool. You can also get hepatitis E by eating undercooked pork, deer, or shellfish. Hepatitis B, hepatitis C, and hepatitis D spread through contact with the blood of someone who has the disease. Hepatitis B and D may also spread through contact with other body fluids. This can happen in many ways, such as sharing drug needles or having unprotected sex. The risks are different for the different types of hepatitis. For example, with most of the viral types, your risk is higher if you have unprotected sex.  People who drink a lot over long periods of time are at risk for alcoholic hepatitis. Some people with hepatitis do not have symptoms and do not know they are infected. If you do have symptoms, they may include: If you have an acute infection, your symptoms can start anywhere between 2 weeks to 6 months after you got infected. If you have a chronic infection, you may not have symptoms until many years later. Chronic hepatitis can lead to complications such ascirrhosis(scarring of the liver), liver failure, andliver cancer. Early diagnosis and treatment of chronic hepatitis may prevent these complications. To diagnose hepatitis, your health care provider: Treatment for hepatitis depends on which type you have and whether it is acute or chronic. Acute viral hepatitis often goes away on its own. To feel better, you may just need to rest and get enough fluids. But in some cases, it may be more serious. You might even need treatment in a hospital. There are different medicines to treat the different chronic types of hepatitis. Possible other treatments may include surgery and other medical procedures. People who have alcoholic hepatitis need to stop drinking. If your chronic hepatitis leads to liver failure or liver cancer, you may need aliver transplant. There are different ways to prevent or lower your risk for hepatitis, depending on the type of hepatitis. For example, not drinking too much alcohol can prevent alcoholic hepatitis. There are vaccines to prevent hepatitis A and B. Autoimmune hepatitis cannot be prevented. NIH: National Institute of Diabetes and Digestive and Kidney Diseases", 'causes': ['There are different types of hepatitis, with different causes:', 'Viral hepatitis is the most common type. It is caused by one of several viruses -- hepatitis virusesA,B,C, D, and E. In the United States, A, B, and C are the most common.', 'Alcoholic hepatitis is caused byheavy alcohol use', 'Toxic hepatitis can be caused by certain poisons, chemicals, medicines, or supplements', "Autoimmune hepatitis is a chronic type in which your body's immune system attacks your liver. The cause is not known, but genetics and your environment may play a role."], 'symptoms': ['Some people with hepatitis do not have symptoms and do not know they are infected. If you do have symptoms, they may include:', 'Fever', 'Fatigue', 'Loss of appetite', 'Nausea and/or vomiting', 'Abdominal pain', 'Dark urine', 'Clay-colored bowel movements', 'Joint pain', 'Jaundice, yellowing of your skin and eyes', 'If you have an acute infection, your symptoms can start anywhere between 2 weeks to 6 months after you got infected. If you have a chronic infection, you may not have symptoms until many years later.'], 'diagnosis': ['Hepatitis is inflammation of theliver. Inflammation is swelling that happens when tissues of the body are injured or infected. It can damage your liver. This swelling and damage can affect how well your liver functions.', 'Hepatitis can be an acute (short-term) infection or a chronic (long-term) infection. Some types of hepatitis cause only acute infections. Other types can cause both acute and chronic infections.'], 'prevention': ['Hepatitis is inflammation of theliver. Inflammation is swelling that happens when tissues of the body are injured or infected. It can damage your liver. This swelling and damage can affect how well your liver functions.', 'Hepatitis can be an acute (short-term) infection or a chronic (long-term) infection. Some types of hepatitis cause only acute infections. Other types can cause both acute and chronic infections.'], 'related': ['No links available'], 'treatments': ['Treatment for hepatitis depends on which type you have and whether it is acute or chronic. Acute viral hepatitis often goes away on its own. To feel better, you may just need to rest and get enough fluids. But in some cases, it may be more serious. You might even need treatment in a hospital.', 'There are different medicines to treat the different chronic types of hepatitis. Possible other treatments may include surgery and other medical procedures. People who have alcoholic hepatitis need to stop drinking. If your chronic hepatitis leads to liver failure or liver cancer, you may need aliver transplant.'], 'source': 'https://medlineplus.gov/hepatitis.html'}
+2025-10-06 22:26:15,070 - INFO - Disease info fetched for Alcoholic hepatitis: {'name': 'Alcoholic hepatitis', 'summary': "Hepatitis is inflammation of theliver. Inflammation is swelling that happens when tissues of the body are injured or infected. It can damage your liver. This swelling and damage can affect how well your liver functions. Hepatitis can be an acute (short-term) infection or a chronic (long-term) infection. Some types of hepatitis cause only acute infections. Other types can cause both acute and chronic infections. There are different types of hepatitis, with different causes: Hepatitis A and hepatitis E usually spread through contact withfoodor water that was contaminated with an infected person's stool. You can also get hepatitis E by eating undercooked pork, deer, or shellfish. Hepatitis B, hepatitis C, and hepatitis D spread through contact with the blood of someone who has the disease. Hepatitis B and D may also spread through contact with other body fluids. This can happen in many ways, such as sharing drug needles or having unprotected sex. The risks are different for the different types of hepatitis. For example, with most of the viral types, your risk is higher if you have unprotected sex.  People who drink a lot over long periods of time are at risk for alcoholic hepatitis. Some people with hepatitis do not have symptoms and do not know they are infected. If you do have symptoms, they may include: If you have an acute infection, your symptoms can start anywhere between 2 weeks to 6 months after you got infected. If you have a chronic infection, you may not have symptoms until many years later. Chronic hepatitis can lead to complications such ascirrhosis(scarring of the liver), liver failure, andliver cancer. Early diagnosis and treatment of chronic hepatitis may prevent these complications. To diagnose hepatitis, your health care provider: Treatment for hepatitis depends on which type you have and whether it is acute or chronic. Acute viral hepatitis often goes away on its own. To feel better, you may just need to rest and get enough fluids. But in some cases, it may be more serious. You might even need treatment in a hospital. There are different medicines to treat the different chronic types of hepatitis. Possible other treatments may include surgery and other medical procedures. People who have alcoholic hepatitis need to stop drinking. If your chronic hepatitis leads to liver failure or liver cancer, you may need aliver transplant. There are different ways to prevent or lower your risk for hepatitis, depending on the type of hepatitis. For example, not drinking too much alcohol can prevent alcoholic hepatitis. There are vaccines to prevent hepatitis A and B. Autoimmune hepatitis cannot be prevented. NIH: National Institute of Diabetes and Digestive and Kidney Diseases", 'causes': ['There are different types of hepatitis, with different causes:', 'Viral hepatitis is the most common type. It is caused by one of several viruses -- hepatitis virusesA,B,C, D, and E. In the United States, A, B, and C are the most common.', 'Alcoholic hepatitis is caused byheavy alcohol use', 'Toxic hepatitis can be caused by certain poisons, chemicals, medicines, or supplements', "Autoimmune hepatitis is a chronic type in which your body's immune system attacks your liver. The cause is not known, but genetics and your environment may play a role."], 'symptoms': ['Some people with hepatitis do not have symptoms and do not know they are infected. If you do have symptoms, they may include:', 'Fever', 'Fatigue', 'Loss of appetite', 'Nausea and/or vomiting', 'Abdominal pain', 'Dark urine', 'Clay-colored bowel movements', 'Joint pain', 'Jaundice, yellowing of your skin and eyes', 'If you have an acute infection, your symptoms can start anywhere between 2 weeks to 6 months after you got infected. If you have a chronic infection, you may not have symptoms until many years later.'], 'diagnosis': ['Hepatitis is inflammation of theliver. Inflammation is swelling that happens when tissues of the body are injured or infected. It can damage your liver. This swelling and damage can affect how well your liver functions.', 'Hepatitis can be an acute (short-term) infection or a chronic (long-term) infection. Some types of hepatitis cause only acute infections. Other types can cause both acute and chronic infections.'], 'prevention': ['Hepatitis is inflammation of theliver. Inflammation is swelling that happens when tissues of the body are injured or infected. It can damage your liver. This swelling and damage can affect how well your liver functions.', 'Hepatitis can be an acute (short-term) infection or a chronic (long-term) infection. Some types of hepatitis cause only acute infections. Other types can cause both acute and chronic infections.'], 'related': ['No links available'], 'treatments': ['Treatment for hepatitis depends on which type you have and whether it is acute or chronic. Acute viral hepatitis often goes away on its own. To feel better, you may just need to rest and get enough fluids. But in some cases, it may be more serious. You might even need treatment in a hospital.', 'There are different medicines to treat the different chronic types of hepatitis. Possible other treatments may include surgery and other medical procedures. People who have alcoholic hepatitis need to stop drinking. If your chronic hepatitis leads to liver failure or liver cancer, you may need aliver transplant.'], 'source': 'https://medlineplus.gov/hepatitis.html'}
+2025-10-06 22:26:26,639 - INFO - Disease info fetched for Alcoholic hepatitis: {'name': 'Alcoholic hepatitis', 'summary': "Hepatitis is inflammation of theliver. Inflammation is swelling that happens when tissues of the body are injured or infected. It can damage your liver. This swelling and damage can affect how well your liver functions. Hepatitis can be an acute (short-term) infection or a chronic (long-term) infection. Some types of hepatitis cause only acute infections. Other types can cause both acute and chronic infections. There are different types of hepatitis, with different causes: Hepatitis A and hepatitis E usually spread through contact withfoodor water that was contaminated with an infected person's stool. You can also get hepatitis E by eating undercooked pork, deer, or shellfish. Hepatitis B, hepatitis C, and hepatitis D spread through contact with the blood of someone who has the disease. Hepatitis B and D may also spread through contact with other body fluids. This can happen in many ways, such as sharing drug needles or having unprotected sex. The risks are different for the different types of hepatitis. For example, with most of the viral types, your risk is higher if you have unprotected sex.  People who drink a lot over long periods of time are at risk for alcoholic hepatitis. Some people with hepatitis do not have symptoms and do not know they are infected. If you do have symptoms, they may include: If you have an acute infection, your symptoms can start anywhere between 2 weeks to 6 months after you got infected. If you have a chronic infection, you may not have symptoms until many years later. Chronic hepatitis can lead to complications such ascirrhosis(scarring of the liver), liver failure, andliver cancer. Early diagnosis and treatment of chronic hepatitis may prevent these complications. To diagnose hepatitis, your health care provider: Treatment for hepatitis depends on which type you have and whether it is acute or chronic. Acute viral hepatitis often goes away on its own. To feel better, you may just need to rest and get enough fluids. But in some cases, it may be more serious. You might even need treatment in a hospital. There are different medicines to treat the different chronic types of hepatitis. Possible other treatments may include surgery and other medical procedures. People who have alcoholic hepatitis need to stop drinking. If your chronic hepatitis leads to liver failure or liver cancer, you may need aliver transplant. There are different ways to prevent or lower your risk for hepatitis, depending on the type of hepatitis. For example, not drinking too much alcohol can prevent alcoholic hepatitis. There are vaccines to prevent hepatitis A and B. Autoimmune hepatitis cannot be prevented. NIH: National Institute of Diabetes and Digestive and Kidney Diseases", 'causes': ['There are different types of hepatitis, with different causes:', 'Viral hepatitis is the most common type. It is caused by one of several viruses -- hepatitis virusesA,B,C, D, and E. In the United States, A, B, and C are the most common.', 'Alcoholic hepatitis is caused byheavy alcohol use', 'Toxic hepatitis can be caused by certain poisons, chemicals, medicines, or supplements', "Autoimmune hepatitis is a chronic type in which your body's immune system attacks your liver. The cause is not known, but genetics and your environment may play a role."], 'symptoms': ['Some people with hepatitis do not have symptoms and do not know they are infected. If you do have symptoms, they may include:', 'Fever', 'Fatigue', 'Loss of appetite', 'Nausea and/or vomiting', 'Abdominal pain', 'Dark urine', 'Clay-colored bowel movements', 'Joint pain', 'Jaundice, yellowing of your skin and eyes', 'If you have an acute infection, your symptoms can start anywhere between 2 weeks to 6 months after you got infected. If you have a chronic infection, you may not have symptoms until many years later.'], 'diagnosis': ['Hepatitis is inflammation of theliver. Inflammation is swelling that happens when tissues of the body are injured or infected. It can damage your liver. This swelling and damage can affect how well your liver functions.', 'Hepatitis can be an acute (short-term) infection or a chronic (long-term) infection. Some types of hepatitis cause only acute infections. Other types can cause both acute and chronic infections.'], 'prevention': ['Hepatitis is inflammation of theliver. Inflammation is swelling that happens when tissues of the body are injured or infected. It can damage your liver. This swelling and damage can affect how well your liver functions.', 'Hepatitis can be an acute (short-term) infection or a chronic (long-term) infection. Some types of hepatitis cause only acute infections. Other types can cause both acute and chronic infections.'], 'related': ['No links available'], 'treatments': ['Treatment for hepatitis depends on which type you have and whether it is acute or chronic. Acute viral hepatitis often goes away on its own. To feel better, you may just need to rest and get enough fluids. But in some cases, it may be more serious. You might even need treatment in a hospital.', 'There are different medicines to treat the different chronic types of hepatitis. Possible other treatments may include surgery and other medical procedures. People who have alcoholic hepatitis need to stop drinking. If your chronic hepatitis leads to liver failure or liver cancer, you may need aliver transplant.'], 'source': 'https://medlineplus.gov/hepatitis.html'}
+2025-10-06 22:26:26,639 - INFO - Disease info fetched for Alcoholic hepatitis: {'name': 'Alcoholic hepatitis', 'summary': "Hepatitis is inflammation of theliver. Inflammation is swelling that happens when tissues of the body are injured or infected. It can damage your liver. This swelling and damage can affect how well your liver functions. Hepatitis can be an acute (short-term) infection or a chronic (long-term) infection. Some types of hepatitis cause only acute infections. Other types can cause both acute and chronic infections. There are different types of hepatitis, with different causes: Hepatitis A and hepatitis E usually spread through contact withfoodor water that was contaminated with an infected person's stool. You can also get hepatitis E by eating undercooked pork, deer, or shellfish. Hepatitis B, hepatitis C, and hepatitis D spread through contact with the blood of someone who has the disease. Hepatitis B and D may also spread through contact with other body fluids. This can happen in many ways, such as sharing drug needles or having unprotected sex. The risks are different for the different types of hepatitis. For example, with most of the viral types, your risk is higher if you have unprotected sex.  People who drink a lot over long periods of time are at risk for alcoholic hepatitis. Some people with hepatitis do not have symptoms and do not know they are infected. If you do have symptoms, they may include: If you have an acute infection, your symptoms can start anywhere between 2 weeks to 6 months after you got infected. If you have a chronic infection, you may not have symptoms until many years later. Chronic hepatitis can lead to complications such ascirrhosis(scarring of the liver), liver failure, andliver cancer. Early diagnosis and treatment of chronic hepatitis may prevent these complications. To diagnose hepatitis, your health care provider: Treatment for hepatitis depends on which type you have and whether it is acute or chronic. Acute viral hepatitis often goes away on its own. To feel better, you may just need to rest and get enough fluids. But in some cases, it may be more serious. You might even need treatment in a hospital. There are different medicines to treat the different chronic types of hepatitis. Possible other treatments may include surgery and other medical procedures. People who have alcoholic hepatitis need to stop drinking. If your chronic hepatitis leads to liver failure or liver cancer, you may need aliver transplant. There are different ways to prevent or lower your risk for hepatitis, depending on the type of hepatitis. For example, not drinking too much alcohol can prevent alcoholic hepatitis. There are vaccines to prevent hepatitis A and B. Autoimmune hepatitis cannot be prevented. NIH: National Institute of Diabetes and Digestive and Kidney Diseases", 'causes': ['There are different types of hepatitis, with different causes:', 'Viral hepatitis is the most common type. It is caused by one of several viruses -- hepatitis virusesA,B,C, D, and E. In the United States, A, B, and C are the most common.', 'Alcoholic hepatitis is caused byheavy alcohol use', 'Toxic hepatitis can be caused by certain poisons, chemicals, medicines, or supplements', "Autoimmune hepatitis is a chronic type in which your body's immune system attacks your liver. The cause is not known, but genetics and your environment may play a role."], 'symptoms': ['Some people with hepatitis do not have symptoms and do not know they are infected. If you do have symptoms, they may include:', 'Fever', 'Fatigue', 'Loss of appetite', 'Nausea and/or vomiting', 'Abdominal pain', 'Dark urine', 'Clay-colored bowel movements', 'Joint pain', 'Jaundice, yellowing of your skin and eyes', 'If you have an acute infection, your symptoms can start anywhere between 2 weeks to 6 months after you got infected. If you have a chronic infection, you may not have symptoms until many years later.'], 'diagnosis': ['Hepatitis is inflammation of theliver. Inflammation is swelling that happens when tissues of the body are injured or infected. It can damage your liver. This swelling and damage can affect how well your liver functions.', 'Hepatitis can be an acute (short-term) infection or a chronic (long-term) infection. Some types of hepatitis cause only acute infections. Other types can cause both acute and chronic infections.'], 'prevention': ['Hepatitis is inflammation of theliver. Inflammation is swelling that happens when tissues of the body are injured or infected. It can damage your liver. This swelling and damage can affect how well your liver functions.', 'Hepatitis can be an acute (short-term) infection or a chronic (long-term) infection. Some types of hepatitis cause only acute infections. Other types can cause both acute and chronic infections.'], 'related': ['No links available'], 'treatments': ['Treatment for hepatitis depends on which type you have and whether it is acute or chronic. Acute viral hepatitis often goes away on its own. To feel better, you may just need to rest and get enough fluids. But in some cases, it may be more serious. You might even need treatment in a hospital.', 'There are different medicines to treat the different chronic types of hepatitis. Possible other treatments may include surgery and other medical procedures. People who have alcoholic hepatitis need to stop drinking. If your chronic hepatitis leads to liver failure or liver cancer, you may need aliver transplant.'], 'source': 'https://medlineplus.gov/hepatitis.html'}
+2025-10-06 22:26:41,091 - INFO - Prediction made - Symptoms: ['nausea'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 20.00%
+2025-10-06 22:26:41,091 - INFO - Prediction made - Symptoms: ['nausea'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 20.00%
+2025-10-06 22:26:42,050 - INFO - Disease info fetched for (vertigo) Paroymsal  Positional Vertigo: {'name': '(vertigo) Paroymsal  Positional Vertigo', 'summary': 'Information about (vertigo) Paroymsal  Positional Vertigo is not available at the moment. Please consult a healthcare professional.', 'causes': ['Causes vary depending on the disease; common factors include genetic predisposition, environmental influences, infections, and lifestyle choices. Consult a healthcare professional for specific details.'], 'symptoms': ['Symptoms may include fatigue, pain, swelling, fever, or other indicators specific to the condition. Seek medical advice for accurate diagnosis.'], 'diagnosis': ['Diagnosis typically involves medical history review, physical exams, blood tests, imaging, or specialized tests. A doctor will determine the appropriate methods.'], 'prevention': ['Prevention strategies often include healthy lifestyle habits, vaccinations where applicable, avoiding risk factors, and regular check-ups. Specific measures depend on the disease.'], 'related': ['Related conditions may include other chronic illnesses or complications; refer to MedlinePlus for linked topics.'], 'treatments': ['Treatment options generally include medications, lifestyle modifications, physical therapy, or surgical interventions tailored to the individual. Always consult a physician for personalized treatment plans, as self-treatment can be harmful.'], 'source': ''}
+2025-10-06 22:26:42,050 - INFO - Disease info fetched for (vertigo) Paroymsal  Positional Vertigo: {'name': '(vertigo) Paroymsal  Positional Vertigo', 'summary': 'Information about (vertigo) Paroymsal  Positional Vertigo is not available at the moment. Please consult a healthcare professional.', 'causes': ['Causes vary depending on the disease; common factors include genetic predisposition, environmental influences, infections, and lifestyle choices. Consult a healthcare professional for specific details.'], 'symptoms': ['Symptoms may include fatigue, pain, swelling, fever, or other indicators specific to the condition. Seek medical advice for accurate diagnosis.'], 'diagnosis': ['Diagnosis typically involves medical history review, physical exams, blood tests, imaging, or specialized tests. A doctor will determine the appropriate methods.'], 'prevention': ['Prevention strategies often include healthy lifestyle habits, vaccinations where applicable, avoiding risk factors, and regular check-ups. Specific measures depend on the disease.'], 'related': ['Related conditions may include other chronic illnesses or complications; refer to MedlinePlus for linked topics.'], 'treatments': ['Treatment options generally include medications, lifestyle modifications, physical therapy, or surgical interventions tailored to the individual. Always consult a physician for personalized treatment plans, as self-treatment can be harmful.'], 'source': ''}
+2025-10-06 22:27:28,910 - INFO - Disease info fetched for (vertigo) Paroymsal  Positional Vertigo: {'name': '(vertigo) Paroymsal  Positional Vertigo', 'summary': 'Information about (vertigo) Paroymsal  Positional Vertigo is not available at the moment. Please consult a healthcare professional.', 'causes': ['Causes vary depending on the disease; common factors include genetic predisposition, environmental influences, infections, and lifestyle choices. Consult a healthcare professional for specific details.'], 'symptoms': ['Symptoms may include fatigue, pain, swelling, fever, or other indicators specific to the condition. Seek medical advice for accurate diagnosis.'], 'diagnosis': ['Diagnosis typically involves medical history review, physical exams, blood tests, imaging, or specialized tests. A doctor will determine the appropriate methods.'], 'prevention': ['Prevention strategies often include healthy lifestyle habits, vaccinations where applicable, avoiding risk factors, and regular check-ups. Specific measures depend on the disease.'], 'related': ['Related conditions may include other chronic illnesses or complications; refer to MedlinePlus for linked topics.'], 'treatments': ['Treatment options generally include medications, lifestyle modifications, physical therapy, or surgical interventions tailored to the individual. Always consult a physician for personalized treatment plans, as self-treatment can be harmful.'], 'source': ''}
+2025-10-06 22:27:28,910 - INFO - Disease info fetched for (vertigo) Paroymsal  Positional Vertigo: {'name': '(vertigo) Paroymsal  Positional Vertigo', 'summary': 'Information about (vertigo) Paroymsal  Positional Vertigo is not available at the moment. Please consult a healthcare professional.', 'causes': ['Causes vary depending on the disease; common factors include genetic predisposition, environmental influences, infections, and lifestyle choices. Consult a healthcare professional for specific details.'], 'symptoms': ['Symptoms may include fatigue, pain, swelling, fever, or other indicators specific to the condition. Seek medical advice for accurate diagnosis.'], 'diagnosis': ['Diagnosis typically involves medical history review, physical exams, blood tests, imaging, or specialized tests. A doctor will determine the appropriate methods.'], 'prevention': ['Prevention strategies often include healthy lifestyle habits, vaccinations where applicable, avoiding risk factors, and regular check-ups. Specific measures depend on the disease.'], 'related': ['Related conditions may include other chronic illnesses or complications; refer to MedlinePlus for linked topics.'], 'treatments': ['Treatment options generally include medications, lifestyle modifications, physical therapy, or surgical interventions tailored to the individual. Always consult a physician for personalized treatment plans, as self-treatment can be harmful.'], 'source': ''}
+2025-10-06 22:27:42,509 - INFO - Prediction made - Symptoms: ['vomiting', 'nausea', 'abdominal_pain'], Primary Prediction: Chronic cholestasis, Confidence: 34.00%
+2025-10-06 22:27:42,509 - INFO - Prediction made - Symptoms: ['vomiting', 'nausea', 'abdominal_pain'], Primary Prediction: Chronic cholestasis, Confidence: 34.00%
+2025-10-06 22:27:44,155 - INFO - Disease info fetched for Chronic cholestasis: {'name': 'Chronic cholestasis', 'summary': 'Information about Chronic cholestasis is not available at the moment. Please consult a healthcare professional.', 'causes': ['Causes vary depending on the disease; common factors include genetic predisposition, environmental influences, infections, and lifestyle choices. Consult a healthcare professional for specific details.'], 'symptoms': ['Symptoms may include fatigue, pain, swelling, fever, or other indicators specific to the condition. Seek medical advice for accurate diagnosis.'], 'diagnosis': ['Diagnosis typically involves medical history review, physical exams, blood tests, imaging, or specialized tests. A doctor will determine the appropriate methods.'], 'prevention': ['Prevention strategies often include healthy lifestyle habits, vaccinations where applicable, avoiding risk factors, and regular check-ups. Specific measures depend on the disease.'], 'related': ['Related conditions may include other chronic illnesses or complications; refer to MedlinePlus for linked topics.'], 'treatments': ['Treatment options generally include medications, lifestyle modifications, physical therapy, or surgical interventions tailored to the individual. Always consult a physician for personalized treatment plans, as self-treatment can be harmful.'], 'source': 'https://medlineplus.gov/ency/article/000215.htm'}
+2025-10-06 22:27:44,155 - INFO - Disease info fetched for Chronic cholestasis: {'name': 'Chronic cholestasis', 'summary': 'Information about Chronic cholestasis is not available at the moment. Please consult a healthcare professional.', 'causes': ['Causes vary depending on the disease; common factors include genetic predisposition, environmental influences, infections, and lifestyle choices. Consult a healthcare professional for specific details.'], 'symptoms': ['Symptoms may include fatigue, pain, swelling, fever, or other indicators specific to the condition. Seek medical advice for accurate diagnosis.'], 'diagnosis': ['Diagnosis typically involves medical history review, physical exams, blood tests, imaging, or specialized tests. A doctor will determine the appropriate methods.'], 'prevention': ['Prevention strategies often include healthy lifestyle habits, vaccinations where applicable, avoiding risk factors, and regular check-ups. Specific measures depend on the disease.'], 'related': ['Related conditions may include other chronic illnesses or complications; refer to MedlinePlus for linked topics.'], 'treatments': ['Treatment options generally include medications, lifestyle modifications, physical therapy, or surgical interventions tailored to the individual. Always consult a physician for personalized treatment plans, as self-treatment can be harmful.'], 'source': 'https://medlineplus.gov/ency/article/000215.htm'}
+2025-10-06 22:27:54,496 - INFO - Disease info fetched for Chronic cholestasis: {'name': 'Chronic cholestasis', 'summary': 'Information about Chronic cholestasis is not available at the moment. Please consult a healthcare professional.', 'causes': ['Causes vary depending on the disease; common factors include genetic predisposition, environmental influences, infections, and lifestyle choices. Consult a healthcare professional for specific details.'], 'symptoms': ['Symptoms may include fatigue, pain, swelling, fever, or other indicators specific to the condition. Seek medical advice for accurate diagnosis.'], 'diagnosis': ['Diagnosis typically involves medical history review, physical exams, blood tests, imaging, or specialized tests. A doctor will determine the appropriate methods.'], 'prevention': ['Prevention strategies often include healthy lifestyle habits, vaccinations where applicable, avoiding risk factors, and regular check-ups. Specific measures depend on the disease.'], 'related': ['Related conditions may include other chronic illnesses or complications; refer to MedlinePlus for linked topics.'], 'treatments': ['Treatment options generally include medications, lifestyle modifications, physical therapy, or surgical interventions tailored to the individual. Always consult a physician for personalized treatment plans, as self-treatment can be harmful.'], 'source': 'https://medlineplus.gov/ency/article/000215.htm'}
+2025-10-06 22:27:54,496 - INFO - Disease info fetched for Chronic cholestasis: {'name': 'Chronic cholestasis', 'summary': 'Information about Chronic cholestasis is not available at the moment. Please consult a healthcare professional.', 'causes': ['Causes vary depending on the disease; common factors include genetic predisposition, environmental influences, infections, and lifestyle choices. Consult a healthcare professional for specific details.'], 'symptoms': ['Symptoms may include fatigue, pain, swelling, fever, or other indicators specific to the condition. Seek medical advice for accurate diagnosis.'], 'diagnosis': ['Diagnosis typically involves medical history review, physical exams, blood tests, imaging, or specialized tests. A doctor will determine the appropriate methods.'], 'prevention': ['Prevention strategies often include healthy lifestyle habits, vaccinations where applicable, avoiding risk factors, and regular check-ups. Specific measures depend on the disease.'], 'related': ['Related conditions may include other chronic illnesses or complications; refer to MedlinePlus for linked topics.'], 'treatments': ['Treatment options generally include medications, lifestyle modifications, physical therapy, or surgical interventions tailored to the individual. Always consult a physician for personalized treatment plans, as self-treatment can be harmful.'], 'source': 'https://medlineplus.gov/ency/article/000215.htm'}
+2025-10-06 22:28:22,650 - INFO - Prediction made - Symptoms: ['high_fever'], Primary Prediction: Impetigo, Confidence: 30.00%
+2025-10-06 22:28:22,650 - INFO - Prediction made - Symptoms: ['high_fever'], Primary Prediction: Impetigo, Confidence: 30.00%
+2025-10-06 22:28:25,121 - INFO - Disease info fetched for Impetigo: {'name': 'Impetigo', 'summary': 'Impetigo is a skin infection caused by bacteria. It is usually caused bystaphylococcal(staph) bacteria, but it can also be caused bystreptococcal(strep) bacteria. It is most common in children between the ages of two and six. It usually starts when bacteria get into a break in the skin, such as a cut, scratch, or insect bite. Symptoms start with red or pimple-like sores surrounded by red skin. These sores can be anywhere, but usually they occur on your face, arms and legs. The sores fill with pus, then break open after a few days and form a thick crust. They are often itchy, but scratching them can spread the sores. Impetigo can spread by contact with sores or nasal discharge from an infected person. You can treat impetigo with antibiotics.', 'causes': ['Causes vary depending on the disease; common factors include genetic predisposition, environmental influences, infections, and lifestyle choices. Consult a healthcare professional for specific details.'], 'symptoms': ['No links available'], 'diagnosis': ['No links available'], 'prevention': ['Prevention strategies often include healthy lifestyle habits, vaccinations where applicable, avoiding risk factors, and regular check-ups. Specific measures depend on the disease.'], 'related': ['No links available'], 'treatments': ['No links available'], 'source': 'https://medlineplus.gov/impetigo.html'}
+2025-10-06 22:28:25,121 - INFO - Disease info fetched for Impetigo: {'name': 'Impetigo', 'summary': 'Impetigo is a skin infection caused by bacteria. It is usually caused bystaphylococcal(staph) bacteria, but it can also be caused bystreptococcal(strep) bacteria. It is most common in children between the ages of two and six. It usually starts when bacteria get into a break in the skin, such as a cut, scratch, or insect bite. Symptoms start with red or pimple-like sores surrounded by red skin. These sores can be anywhere, but usually they occur on your face, arms and legs. The sores fill with pus, then break open after a few days and form a thick crust. They are often itchy, but scratching them can spread the sores. Impetigo can spread by contact with sores or nasal discharge from an infected person. You can treat impetigo with antibiotics.', 'causes': ['Causes vary depending on the disease; common factors include genetic predisposition, environmental influences, infections, and lifestyle choices. Consult a healthcare professional for specific details.'], 'symptoms': ['No links available'], 'diagnosis': ['No links available'], 'prevention': ['Prevention strategies often include healthy lifestyle habits, vaccinations where applicable, avoiding risk factors, and regular check-ups. Specific measures depend on the disease.'], 'related': ['No links available'], 'treatments': ['No links available'], 'source': 'https://medlineplus.gov/impetigo.html'}
+2025-10-06 22:28:33,825 - INFO - Disease info fetched for Impetigo: {'name': 'Impetigo', 'summary': 'Impetigo is a skin infection caused by bacteria. It is usually caused bystaphylococcal(staph) bacteria, but it can also be caused bystreptococcal(strep) bacteria. It is most common in children between the ages of two and six. It usually starts when bacteria get into a break in the skin, such as a cut, scratch, or insect bite. Symptoms start with red or pimple-like sores surrounded by red skin. These sores can be anywhere, but usually they occur on your face, arms and legs. The sores fill with pus, then break open after a few days and form a thick crust. They are often itchy, but scratching them can spread the sores. Impetigo can spread by contact with sores or nasal discharge from an infected person. You can treat impetigo with antibiotics.', 'causes': ['Causes vary depending on the disease; common factors include genetic predisposition, environmental influences, infections, and lifestyle choices. Consult a healthcare professional for specific details.'], 'symptoms': ['No links available'], 'diagnosis': ['No links available'], 'prevention': ['Prevention strategies often include healthy lifestyle habits, vaccinations where applicable, avoiding risk factors, and regular check-ups. Specific measures depend on the disease.'], 'related': ['No links available'], 'treatments': ['No links available'], 'source': 'https://medlineplus.gov/impetigo.html'}
+2025-10-06 22:28:33,825 - INFO - Disease info fetched for Impetigo: {'name': 'Impetigo', 'summary': 'Impetigo is a skin infection caused by bacteria. It is usually caused bystaphylococcal(staph) bacteria, but it can also be caused bystreptococcal(strep) bacteria. It is most common in children between the ages of two and six. It usually starts when bacteria get into a break in the skin, such as a cut, scratch, or insect bite. Symptoms start with red or pimple-like sores surrounded by red skin. These sores can be anywhere, but usually they occur on your face, arms and legs. The sores fill with pus, then break open after a few days and form a thick crust. They are often itchy, but scratching them can spread the sores. Impetigo can spread by contact with sores or nasal discharge from an infected person. You can treat impetigo with antibiotics.', 'causes': ['Causes vary depending on the disease; common factors include genetic predisposition, environmental influences, infections, and lifestyle choices. Consult a healthcare professional for specific details.'], 'symptoms': ['No links available'], 'diagnosis': ['No links available'], 'prevention': ['Prevention strategies often include healthy lifestyle habits, vaccinations where applicable, avoiding risk factors, and regular check-ups. Specific measures depend on the disease.'], 'related': ['No links available'], 'treatments': ['No links available'], 'source': 'https://medlineplus.gov/impetigo.html'}
+2025-10-06 22:30:06,512 - INFO - Prediction made - Symptoms: ['nausea'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 20.00%
+2025-10-06 22:30:06,512 - INFO - Prediction made - Symptoms: ['nausea'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 20.00%
+2025-10-06 22:30:07,614 - INFO - Disease info fetched for (vertigo) Paroymsal  Positional Vertigo: {'name': '(vertigo) Paroymsal  Positional Vertigo', 'summary': 'Information about (vertigo) Paroymsal  Positional Vertigo is not available at the moment. Please consult a healthcare professional.', 'causes': ['Causes vary depending on the disease; common factors include genetic predisposition, environmental influences, infections, and lifestyle choices. Consult a healthcare professional for specific details.'], 'symptoms': ['Symptoms may include fatigue, pain, swelling, fever, or other indicators specific to the condition. Seek medical advice for accurate diagnosis.'], 'diagnosis': ['Diagnosis typically involves medical history review, physical exams, blood tests, imaging, or specialized tests. A doctor will determine the appropriate methods.'], 'prevention': ['Prevention strategies often include healthy lifestyle habits, vaccinations where applicable, avoiding risk factors, and regular check-ups. Specific measures depend on the disease.'], 'related': ['Related conditions may include other chronic illnesses or complications; refer to MedlinePlus for linked topics.'], 'treatments': ['Treatment options generally include medications, lifestyle modifications, physical therapy, or surgical interventions tailored to the individual. Always consult a physician for personalized treatment plans, as self-treatment can be harmful.'], 'source': ''}
+2025-10-06 22:30:07,614 - INFO - Disease info fetched for (vertigo) Paroymsal  Positional Vertigo: {'name': '(vertigo) Paroymsal  Positional Vertigo', 'summary': 'Information about (vertigo) Paroymsal  Positional Vertigo is not available at the moment. Please consult a healthcare professional.', 'causes': ['Causes vary depending on the disease; common factors include genetic predisposition, environmental influences, infections, and lifestyle choices. Consult a healthcare professional for specific details.'], 'symptoms': ['Symptoms may include fatigue, pain, swelling, fever, or other indicators specific to the condition. Seek medical advice for accurate diagnosis.'], 'diagnosis': ['Diagnosis typically involves medical history review, physical exams, blood tests, imaging, or specialized tests. A doctor will determine the appropriate methods.'], 'prevention': ['Prevention strategies often include healthy lifestyle habits, vaccinations where applicable, avoiding risk factors, and regular check-ups. Specific measures depend on the disease.'], 'related': ['Related conditions may include other chronic illnesses or complications; refer to MedlinePlus for linked topics.'], 'treatments': ['Treatment options generally include medications, lifestyle modifications, physical therapy, or surgical interventions tailored to the individual. Always consult a physician for personalized treatment plans, as self-treatment can be harmful.'], 'source': ''}
+2025-10-06 22:30:17,000 - INFO - Disease info fetched for (vertigo) Paroymsal  Positional Vertigo: {'name': '(vertigo) Paroymsal  Positional Vertigo', 'summary': 'Information about (vertigo) Paroymsal  Positional Vertigo is not available at the moment. Please consult a healthcare professional.', 'causes': ['Causes vary depending on the disease; common factors include genetic predisposition, environmental influences, infections, and lifestyle choices. Consult a healthcare professional for specific details.'], 'symptoms': ['Symptoms may include fatigue, pain, swelling, fever, or other indicators specific to the condition. Seek medical advice for accurate diagnosis.'], 'diagnosis': ['Diagnosis typically involves medical history review, physical exams, blood tests, imaging, or specialized tests. A doctor will determine the appropriate methods.'], 'prevention': ['Prevention strategies often include healthy lifestyle habits, vaccinations where applicable, avoiding risk factors, and regular check-ups. Specific measures depend on the disease.'], 'related': ['Related conditions may include other chronic illnesses or complications; refer to MedlinePlus for linked topics.'], 'treatments': ['Treatment options generally include medications, lifestyle modifications, physical therapy, or surgical interventions tailored to the individual. Always consult a physician for personalized treatment plans, as self-treatment can be harmful.'], 'source': ''}
+2025-10-06 22:30:17,000 - INFO - Disease info fetched for (vertigo) Paroymsal  Positional Vertigo: {'name': '(vertigo) Paroymsal  Positional Vertigo', 'summary': 'Information about (vertigo) Paroymsal  Positional Vertigo is not available at the moment. Please consult a healthcare professional.', 'causes': ['Causes vary depending on the disease; common factors include genetic predisposition, environmental influences, infections, and lifestyle choices. Consult a healthcare professional for specific details.'], 'symptoms': ['Symptoms may include fatigue, pain, swelling, fever, or other indicators specific to the condition. Seek medical advice for accurate diagnosis.'], 'diagnosis': ['Diagnosis typically involves medical history review, physical exams, blood tests, imaging, or specialized tests. A doctor will determine the appropriate methods.'], 'prevention': ['Prevention strategies often include healthy lifestyle habits, vaccinations where applicable, avoiding risk factors, and regular check-ups. Specific measures depend on the disease.'], 'related': ['Related conditions may include other chronic illnesses or complications; refer to MedlinePlus for linked topics.'], 'treatments': ['Treatment options generally include medications, lifestyle modifications, physical therapy, or surgical interventions tailored to the individual. Always consult a physician for personalized treatment plans, as self-treatment can be harmful.'], 'source': ''}
+2025-10-06 23:25:55,791 - INFO - Flask application started
+2025-10-06 23:25:55,983 - INFO - Model and data loaded successfully
+2025-10-06 23:25:55,983 - INFO - Model and data loaded successfully
+2025-10-06 23:25:57,076 - INFO - Flask application started
+2025-10-06 23:25:57,255 - INFO - Model and data loaded successfully
+2025-10-06 23:25:57,255 - INFO - Model and data loaded successfully
+2025-10-06 23:32:33,850 - INFO - Prediction made - Symptoms: ['nausea'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 20.00%
+2025-10-06 23:32:33,850 - INFO - Prediction made - Symptoms: ['nausea'], Primary Prediction: (vertigo) Paroymsal  Positional Vertigo, Confidence: 20.00%
+2025-10-06 23:32:37,915 - INFO - Disease info fetched for (vertigo) Paroymsal  Positional Vertigo: {'name': '(vertigo) Paroymsal  Positional Vertigo', 'summary': 'Information about (vertigo) Paroymsal  Positional Vertigo is not available at the moment. Please consult a healthcare professional.', 'causes': ['Causes vary depending on the disease; common factors include genetic predisposition, environmental influences, infections, and lifestyle choices. Consult a healthcare professional for specific details.'], 'symptoms': ['Symptoms may include fatigue, pain, swelling, fever, or other indicators specific to the condition. Seek medical advice for accurate diagnosis.'], 'diagnosis': ['Diagnosis typically involves medical history review, physical exams, blood tests, imaging, or specialized tests. A doctor will determine the appropriate methods.'], 'prevention': ['Prevention strategies often include healthy lifestyle habits, vaccinations where applicable, avoiding risk factors, and regular check-ups. Specific measures depend on the disease.'], 'related': ['Related conditions may include other chronic illnesses or complications; refer to MedlinePlus for linked topics.'], 'treatments': ['Treatment options generally include medications, lifestyle modifications, physical therapy, or surgical interventions tailored to the individual. Always consult a physician for personalized treatment plans, as self-treatment can be harmful.'], 'source': ''}
+2025-10-06 23:32:37,915 - INFO - Disease info fetched for (vertigo) Paroymsal  Positional Vertigo: {'name': '(vertigo) Paroymsal  Positional Vertigo', 'summary': 'Information about (vertigo) Paroymsal  Positional Vertigo is not available at the moment. Please consult a healthcare professional.', 'causes': ['Causes vary depending on the disease; common factors include genetic predisposition, environmental influences, infections, and lifestyle choices. Consult a healthcare professional for specific details.'], 'symptoms': ['Symptoms may include fatigue, pain, swelling, fever, or other indicators specific to the condition. Seek medical advice for accurate diagnosis.'], 'diagnosis': ['Diagnosis typically involves medical history review, physical exams, blood tests, imaging, or specialized tests. A doctor will determine the appropriate methods.'], 'prevention': ['Prevention strategies often include healthy lifestyle habits, vaccinations where applicable, avoiding risk factors, and regular check-ups. Specific measures depend on the disease.'], 'related': ['Related conditions may include other chronic illnesses or complications; refer to MedlinePlus for linked topics.'], 'treatments': ['Treatment options generally include medications, lifestyle modifications, physical therapy, or surgical interventions tailored to the individual. Always consult a physician for personalized treatment plans, as self-treatment can be harmful.'], 'source': ''}
+2025-10-06 23:32:46,684 - INFO - Disease info fetched for (vertigo) Paroymsal  Positional Vertigo: {'name': '(vertigo) Paroymsal  Positional Vertigo', 'summary': 'Information about (vertigo) Paroymsal  Positional Vertigo is not available at the moment. Please consult a healthcare professional.', 'causes': ['Causes vary depending on the disease; common factors include genetic predisposition, environmental influences, infections, and lifestyle choices. Consult a healthcare professional for specific details.'], 'symptoms': ['Symptoms may include fatigue, pain, swelling, fever, or other indicators specific to the condition. Seek medical advice for accurate diagnosis.'], 'diagnosis': ['Diagnosis typically involves medical history review, physical exams, blood tests, imaging, or specialized tests. A doctor will determine the appropriate methods.'], 'prevention': ['Prevention strategies often include healthy lifestyle habits, vaccinations where applicable, avoiding risk factors, and regular check-ups. Specific measures depend on the disease.'], 'related': ['Related conditions may include other chronic illnesses or complications; refer to MedlinePlus for linked topics.'], 'treatments': ['Treatment options generally include medications, lifestyle modifications, physical therapy, or surgical interventions tailored to the individual. Always consult a physician for personalized treatment plans, as self-treatment can be harmful.'], 'source': ''}
+2025-10-06 23:32:46,684 - INFO - Disease info fetched for (vertigo) Paroymsal  Positional Vertigo: {'name': '(vertigo) Paroymsal  Positional Vertigo', 'summary': 'Information about (vertigo) Paroymsal  Positional Vertigo is not available at the moment. Please consult a healthcare professional.', 'causes': ['Causes vary depending on the disease; common factors include genetic predisposition, environmental influences, infections, and lifestyle choices. Consult a healthcare professional for specific details.'], 'symptoms': ['Symptoms may include fatigue, pain, swelling, fever, or other indicators specific to the condition. Seek medical advice for accurate diagnosis.'], 'diagnosis': ['Diagnosis typically involves medical history review, physical exams, blood tests, imaging, or specialized tests. A doctor will determine the appropriate methods.'], 'prevention': ['Prevention strategies often include healthy lifestyle habits, vaccinations where applicable, avoiding risk factors, and regular check-ups. Specific measures depend on the disease.'], 'related': ['Related conditions may include other chronic illnesses or complications; refer to MedlinePlus for linked topics.'], 'treatments': ['Treatment options generally include medications, lifestyle modifications, physical therapy, or surgical interventions tailored to the individual. Always consult a physician for personalized treatment plans, as self-treatment can be harmful.'], 'source': ''}
+2025-10-07 10:53:05,047 - INFO - Prediction made - Symptoms: ['cough', 'headache', 'fever'], Primary Prediction: Paralysis (brain hemorrhage), Confidence: 34.00%

@@ -1,14 +1,14 @@
 {% extends "base.html" %}
-{% block title %}{{ disease_info.name }} - Disease Details{% endblock %}
+{% block title %}{{ disease_info.name }}{% endblock %}
 {% block content %}
 <style>
   .content {
-    padding-top: 80px !important;
-    padding-bottom: 80px !important;
-    min-height: calc(100vh - 160px) !important;
+    padding-top: 160px !important;
+    padding-bottom: 120px !important;
+    min-height: calc(100vh - 280px) !important;
     display: flex !important;
-    align-items: flex-start !important;
-    justify-content: center !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
     flex-direction: column !important;
   }
   .disease-details {
@@ -29,6 +29,21 @@
     line-height: 1.6;
     margin-bottom: 30px;
     color: #333;
+  }
+  .disease-section {
+    margin-bottom: 20px;
+  }
+  .disease-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #000;
+  }
+  .disease-section ul {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  .disease-section li {
+    margin-bottom: 5px;
   }
   .external-link {
     display: inline-block;
@@ -54,10 +69,65 @@
 </style>
 <div class="disease-details">
   <h1 class="disease-title">{{ disease_info.name }}</h1>
-  <div class="disease-summary">
-    {{ disease_info.summary | safe }}
+  {% if disease_info.summary %}
+  <div class="disease-section">
+    <h2>Summary</h2>
+    <div class="disease-summary">
+      {{ disease_info.summary | safe }}
+    </div>
   </div>
-  <a href="{{ disease_info.url }}" target="_blank" class="external-link">Learn More on MedlinePlus</a>
+  {% endif %}
+  {% if disease_info.causes %}
+  <div class="disease-section">
+    <h2>Causes</h2>
+    <ul>
+      {% for cause in disease_info.causes %}
+      <li>{{ cause | safe }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  {% if disease_info.symptoms %}
+  <div class="disease-section">
+    <h2>Symptoms</h2>
+    <ul>
+      {% for symptom in disease_info.symptoms %}
+      <li>{{ symptom | safe }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  {% if disease_info.diagnosis %}
+  <div class="disease-section">
+    <h2>Diagnosis</h2>
+    <ul>
+      {% for diag in disease_info.diagnosis %}
+      <li>{{ diag | safe }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  {% if disease_info.prevention %}
+  <div class="disease-section">
+    <h2>Prevention</h2>
+    <ul>
+      {% for prev in disease_info.prevention %}
+      <li>{{ prev | safe }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  {% if disease_info.related %}
+  <div class="disease-section">
+    <h2>Related Issues</h2>
+    <ul>
+      {% for rel in disease_info.related %}
+      <li>{{ rel | safe }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  <a href="{{ url_for('disease_treatments', disease=disease_info.name) }}" class="external-link">Treatments and Therapies</a>
   <br>
   <a href="{{ url_for('symptom_checker') }}" class="external-link back-button">Back to Symptom Checker</a>
 </div>

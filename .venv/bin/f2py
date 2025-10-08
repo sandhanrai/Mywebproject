@@ -1,4 +1,4 @@
-#!/home/sandhan-rai/Desktop/health-symptom-checker/.venv/bin/python3
+#!/home/sandhan-rai/Desktop/health-symptom-checker/.venv/bin/python
 import sys
 from numpy.f2py.f2py2e import main
 if __name__ == '__main__':

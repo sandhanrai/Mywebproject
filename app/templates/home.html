@@ -2,11 +2,20 @@
 {% block title %}Home - MediCheck{% endblock %}
 {% block content %}
 <style>
+  html, body {
+    background: #cce7e4;
+    background: linear-gradient(180deg, #a0d8d3 0%, #e0f0ef 100%);
+  }
   .content {
     max-width: none !important;
     margin: 0 !important;
-    width: 100vw !important;
     padding-bottom: 200px !important;
+  }
+  .custom-footer {
+    position: static !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
   }
   .hero-section {
     background-size: cover;
@@ -54,7 +63,7 @@
   }
   .features {
     padding: 50px 0;
-    background-color: #f8f9fa;
+    background: linear-gradient(180deg, #a0d8d3 0%, #e0f0ef 100%);
   }
   .feature-card {
     text-align: center;
@@ -69,8 +78,20 @@
   }
   .feature-icon {
     font-size: 3rem;
-    color: #007bff;
+    color: #041120;
     margin-bottom: 15px;
+  }
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 </style>
 
@@ -107,5 +128,60 @@
     </div>
   </div>
 </div>
+
+<div class="container-fluid py-5 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Live Health-Related News</h2>
+    <div id="health-news-loading" class="text-center py-8">
+      <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+      <p class="mt-2 text-gray-600">Loading latest health news...</p>
+    </div>
+    <div id="health-news-error" class="hidden text-center py-8">
+      <p class="text-red-600">Failed to load health news. Please try again later.</p>
+    </div>
+    <div id="health-news-container" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    <div id="health-news-no-articles" class="hidden text-center py-8">
+      <p class="text-gray-600">No recent health updates available.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  fetch('/api/health_news')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('health-news-loading').classList.add('hidden');
+      if (data.error) {
+        document.getElementById('health-news-error').classList.remove('hidden');
+        return;
+      }
+      if (!data || data.length === 0) {
+        document.getElementById('health-news-no-articles').classList.remove('hidden');
+        return;
+      }
+      const container = document.getElementById('health-news-container');
+      container.classList.remove('hidden');
+      data.forEach(article => {
+        const articleDiv = document.createElement('div');
+        articleDiv.className = 'bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300';
+        articleDiv.innerHTML = `
+          ${article.urlToImage ? `<img src="${article.urlToImage}" alt="${article.title}" class="w-full h-48 object-cover">` : ''}
+          <div class="p-4">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2 line-clamp-2">${article.title}</h3>
+            <p class="text-gray-600 text-sm mb-4 line-clamp-3">${article.description || 'No description available.'}</p>
+            <a href="${article.url}" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium">Read more →</a>
+          </div>
+        `;
+        container.appendChild(articleDiv);
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching health news:', error);
+      document.getElementById('health-news-loading').classList.add('hidden');
+      document.getElementById('health-news-error').classList.remove('hidden');
+    });
+});
+</script>
 
 {% endblock %}

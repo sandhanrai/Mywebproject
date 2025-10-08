@@ -4,38 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}MediCheck - Health Symptom Checker{% endblock %}</title>
+    {% block head %}{% endblock %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Reset and base styles to remove Bootstrap card and override */
         html, body {
-            height: 100%;
+            min-height: 100vh;
             margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-                Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-            background-color: #fff;
-            color: #000;
-            display: flex;
-            flex-direction: column;
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 1.5;
-        }
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+            Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        background: #cce7e4;
+        background: linear-gradient(180deg, #a0d8d3 0%, #e0f0ef 100%);
+        color: #000;
+        display: flex;
+        flex-direction: column;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1.5;
+    }
 
-        /* Main content grows, padding at top/bottom to avoid header/footer overlap */
+        /* Main content grows, padding at top to avoid header overlap */
         .content {
-            flex: 1 1 auto;
+            flex: 1;
             padding-top: 80px;
-            padding-bottom: 200px;
-            max-width: 100%;
-            margin: 0 auto;
             display: flex;
             flex-direction: column;
-            min-height: calc(100vh - 160px);
-            overflow-y: auto;
             max-width: 1200px;
             width: 100%;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
         /* Header with black background and subtle border */
@@ -45,6 +46,7 @@
             left: 0;
             right: 0;
             width: 100%;
+            height: 80px;
             background: #000;
             color: #fff;
             z-index: 10000;
@@ -85,35 +87,36 @@
             background: #f5f5f5;
         }
 
+        /* Active nav link styling */
+        .nav a.active {
+            background-color: #333;
+            color: #fff;
+        }
+
         /* Footer with black background and subtle border */
         .custom-footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
             background: #000;
             color: #fff;
             padding: 20px 40px;
             line-height: 1.4;
             font-size: 14px;
             box-shadow: 0 -1px 3px rgba(0,0,0,0.1);
-            z-index: 1000;
             border-top: 1px solid #ddd;
+            width: 100%;
+            margin-top: auto;
         }
 
         /* Footer inner layout */
         .footer-inner {
-            width: 100%;
-            margin: 0;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .footer-section {
-            flex: 1;
-            min-width: 220px;
-            margin: 12px;
+            min-width: 200px;
         }
 
         .footer-section h4 {
@@ -123,18 +126,55 @@
             font-weight: 700;
         }
 
-        .footer-section a {
-            color: #fff;
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 5px;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
             text-decoration: none;
-            display: block;
-            margin: 8px 0;
             font-weight: 600;
             transition: color 0.2s ease;
             cursor: pointer;
         }
 
-        .footer-section a:hover {
-            color: #000;
+        .footer-section ul li a:hover {
+            color: #fff;
+        }
+
+        .footer-section p {
+            margin: 5px 0;
+            color: #ccc;
+        }
+
+        /* Footer bottom */
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid #333;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        /* Responsive footer */
+        @media (max-width: 768px) {
+            .footer-inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .custom-footer {
+                padding: 20px;
+            }
         }
 
         /* Flash messages */
@@ -221,18 +261,22 @@
     <div class="custom-header">
         <div class="header-inner">
             <a class="brand" href="{{ url_for('home') }}">MediCheck</a>
-            <div class="nav">
-                {% if current_user.is_authenticated %}
-                    <a href="{{ url_for('symptom_checker') }}">Symptom Checker</a>
-                    <a href="{{ url_for('dashboard') }}">Dashboard</a>
-                    <a href="{{ url_for('logout') }}">Logout ({{ current_user.username }})</a>
-                {% else %}
-                    <a href="{{ url_for('symptom_checker') }}">Symptom Checker</a>
-                    <a href="{{ url_for('login') }}">Login</a>
-                    <a href="{{ url_for('signup') }}">Sign Up</a>
-                {% endif %}
-                <a href="{{ url_for('find_doctor') }}">Find a Doctor</a>
-            </div>
+        <div class="nav">
+            {% block nav %}
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('home') }}" class="{% if request.endpoint == 'home' %}active{% endif %}">Home</a>
+                <a href="{{ url_for('symptom_checker') }}" class="{% if request.endpoint == 'symptom_checker' %}active{% endif %}">Symptom Checker</a>
+                <a href="{{ url_for('dashboard') }}" class="{% if request.endpoint == 'dashboard' %}active{% endif %}">Dashboard</a>
+                <a href="{{ url_for('logout') }}">Logout ({{ current_user.username }})</a>
+            {% else %}
+                <a href="{{ url_for('home') }}" class="{% if request.endpoint == 'home' %}active{% endif %}">Home</a>
+                <a href="{{ url_for('symptom_checker') }}" class="{% if request.endpoint == 'symptom_checker' %}active{% endif %}">Symptom Checker</a>
+                <a href="{{ url_for('login') }}" class="{% if request.endpoint == 'login' %}active{% endif %}">Login</a>
+                <a href="{{ url_for('signup') }}" class="{% if request.endpoint == 'signup' %}active{% endif %}">Sign Up</a>
+            {% endif %}
+            <a href="{{ url_for('find_doctor') }}" class="{% if request.endpoint == 'find_doctor' %}active{% endif %}">Find a Doctor</a>
+            {% endblock %}
+        </div>
         </div>
     </div>
 
@@ -245,32 +289,58 @@
             {% endif %}
         {% endwith %}
     </div>
+    <script>
+      // Auto-hide flash messages after 3 seconds
+      document.addEventListener('DOMContentLoaded', () => {
+        const flashMessages = document.querySelectorAll('.flash');
+        flashMessages.forEach(flash => {
+          setTimeout(() => {
+            flash.style.transition = 'opacity 0.5s ease';
+            flash.style.opacity = '0';
+            setTimeout(() => flash.remove(), 500);
+          }, 3000);
+        });
+      });
+    </script>
 
     <div class="content">
         {% block content %}{% endblock %}
     </div>
 
-    <div class="custom-footer">
+    <footer class="custom-footer">
         <div class="footer-inner">
             <div class="footer-section">
-                <h4>About MediCheck</h4>
-                <p>Your trusted health symptom checker and doctor finder.</p>
+                <h4>About</h4>
+                <p>Your trusted health symptom checker powered by AI.</p>
             </div>
             <div class="footer-section">
                 <h4>Quick Links</h4>
-                <a href="{{ url_for('home') }}">Home</a>
-                <a href="{{ url_for('symptom_checker') }}">Symptom Checker</a>
-                <a href="{{ url_for('find_doctor') }}">Find a Doctor</a>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('symptom_checker') }}">Check Symptoms</a></li>
+                    <li><a href="{{ url_for('find_doctor') }}">Find Doctor</a></li>
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                </ul>
             </div>
             <div class="footer-section">
                 <h4>Contact</h4>
                 <p>Email: support@medicheck.com</p>
+                <p>Phone: +1 (123) 456-7890</p>
+                <p>Emergency: 911</p>
             </div>
         </div>
-        <p style="margin-top:2px; font-size:14px; color:#fff;">
-            © 2025 MediCheck. All rights reserved.
-        </p>
-    </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 MediCheck. All rights reserved.</p>
+        </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

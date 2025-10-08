@@ -40,16 +40,15 @@ class SymptomPredictor:
         prediction = self.model.predict(input_array)[0]
         probabilities = self.model.predict_proba(input_array)[0]
         
-        # Get top 3 predictions with probabilities
-        top_indices = probabilities.argsort()[-3:][::-1]
+        # Get top 4 predictions with highest probabilities
+        top_indices = probabilities.argsort()[-4:][::-1]  # Get top 4, highest first
         top_predictions = []
-        
+
         for idx in top_indices:
-            if probabilities[idx] > 0.01:  # Only include predictions with >1% probability
-                top_predictions.append({
-                    'disease': self.disease_mapping[idx],
-                    'probability': float(probabilities[idx])
-                })
+            top_predictions.append({
+                'disease': self.disease_mapping[idx],
+                'probability': float(probabilities[idx])
+            })
         
         # Log the prediction
         selected_symptoms = [symptom for symptom, value in symptoms_dict.items() if value == 1]

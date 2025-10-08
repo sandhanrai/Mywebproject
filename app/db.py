@@ -30,9 +30,39 @@ def create_users_table():
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 username VARCHAR(255) UNIQUE NOT NULL,
                 password_hash VARCHAR(255) NOT NULL,
+                name VARCHAR(255),
+                phone VARCHAR(20),
+                age INT,
+                gender VARCHAR(10),
+                medical_history TEXT,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         """)
+        # Add new columns if not exist
+        try:
+            cursor.execute("ALTER TABLE users ADD COLUMN chronic_conditions TEXT")
+        except:
+            pass
+        try:
+            cursor.execute("ALTER TABLE users ADD COLUMN medications TEXT")
+        except:
+            pass
+        try:
+            cursor.execute("ALTER TABLE users ADD COLUMN blood_group VARCHAR(10)")
+        except:
+            pass
+        try:
+            cursor.execute("ALTER TABLE users ADD COLUMN email VARCHAR(255)")
+        except:
+            pass
+        try:
+            cursor.execute("ALTER TABLE users ADD COLUMN notifications VARCHAR(50) DEFAULT 'enabled'")
+        except:
+            pass
+        try:
+            cursor.execute("ALTER TABLE users ADD COLUMN avatar VARCHAR(255)")
+        except:
+            pass
         connection.commit()
         cursor.close()
         connection.close()
@@ -92,29 +122,36 @@ def get_user_profile(user_id):
     connection = get_db_connection()
     if connection:
         cursor = connection.cursor()
-        cursor.execute("SELECT age, gender, medical_history, allergies FROM users WHERE id = %s", (user_id,))
+        cursor.execute("SELECT name, phone, age, gender, medical_history, chronic_conditions, medications, blood_group, email, notifications, avatar FROM users WHERE id = %s", (user_id,))
         result = cursor.fetchone()
         cursor.close()
         connection.close()
         if result:
             return {
-                'age': result[0],
-                'gender': result[1],
-                'medical_history': result[2],
-                'allergies': result[3]
+                'name': result[0],
+                'phone': result[1],
+                'age': result[2],
+                'gender': result[3],
+                'medical_history': result[4],
+                'chronic_conditions': result[5],
+                'medications': result[6],
+                'blood_group': result[7],
+                'email': result[8],
+                'notifications': result[9],
+                'avatar': result[10]
             }
     return None
 
-def update_user_profile(user_id, age, gender, medical_history, allergies):
+def update_user_profile(user_id, name, phone, age, gender, medical_history, blood_group, email, notifications, avatar=None):
     """Update user profile information."""
     connection = get_db_connection()
     if connection:
         cursor = connection.cursor()
         cursor.execute("""
             UPDATE users
-            SET age = %s, gender = %s, medical_history = %s, allergies = %s
+            SET name = %s, phone = %s, age = %s, gender = %s, medical_history = %s, blood_group = %s, email = %s, notifications = %s, avatar = %s
             WHERE id = %s
-        """, (age, gender, medical_history, allergies, user_id))
+        """, (name, phone, age, gender, medical_history, blood_group, email, notifications, avatar, user_id))
         connection.commit()
         cursor.close()
         connection.close()
@@ -277,3 +314,15 @@ def get_user_activity_logs():
         connection.close()
         logs = results
     return logs
+
+def delete_user(username):
+    """Delete a user from the database."""
+    connection = get_db_connection()
+    if connection:
+        cursor = connection.cursor()
+        cursor.execute("DELETE FROM users WHERE username = %s", (username,))
+        connection.commit()
+        cursor.close()
+        connection.close()
+        return True
+    return False

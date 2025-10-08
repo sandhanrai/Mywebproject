@@ -51,6 +51,18 @@ def setup_tables():
             cursor.execute("SHOW COLUMNS FROM users LIKE 'allergies'")
             if not cursor.fetchone():
                 cursor.execute("ALTER TABLE users ADD COLUMN allergies TEXT")
+            cursor.execute("SHOW COLUMNS FROM users LIKE 'chronic_conditions'")
+            if not cursor.fetchone():
+                cursor.execute("ALTER TABLE users ADD COLUMN chronic_conditions TEXT")
+            cursor.execute("SHOW COLUMNS FROM users LIKE 'medications'")
+            if not cursor.fetchone():
+                cursor.execute("ALTER TABLE users ADD COLUMN medications TEXT")
+            cursor.execute("SHOW COLUMNS FROM users LIKE 'email'")
+            if not cursor.fetchone():
+                cursor.execute("ALTER TABLE users ADD COLUMN email VARCHAR(255)")
+            cursor.execute("SHOW COLUMNS FROM users LIKE 'notifications'")
+            if not cursor.fetchone():
+                cursor.execute("ALTER TABLE users ADD COLUMN notifications VARCHAR(10) DEFAULT 'enabled'")
             connection.commit()
             print("Users table altered with profile columns.")
         except mysql.connector.Error as err:

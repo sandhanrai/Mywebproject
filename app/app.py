@@ -6,6 +6,8 @@ import pandas as pd
 import numpy as np
 import joblib
 from fuzzywuzzy import fuzz, process
+from werkzeug.utils import secure_filename
+import requests
 
 # Add src path safely
 try:
@@ -17,11 +19,17 @@ except NameError:
 from src.data_preprocessing import load_and_preprocess_data
 from src.prediction import SymptomPredictor
 from src.logger import setup_logger
-from .db import authenticate_user, create_user, create_users_table, get_user_id, save_symptom_check, get_user_profile, update_user_profile, get_past_symptom_checks, get_doctors_by_pincode_and_specialty
+from db import authenticate_user, create_user, create_users_table, get_user_id, save_symptom_check, get_user_profile, update_user_profile, get_past_symptom_checks, get_doctors_by_pincode_and_specialty, get_user_demographics, get_symptom_trends, get_system_performance_metrics, get_user_activity_logs, get_db_connection, delete_user, hash_password
+from scraper import scrape_disease_info
+
+# Ensure database tables and columns are up to date
+create_users_table()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key_here'
 app.config['SESSION_TYPE'] = 'filesystem'
+app.config['UPLOAD_FOLDER'] = 'app/static/uploads'
+app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif'}
 Session(app)
 
 login_manager = LoginManager()
@@ -41,6 +49,9 @@ def load_user(user_id):
     # Here, we mock role as 'admin' if username is 'admin', else 'user'
     role = 'admin' if user_id == 'admin' else 'user'
     return User(user_id, user_id, role)
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -110,18 +121,26 @@ logger.info("Flask application started")
 create_users_table()
 
 def get_total_users():
-    try:
-        from app.db import get_user_count
-        return get_user_count()
-    except ImportError:
-        return 0
+    connection = get_db_connection()
+    if connection:
+        cursor = connection.cursor()
+        cursor.execute("SELECT COUNT(*) FROM users")
+        count = cursor.fetchone()[0]
+        cursor.close()
+        connection.close()
+        return count
+    return 0
 
 def get_symptom_checks_today():
-    try:
-        from app.db import get_symptom_checks_count_today
-        return get_symptom_checks_count_today()
-    except ImportError:
-        return 0
+    connection = get_db_connection()
+    if connection:
+        cursor = connection.cursor()
+        cursor.execute("SELECT COUNT(*) FROM symptom_checks WHERE DATE(timestamp) = CURDATE()")
+        count = cursor.fetchone()[0]
+        cursor.close()
+        connection.close()
+        return count
+    return 0
 
 def get_active_users():
     try:
@@ -162,10 +181,47 @@ def get_user_activity_data():
     logs = get_user_activity_logs()
     return jsonify(logs)
 
+@app.route('/admin/data/overview')
+@login_required
+def get_overview_stats():
+    if getattr(current_user, 'role', 'user') != 'admin':
+        return jsonify({'error': 'Access denied'}), 403
+    # Calculate stats
+    connection = get_db_connection()
+    total_users = 0
+    symptom_checks_today = 0
+    active_users = 0
+    if connection:
+        cursor = connection.cursor()
+        cursor.execute("SELECT COUNT(*) FROM users")
+        total_users = cursor.fetchone()[0]
+        # Symptom checks today
+        cursor.execute("SELECT COUNT(*) FROM symptom_checks WHERE DATE(timestamp) = CURDATE()")
+        symptom_checks_today = cursor.fetchone()[0]
+        # Active users today (users who checked symptoms today)
+        cursor.execute("SELECT COUNT(DISTINCT user_id) FROM symptom_checks WHERE DATE(timestamp) = CURDATE()")
+        active_users = cursor.fetchone()[0]
+        cursor.close()
+        connection.close()
+    return jsonify(total_users=total_users, symptom_checks_today=symptom_checks_today, active_users=active_users)
+
+@app.route('/admin/delete_user/<username>', methods=['POST'])
+@login_required
+def delete_user_route(username):
+    if getattr(current_user, 'role', 'user') != 'admin':
+        return jsonify({'error': 'Unauthorized'}), 403
+    if username == 'admin':
+        return jsonify({'error': 'Cannot delete admin'}), 400
+    if delete_user(username):
+        return jsonify({'success': True})
+    else:
+        return jsonify({'error': 'Failed to delete'}), 500
+
 predictor = None
 df = None
 symptoms = []
 symptom_descriptions = {}
+disease_cache = {}
 try:
     data_path = os.path.join(os.path.dirname(__file__), "../data/disease.csv")
     model_path = os.path.join(os.path.dirname(__file__), "../models/best_model.joblib")
@@ -242,8 +298,8 @@ def symptom_checker():
             session['step'] = 2
             return redirect(url_for('symptom_checker'))
         elif 'next_step3' in request.form:
-            # Redirect to disease details page instead of step 4
-            return redirect(url_for('disease_details', disease=session['prediction_result']['primary_prediction']))
+            session['step'] = 4
+            return redirect(url_for('symptom_checker'))
         elif 'back_step4' in request.form:
             session['step'] = 3
             return redirect(url_for('symptom_checker'))
@@ -254,13 +310,33 @@ def symptom_checker():
             session['step'] = 4
             return redirect(url_for('symptom_checker'))
         elif 'restart' in request.form:
-            session.clear()
+            # Clear only symptom checker related session data
+            session.pop('step', None)
+            session.pop('age', None)
+            session.pop('sex', None)
+            session.pop('selected_symptoms', None)
+            session.pop('prediction_result', None)
             session['step'] = 1
             return redirect(url_for('symptom_checker'))
 
     selected_symptoms = session.get('selected_symptoms', {})
     selected_list = [s for s, sel in selected_symptoms.items() if sel]
-    return render_template('symptom_checker.html', step=step, symptoms=symptoms, symptom_descriptions=symptom_descriptions, selected_list=selected_list)
+    disease_info = None
+    if step >= 4:
+        disease = session.get('prediction_result', {}).get('primary_prediction', '')
+        if disease:
+            # Force fresh scraping to test
+            try:
+                disease_info = scrape_disease_info(disease)
+                logger.info(f"Disease info fetched for {disease}: {disease_info}")
+                if not disease_info:
+                    disease_info = get_mock_disease_info(disease)
+                disease_cache[disease] = disease_info
+            except Exception as e:
+                logger.error(f"Error scraping disease info: {e}")
+                disease_info = get_mock_disease_info(disease)
+                disease_cache[disease] = disease_info
+    return render_template('symptom_checker.html', step=step, symptoms=symptoms, symptom_descriptions=symptom_descriptions, selected_list=selected_list, disease_info=disease_info)
 
 @app.route('/dashboard', methods=['GET', 'POST'])
 @login_required
@@ -271,11 +347,23 @@ def dashboard():
         return redirect(url_for('home'))
 
     if request.method == 'POST':
+        name = request.form.get('name')
+        phone = request.form.get('phone')
         age = request.form.get('age', type=int)
-        gender = request.form['gender']
-        medical_history = request.form['medical_history']
-        allergies = request.form['allergies']
-        if update_user_profile(user_id, age, gender, medical_history, allergies):
+        gender = request.form.get('gender')
+        medical_history = request.form.get('medical_history')
+        blood_group = request.form.get('blood_group')
+        email = request.form.get('email')
+        notifications = request.form.get('notifications')
+        avatar = None
+        if 'avatar' in request.files:
+            file = request.files['avatar']
+            if file and file.filename != '' and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                file.save(file_path)
+                avatar = filename
+        if update_user_profile(user_id, name, phone, age, gender, medical_history, blood_group, email, notifications, avatar):
             flash("Profile updated successfully!")
         else:
             flash("Failed to update profile.")
@@ -284,7 +372,94 @@ def dashboard():
     profile = get_user_profile(user_id)
     past_checks = get_past_symptom_checks(user_id)
 
-    return render_template('dashboard.html', profile=profile, past_checks=past_checks)
+    # Compute symptom trends for the user
+    symptom_counts = {}
+    for check in past_checks:
+        symptoms = json.loads(check['symptoms']) if isinstance(check['symptoms'], str) else check['symptoms']
+        for symptom, present in symptoms.items():
+            if present:
+                symptom_counts[symptom] = symptom_counts.get(symptom, 0) + 1
+
+    # Add mock data if no real data for demonstration
+    if not symptom_counts:
+        symptom_counts = {'Fever': 3, 'Cough': 2, 'Headache': 1, 'Fatigue': 2, 'Sore Throat': 1}
+
+    return render_template('dashboard.html', profile=profile, past_checks=past_checks, symptom_counts=symptom_counts)
+
+@app.route('/update_account_settings', methods=['POST'])
+@login_required
+def update_account_settings():
+    user_id = get_user_id(current_user.username)
+    if not user_id:
+        flash("User not found.")
+        return redirect(url_for('dashboard'))
+
+    profile = get_user_profile(user_id)
+
+    username = request.form.get('username')
+    current_password = request.form.get('current_password')
+    new_password = request.form.get('new_password')
+    confirm_password = request.form.get('confirm_password')
+    email = request.form.get('email') or profile['email']
+    notifications = request.form.get('notifications') or profile['notifications']
+
+    # Verify current password if provided
+    if current_password and not authenticate_user(current_user.username, current_password):
+        flash("Current password is incorrect.")
+        return redirect(url_for('dashboard'))
+
+    # Check if username is changing and available
+    if 'username' in request.form and username and username != current_user.username:
+        if get_user_id(username):
+            flash("Username already taken.")
+            return redirect(url_for('dashboard'))
+        # Update username in DB
+        connection = get_db_connection()
+        if connection:
+            cursor = connection.cursor()
+            cursor.execute("UPDATE users SET username = %s WHERE id = %s", (username, user_id))
+            connection.commit()
+            cursor.close()
+            connection.close()
+            # Update current_user
+            current_user.username = username
+
+    # Update password if provided
+    if 'new_password' in request.form and new_password:
+        if new_password != confirm_password:
+            flash("New passwords do not match.")
+            return redirect(url_for('dashboard'))
+        hashed_password = hash_password(new_password)
+        connection = get_db_connection()
+        if connection:
+            cursor = connection.cursor()
+            cursor.execute("UPDATE users SET password_hash = %s WHERE id = %s", (hashed_password, user_id))
+            connection.commit()
+            cursor.close()
+            connection.close()
+
+    # Update email if provided
+    if 'email' in request.form and request.form.get('email'):
+        connection = get_db_connection()
+        if connection:
+            cursor = connection.cursor()
+            cursor.execute("UPDATE users SET email = %s WHERE id = %s", (email, user_id))
+            connection.commit()
+            cursor.close()
+            connection.close()
+
+    # Update notifications if provided
+    if 'notifications' in request.form and request.form.get('notifications'):
+        connection = get_db_connection()
+        if connection:
+            cursor = connection.cursor()
+            cursor.execute("UPDATE users SET notifications = %s WHERE id = %s", (notifications, user_id))
+            connection.commit()
+            cursor.close()
+            connection.close()
+
+    flash("Account settings updated successfully!")
+    return redirect(url_for('dashboard'))
 
 @app.route('/find_doctor', methods=['GET', 'POST'])
 def find_doctor():
@@ -315,39 +490,67 @@ def symptom_suggestions():
     filtered_suggestions = [s[0] for s in suggestions if s[1] > 70]
     return jsonify(filtered_suggestions)
 
+@app.route('/api/health_news')
+def health_news():
+    api_key = os.environ.get('REACT_APP_NEWS_API_KEY')
+    if not api_key:
+        return jsonify({'error': 'API key not configured'}), 500
+    try:
+        url = f'https://newsapi.org/v2/top-headlines?category=health&apiKey={api_key}&pageSize=6'
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
+        articles = data.get('articles', [])
+        # Filter or format as needed
+        news = []
+        for article in articles:
+            news.append({
+                'title': article.get('title', ''),
+                'description': article.get('description', ''),
+                'url': article.get('url', ''),
+                'urlToImage': article.get('urlToImage', '')
+            })
+        return jsonify(news)
+    except requests.RequestException as e:
+        logger.error(f"Error fetching health news: {e}")
+        return jsonify({'error': 'Failed to fetch news'}), 500
+
 @app.route('/disease_details/<disease>')
 def disease_details(disease):
-    # Fetch disease details from MedlinePlus API or use mock data
-    import requests
-    try:
-        # MedlinePlus API endpoint for health topics
-        api_url = f"https://wsearch.nlm.nih.gov/ws/query?db=healthTopics&term={disease}&retmax=1"
-        response = requests.get(api_url)
-        if response.status_code == 200:
-            data = response.json()
-            if data.get('esearchresult', {}).get('idlist'):
-                id = data['esearchresult']['idlist'][0]
-                summary_url = f"https://wsearch.nlm.nih.gov/ws/query?db=healthTopicsDetailed&term={id}&retmax=1"
-                summary_response = requests.get(summary_url)
-                if summary_response.status_code == 200:
-                    summary_data = summary_response.json()
-                    # Extract relevant information
-                    disease_info = {
-                        'name': disease,
-                        'summary': summary_data.get('result', {}).get(id, {}).get('summary', 'No summary available.'),
-                        'url': f"https://medlineplus.gov/ency/article/{id}.htm"
-                    }
-                else:
-                    disease_info = get_mock_disease_info(disease)
-            else:
+    # Fetch disease details using the scraper with caching
+    if disease in disease_cache:
+        logger.info(f"Using cached data for disease: {disease}")
+        disease_info = disease_cache[disease]
+    else:
+        logger.info(f"Scraping data for disease: {disease}")
+        try:
+            disease_info = scrape_disease_info(disease)
+            if not disease_info:
                 disease_info = get_mock_disease_info(disease)
-        else:
+            disease_cache[disease] = disease_info
+        except Exception as e:
+            logger.error(f"Error scraping disease info: {e}")
             disease_info = get_mock_disease_info(disease)
-    except Exception as e:
-        logger.error(f"Error fetching disease info: {e}")
-        disease_info = get_mock_disease_info(disease)
-    
+            disease_cache[disease] = disease_info
+
     return render_template('disease_details.html', disease_info=disease_info)
+
+@app.route('/disease_details/<disease>/treatments')
+def disease_treatments(disease):
+    # Fetch treatments for the disease
+    if disease in disease_cache:
+        disease_info = disease_cache[disease]
+    else:
+        try:
+            disease_info = scrape_disease_info(disease)
+            if not disease_info:
+                disease_info = {'name': disease, 'treatments': [], 'source': ''}
+            disease_cache[disease] = disease_info
+        except Exception as e:
+            logger.error(f"Error scraping disease info: {e}")
+            disease_info = {'name': disease, 'treatments': [], 'source': ''}
+
+    return render_template('disease_treatments.html', disease_info=disease_info)
 
 def get_mock_disease_info(disease):
     # Mock data for demonstration
@@ -370,4 +573,4 @@ def get_mock_disease_info(disease):
     })
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5001)

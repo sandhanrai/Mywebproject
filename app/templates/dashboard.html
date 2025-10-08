@@ -1,208 +1,856 @@
 {% extends "base.html" %}
+{% block head %}{% endblock %}
 {% block title %}Dashboard - MediCheck{% endblock %}
 {% block content %}
-<div class="container my-5">
-  <div class="row">
-    <div class="col-lg-8">
-      <h1 class="mb-4"><i class="fas fa-tachometer-alt"></i> Welcome to Your Dashboard, {{ current_user.username }}!</h1>
+<style>
+  /* Global font */
+  body {
+    font-family: 'Inter', 'Nunito', 'Open Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  }
 
-      <div class="card mb-4">
-        <div class="card-header bg-primary text-white">
-          <h2 class="h5 mb-0"><i class="fas fa-user-edit"></i> Your Profile</h2>
-        </div>
-        <div class="card-body">
-          {% if profile %}
-            <form method="post" action="{{ url_for('dashboard') }}">
-              <div class="row">
-                <div class="col-md-6 mb-3">
-                  <label for="age" class="form-label">Age:</label>
-                  <input type="number" id="age" name="age" value="{{ profile.age or 0 }}" min="0" max="120" class="form-control">
-                </div>
-                <div class="col-md-6 mb-3">
-                  <label for="gender" class="form-label">Gender:</label>
-                  <select id="gender" name="gender" class="form-select">
-                    <option value="Male" {% if profile.gender == 'Male' %}selected{% endif %}>Male</option>
-                    <option value="Female" {% if profile.gender == 'Female' %}selected{% endif %}>Female</option>
-                    <option value="Other" {% if profile.gender == 'Other' %}selected{% endif %}>Other</option>
-                  </select>
-                </div>
-              </div>
-              <div class="mb-3">
-                <label for="medical_history" class="form-label">Medical History:</label>
-                <textarea id="medical_history" name="medical_history" class="form-control" rows="3">{{ profile.medical_history or '' }}</textarea>
-              </div>
-              <div class="mb-3">
-                <label for="allergies" class="form-label">Allergies:</label>
-                <textarea id="allergies" name="allergies" class="form-control" rows="3">{{ profile.allergies or '' }}</textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">Update Profile</button>
-            </form>
-          {% else %}
-            <p class="text-muted">Profile not found. Please update your information.</p>
-          {% endif %}
-        </div>
-      </div>
+  /* Forms */
+  .form-control {
+    background-color: #f5f5f5 !important;
+    border: 1px solid #dcdcdc !important;
+    color: #1c1c1c !important;
+    box-shadow: none !important;
+    border-radius: 8px !important;
+    padding: 12px 16px !important;
+    font-size: 1rem !important;
+    transition: border-color 0.2s ease, background-color 0.2s ease !important;
+  }
+  .form-control:focus {
+    border-color: #4DD0E1 !important;
+    background-color: #fff !important;
+    outline: none !important;
+  }
+  .form-label {
+    font-weight: 600 !important;
+    color: #000 !important;
+  }
 
-      <div class="card mb-4">
-        <div class="card-header bg-success text-white">
-          <h2 class="h5 mb-0"><i class="fas fa-history"></i> Past Symptom Checks</h2>
-        </div>
-        <div class="card-body">
-          {% if past_checks %}
-            <div class="accordion" id="pastChecksAccordion">
-              {% for check in past_checks[:5] %}
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="heading{{ loop.index }}">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ loop.index }}" aria-expanded="false" aria-controls="collapse{{ loop.index }}">
-                      Check on {{ check.timestamp.strftime('%Y-%m-%d %H:%M') }}
-                    </button>
-                  </h2>
-                  <div id="collapse{{ loop.index }}" class="accordion-collapse collapse" aria-labelledby="heading{{ loop.index }}" data-bs-parent="#pastChecksAccordion">
-                    <div class="accordion-body">
-                      <p><strong>Age:</strong> {{ check.age }}, <strong>Sex:</strong> {{ check.sex }}</p>
-                      <p><strong>Symptoms:</strong> {{ check.symptoms | selectattr('1') | map(attribute='0') | join(', ') }}</p>
-                      {% if check.prediction.primary_prediction %}
-                        <p><strong>Predicted:</strong> {{ check.prediction.primary_prediction }} ({{ "%.1f"|format(check.prediction.primary_probability * 100) }}%)</p>
-                      {% endif %}
+  /* Sidebar */
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 80px;
+    width: 25%;
+    max-width: 300px;
+    background: linear-gradient(180deg, #a0d8d3 0%, #e0f0ef 100%);
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+  .nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .nav-item {
+    margin-bottom: 10px;
+  }
+  .nav-link {
+    display: block;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #004D40;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15.5px;
+    border-radius: 10px;
+    box-shadow: none;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid rgba(0, 77, 64, 0.2);
+  }
+  .nav-link i {
+    opacity: 0.9;
+  }
+  .nav-link:hover {
+    background: linear-gradient(45deg, #00AFA0, #26A69A);
+    color: #FFFFFF;
+    box-shadow: 0 4px 8px rgba(0, 175, 160, 0.3);
+  }
+  .nav-link.active-parent {
+    background: linear-gradient(45deg, #009688, #00BCD4);
+    color: #FFFFFF;
+    box-shadow: 0 4px 8px rgba(0, 150, 136, 0.4);
+  }
+  .sub-menu {
+    list-style: none;
+    padding-left: 20px;
+    margin: 0;
+    display: none;
+  }
+  .sub-menu.show {
+    display: block;
+  }
+  .sub-link {
+    display: block;
+    padding: 8px 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #004D40;
+    text-decoration: none;
+    font-size: 15px;
+    border-radius: 10px;
+    box-shadow: none;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid rgba(0, 77, 64, 0.2);
+  }
+  .sub-link i {
+    opacity: 0.9;
+  }
+  .sub-link:hover {
+    background: linear-gradient(45deg, #00AFA0, #26A69A);
+    color: #FFFFFF;
+    box-shadow: 0 4px 8px rgba(0, 175, 160, 0.3);
+  }
+  .sub-link.active-page {
+    background: linear-gradient(45deg, #009688, #00BCD4);
+    color: #FFFFFF;
+    box-shadow: 0 4px 8px rgba(0, 150, 136, 0.4);
+    border-left: 4px solid #004D40;
+  }
+
+  /* Main Content */
+  .main-content {
+    margin-left: 25%;
+    max-width: 75%;
+    background: linear-gradient(180deg, #a0d8d3 0%, #e0f0ef 100%);
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+
+  /* Headings */
+  h1, h2, h3 {
+    color: #004D40;
+    font-weight: bold;
+    font-size: 22px;
+  }
+  h4, h5, h6 {
+    color: #004D40;
+  }
+
+  /* Labels */
+  .form-label {
+    font-size: 15px;
+    font-weight: bold;
+    color: #333333;
+  }
+
+  /* Body text */
+  p, li {
+    font-size: 15px;
+    color: #444444;
+  }
+
+  /* Cards */
+  .card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+  .card-body {
+    padding: 20px;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    background: linear-gradient(90deg, #009688, #00BCD4);
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+  }
+  .btn-primary:hover {
+    box-shadow: 0 3px 8px rgba(0, 188, 212, 0.3);
+    transform: translateY(-2px);
+  }
+
+  /* Tabs */
+  .tab-pane {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+  .tab-pane.active {
+    display: block;
+    opacity: 1;
+  }
+
+  /* Hamburger Menu */
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: #009688;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  /* Profile Overview Styles */
+  .profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .profile-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .profile-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  }
+  .profile-item .icon {
+    font-size: 24px;
+    color: #009688;
+    margin-right: 15px;
+    width: 30px;
+    text-align: center;
+  }
+  .profile-item .info strong {
+    display: block;
+    font-size: 14px;
+    color: #004D40;
+    margin-bottom: 5px;
+  }
+  .profile-item .info span {
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+  }
+
+  /* Past Checks Cards */
+  .past-check-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .past-check-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  }
+  .symptom-list li {
+    margin-bottom: 5px;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 100%;
+      position: static;
+      height: auto;
+      display: none;
+    }
+    .sidebar.show {
+      display: block;
+    }
+    .main-content {
+      margin-left: 0;
+      width: 100%;
+    }
+    .hamburger {
+      display: block;
+    }
+    .profile-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+<!-- Sidebar -->
+<div class="sidebar">
+  <nav>
+    <h4>Dashboard Menu</h4>
+    <ul class="nav-menu">
+          <!-- User Profile & Account -->
+          <li class="nav-item">
+            <a href="#" class="nav-link active-parent" data-toggle="profile-menu">
+              <i class="fas fa-user"></i> User Profile & Account
+            </a>
+            <ul class="sub-menu show" id="profile-menu">
+              <li><a href="#" class="sub-link active-page" data-target="#profile-overview"><i class="fas fa-user-circle"></i> Profile Overview</a></li>
+              <li><a href="#" class="sub-link" data-target="#edit-profile"><i class="fas fa-edit"></i> Edit Profile</a></li>
+              <li><a href="#" class="sub-link" data-target="#medical-history"><i class="fas fa-history"></i> Medical History</a></li>
+              <li><a href="#" class="sub-link" data-target="#past-checks"><i class="fas fa-list"></i> Past Symptom Checks</a></li>
+            </ul>
+          </li>
+          <!-- Symptom Trends / Analytics -->
+          <li class="nav-item">
+            <a href="#" class="nav-link" data-toggle="trends-menu">
+              <i class="fas fa-chart-line"></i> Symptom Trends / Analytics
+            </a>
+            <ul class="sub-menu" id="trends-menu">
+              <li><a href="#" class="sub-link" data-target="#symptom-trends"><i class="fas fa-chart-bar"></i> View Trends</a></li>
+            </ul>
+          </li>
+          <!-- Health Score / Risk Assessment -->
+          <li class="nav-item">
+            <a href="#" class="nav-link" data-toggle="score-menu">
+              <i class="fas fa-heartbeat"></i> Health Score / Risk Assessment
+            </a>
+            <ul class="sub-menu" id="score-menu">
+              <li><a href="#" class="sub-link" data-target="#health-score"><i class="fas fa-heartbeat"></i> View Score</a></li>
+            </ul>
+          </li>
+          <!-- Health Analytics & Insights -->
+          <li class="nav-item">
+            <a href="#" class="nav-link" data-toggle="insights-menu">
+              <i class="fas fa-brain"></i> Health Analytics & Insights
+            </a>
+            <ul class="sub-menu" id="insights-menu">
+              <li><a href="#" class="sub-link" data-target="#health-trends"><i class="fas fa-chart-line"></i> Health Trends Dashboard</a></li>
+              <li><a href="#" class="sub-link" data-target="#preventive-alerts"><i class="fas fa-bell"></i> Preventive Alerts</a></li>
+              <li><a href="#" class="sub-link" data-target="#lifestyle-recs"><i class="fas fa-leaf"></i> Lifestyle Recommendations</a></li>
+              <li><a href="#" class="sub-link" data-target="#ai-insights"><i class="fas fa-brain"></i> AI Insights</a></li>
+            </ul>
+          </li>
+          <!-- Settings & Support -->
+          <li class="nav-item">
+            <a href="#" class="nav-link" data-toggle="settings-menu">
+              <i class="fas fa-cog"></i> Settings & Support
+            </a>
+            <ul class="sub-menu" id="settings-menu">
+              <li><a href="#" class="sub-link" data-target="#account-settings"><i class="fas fa-cogs"></i> Account Settings</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <!-- Main Content -->
+    <div class="main-content">
+      <button class="hamburger" id="hamburger">☰</button>
+      <h1 class="mb-4 d-flex align-items-center">
+        <i class="fas fa-tachometer-alt me-2"></i> Welcome to Your Dashboard, {{ current_user.username }}!
+        {% if profile and profile.avatar %}
+          <img src="{{ url_for('static', filename='uploads/' + profile.avatar) }}" alt="User Avatar" class="rounded-circle ms-3" style="width:40px; height:40px; opacity:0.9;">
+        {% else %}
+          <img src="https://via.placeholder.com/40x40?text=U" alt="User Avatar" class="rounded-circle ms-3" style="width:40px; height:40px; opacity:0.9;">
+        {% endif %}
+      </h1>
+      <div class="tab-content">
+        <!-- Profile Overview -->
+        <div class="tab-pane active" id="profile-overview">
+          <div class="card">
+            <div class="card-body">
+              <h2><i class="fas fa-user-circle me-2"></i>Profile Overview</h2>
+              {% if profile %}
+                <div class="profile-grid">
+                  <div class="profile-item">
+                    <i class="fas fa-user icon"></i>
+                    <div class="info">
+                      <strong>Name</strong>
+                      <span>{{ profile.name or current_user.username }}</span>
+                    </div>
+                  </div>
+                  {% if profile.avatar %}
+                  <div class="profile-item">
+                    <i class="fas fa-camera icon"></i>
+                    <div class="info">
+                      <strong>Profile Picture</strong>
+                      <img src="{{ url_for('static', filename='uploads/' + profile.avatar) }}" alt="Profile Picture" style="width: 50px; height: 50px; border-radius: 50%;">
+                    </div>
+                  </div>
+                  {% endif %}
+                  <div class="profile-item">
+                    <i class="fas fa-phone icon"></i>
+                    <div class="info">
+                      <strong>Phone Number</strong>
+                      <span>{{ profile.phone or 'Not set' }}</span>
+                    </div>
+                  </div>
+                  <div class="profile-item">
+                    <i class="fas fa-birthday-cake icon"></i>
+                    <div class="info">
+                      <strong>Age</strong>
+                      <span>{{ profile.age or 'Not set' }}</span>
+                    </div>
+                  </div>
+                  <div class="profile-item">
+                    <i class="fas fa-venus-mars icon"></i>
+                    <div class="info">
+                      <strong>Gender</strong>
+                      <span>{{ profile.gender or 'Not set' }}</span>
+                    </div>
+                  </div>
+                  <div class="profile-item">
+                    <i class="fas fa-tint icon"></i>
+                    <div class="info">
+                      <strong>Blood Group</strong>
+                      <span>{{ profile.blood_group or 'Not set' }}</span>
+                    </div>
+                  </div>
+                  <div class="profile-item">
+                    <i class="fas fa-heartbeat icon"></i>
+                    <div class="info">
+                      <strong>Chronic Conditions</strong>
+                      <span>{{ profile.chronic_conditions or 'None' }}</span>
+                    </div>
+                  </div>
+                  <div class="profile-item">
+                    <i class="fas fa-pills icon"></i>
+                    <div class="info">
+                      <strong>Medications</strong>
+                      <span>{{ profile.medications or 'None' }}</span>
+                    </div>
+                  </div>
+                  <div class="profile-item">
+                    <i class="fas fa-envelope icon"></i>
+                    <div class="info">
+                      <strong>Email</strong>
+                      <span>{{ profile.email or 'Not set' }}</span>
+                    </div>
+                  </div>
+                  <div class="profile-item">
+                    <i class="fas fa-bell icon"></i>
+                    <div class="info">
+                      <strong>Notifications</strong>
+                      <span>{{ profile.notifications or 'enabled' }}</span>
                     </div>
                   </div>
                 </div>
-              {% endfor %}
+              {% else %}
+                <div class="text-center">
+                  <i class="fas fa-user-plus fa-3x text-muted mb-3"></i>
+                  <p class="text-muted">Profile not set up yet. Please update your profile information.</p>
+                </div>
+              {% endif %}
             </div>
-          {% else %}
-            <p class="text-muted">No past checks found.</p>
-          {% endif %}
+          </div>
+        </div>
+        <!-- Edit Profile -->
+        <div class="tab-pane" id="edit-profile">
+          <div class="card">
+            <div class="card-body">
+              <h2>Edit Profile</h2>
+              <form method="post" action="{{ url_for('dashboard') }}" enctype="multipart/form-data">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name:</label>
+                  <input type="text" id="name" name="name" class="form-control" value="{{ profile.name or current_user.username }}">
+                </div>
+                <div class="mb-3">
+                  <label for="phone" class="form-label">Phone Number:</label>
+                  <input type="tel" id="phone" name="phone" class="form-control" value="{{ profile.phone or '' }}">
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email:</label>
+                  <input type="email" id="email" name="email" class="form-control" value="{{ profile.email or '' }}">
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="age" class="form-label">Age:</label>
+                    <input type="number" id="age" name="age" class="form-control" value="{{ profile.age or '' }}">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="gender" class="form-label">Gender:</label>
+                    <select id="gender" name="gender" class="form-select">
+                      <option value="">Select Gender</option>
+                      <option value="Male" {% if profile.gender == 'Male' %}selected{% endif %}>Male</option>
+                      <option value="Female" {% if profile.gender == 'Female' %}selected{% endif %}>Female</option>
+                      <option value="Other" {% if profile.gender == 'Other' %}selected{% endif %}>Other</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="blood_group" class="form-label">Blood Group:</label>
+                  <select id="blood_group" name="blood_group" class="form-select">
+                    <option value="">Select Blood Group</option>
+                    <option value="A+" {% if profile.blood_group == 'A+' %}selected{% endif %}>A+</option>
+                    <option value="A-" {% if profile.blood_group == 'A-' %}selected{% endif %}>A-</option>
+                    <option value="B+" {% if profile.blood_group == 'B+' %}selected{% endif %}>B+</option>
+                    <option value="B-" {% if profile.blood_group == 'B-' %}selected{% endif %}>B-</option>
+                    <option value="AB+" {% if profile.blood_group == 'AB+' %}selected{% endif %}>AB+</option>
+                    <option value="AB-" {% if profile.blood_group == 'AB-' %}selected{% endif %}>AB-</option>
+                    <option value="O+" {% if profile.blood_group == 'O+' %}selected{% endif %}>O+</option>
+                    <option value="O-" {% if profile.blood_group == 'O-' %}selected{% endif %}>O-</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="avatar" class="form-label">Profile Picture:</label>
+                  <input type="file" id="avatar" name="avatar" class="form-control" accept="image/*">
+                  {% if profile.avatar %}
+                    <small class="form-text text-muted">Current: <img src="{{ url_for('static', filename='uploads/' + profile.avatar) }}" alt="Current Avatar" style="width: 50px; height: 50px; border-radius: 50%;"></small>
+                  {% endif %}
+                </div>
+                <input type="hidden" name="medical_history" value="{{ profile.medical_history or '' }}">
+                <input type="hidden" name="notifications" value="{{ profile.notifications or 'enabled' }}">
+                <button type="submit" class="btn btn-primary">Update Profile</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Medical History -->
+        <div class="tab-pane" id="medical-history">
+          <div class="card">
+            <div class="card-body">
+              <h2>Medical History</h2>
+              <div class="mt-4">
+                <h4>Medical History Details:</h4>
+                <p><strong>Chronic Conditions:</strong> {{ profile.chronic_conditions or 'None reported' }}</p>
+                <p><strong>Current Medications:</strong> {{ profile.medications or 'None reported' }}</p>
+                <h4 class="mb-4">Previously Predicted Diseases:</h4>
+                {% set predicted_diseases = [] %}
+                {% for check in past_checks %}
+                  {% if check.prediction.primary_prediction and check.prediction.primary_prediction not in predicted_diseases %}
+                    {% set _ = predicted_diseases.append(check.prediction.primary_prediction) %}
+                  {% endif %}
+                {% endfor %}
+                {% if predicted_diseases %}
+                  <div class="row mt-3">
+                    {% for disease in predicted_diseases %}
+                      <div class="col-md-4 mb-3">
+                        <div class="card h-100 shadow-sm">
+                          <div class="card-body text-center">
+                            <i class="fas fa-virus fa-3x text-danger mb-3"></i>
+                            <h5 class="card-title">{{ disease }}</h5>
+                          </div>
+                        </div>
+                      </div>
+                    {% endfor %}
+                  </div>
+                {% else %}
+                  <p class="text-muted">No predicted diseases yet.</p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Past Symptom Checks -->
+        <div class="tab-pane" id="past-checks">
+          <div class="card">
+            <div class="card-body">
+              <h2 class="mb-5"><i class="fas fa-history me-2"></i>Past Symptom Checks</h2>
+              {% if past_checks %}
+                <div class="row">
+                  {% for check in past_checks %}
+                    <div class="col-md-6 mb-4">
+                      <div class="card h-100 shadow-sm past-check-card">
+                        <div class="card-body">
+                          <h5 class="card-title text-dark">
+                            <i class="fas fa-calendar-alt me-2"></i>{{ check.timestamp.strftime('%Y-%m-%d %H:%M') }}
+                          </h5>
+                          <p class="card-text">
+                            <i class="fas fa-user me-2"></i><strong>Age:</strong> {{ check.age }}, <strong>Sex:</strong> {{ check.sex }}
+                          </p>
+                          <p class="card-text">
+                            <i class="fas fa-viruses me-2"></i><strong>Symptoms:</strong>
+                          </p>
+                          <ul class="list-unstyled symptom-list ms-3">
+                            {% for symptom, present in check.symptoms.items() if present %}
+                              <li><i class="fas fa-check-circle text-success me-2"></i>{{ symptom }}</li>
+                            {% endfor %}
+                          </ul>
+                          <p class="card-text">
+                            <i class="fas fa-stethoscope me-2"></i><strong>Prediction:</strong> {{ check.prediction.primary_prediction }} ({{ "%.2f"|format(check.prediction.primary_probability * 100) }}%)
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              {% else %}
+                <p class="text-muted">No past checks found.</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <!-- Symptom Trends -->
+        <div class="tab-pane" id="symptom-trends">
+          <div class="card">
+            <div class="card-body">
+              <h2>Symptom Trends / Analytics</h2>
+              {% if symptom_counts %}
+                <canvas id="trendsChart" width="400" height="200"></canvas>
+                <canvas id="conditionPieChart" width="400" height="400" class="mt-4"></canvas>
+                <canvas id="timeChart" width="400" height="200" class="mt-4"></canvas>
+                 <script>
+                   const symptomData = JSON.parse('{{ symptom_counts | tojson | safe }}');
+                   const labels = Object.keys(symptomData);
+                   const data = Object.values(symptomData);
+
+                   // Bar chart for trendsChart
+                   new Chart(document.getElementById('trendsChart').getContext('2d'), {
+                       type: 'bar',
+                       data: {
+                           labels: labels,
+                           datasets: [{
+                               label: 'Symptom Frequency',
+                               data: data,
+                               backgroundColor: 'rgba(0, 150, 136, 0.6)',
+                               borderColor: 'rgba(0, 150, 136, 1)',
+                               borderWidth: 1
+                           }]
+                       },
+                       options: {
+                           responsive: true,
+                           scales: {
+                               y: {
+                                   beginAtZero: true
+                               }
+                           }
+                       }
+                   });
+
+                   // Pie chart for conditionPieChart
+                   new Chart(document.getElementById('conditionPieChart').getContext('2d'), {
+                       type: 'pie',
+                       data: {
+                           labels: labels,
+                           datasets: [{
+                               data: data,
+                               backgroundColor: [
+                                   '#FF6384',
+                                   '#36A2EB',
+                                   '#FFCE56',
+                                   '#4BC0C0',
+                                   '#9966FF',
+                                   '#FF9F40',
+                                   '#FF6384',
+                                   '#C9CBCF',
+                                   '#4BC0C0',
+                                   '#FF6384'
+                               ]
+                           }]
+                       },
+                       options: {
+                           responsive: true
+                       }
+                   });
+
+                   // Line chart for checks over time
+                   const timeCtx = document.getElementById('timeChart').getContext('2d');
+                   const pastChecks = {{ past_checks | tojson }};
+                   const dateCounts = {};
+                   pastChecks.forEach(check => {
+                       const date = new Date(check.timestamp).toISOString().split('T')[0];
+                       dateCounts[date] = (dateCounts[date] || 0) + 1;
+                   });
+                   const timeLabels = Object.keys(dateCounts).sort();
+                   const timeData = timeLabels.map(date => dateCounts[date]);
+                   new Chart(timeCtx, {
+                       type: 'line',
+                       data: {
+                           labels: timeLabels,
+                           datasets: [{
+                               label: 'Checks per Day',
+                               data: timeData,
+                               borderColor: 'rgba(75, 192, 192, 1)',
+                               backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                               tension: 0.1
+                           }]
+                       },
+                       options: {
+                           responsive: true,
+                           scales: {
+                               y: {
+                                   beginAtZero: true
+                               }
+                           }
+                       }
+                   });
+                 </script>
+              {% else %}
+                <p class="text-muted">No data for trends yet.</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <!-- Health Score -->
+        <div class="tab-pane" id="health-score">
+          <div class="card">
+            <div class="card-body">
+              <h2>Health Score / Risk Assessment</h2>
+              {% set score = 0 %}
+              {% if past_checks %}
+                {% set score = (past_checks | length) * 10 %}
+              {% endif %}
+              <div class="alert alert-info">
+                <h4>Your Health Score: {{ score }}/100</h4>
+                <p>Risk Level: {% if score < 30 %}Low{% elif score < 70 %}Medium{% else %}High{% endif %}</p>
+                <p>Based on your symptom check history.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Health Trends Dashboard -->
+        <div class="tab-pane" id="health-trends">
+          <div class="card">
+            <div class="card-body">
+              <h2>Health Trends Dashboard</h2>
+              <p>Visualizations of vitals and symptoms over time.</p>
+              <!-- Placeholder for charts -->
+              <canvas id="healthTrendsChart" width="400" height="200"></canvas>
+            </div>
+          </div>
+        </div>
+        <!-- Preventive Alerts -->
+        <div class="tab-pane" id="preventive-alerts">
+          <div class="card">
+            <div class="card-body">
+              <h2>Preventive Alerts</h2>
+              <ul class="list-group">
+                <li class="list-group-item">Vaccination Reminder: Flu shot due in October.</li>
+                <li class="list-group-item">Health Checkup: Annual physical recommended.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Lifestyle Recommendations -->
+        <div class="tab-pane" id="lifestyle-recs">
+          <div class="card">
+            <div class="card-body">
+              <h2>Lifestyle Recommendations</h2>
+              <p>Based on your trends: Increase water intake, exercise regularly.</p>
+            </div>
+          </div>
+        </div>
+        <!-- AI Insights -->
+        <div class="tab-pane" id="ai-insights">
+          <div class="card">
+            <div class="card-body">
+              <h2>AI Insights</h2>
+              <p>Predictive insights: Potential risk for cardiovascular issues based on symptoms.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Account Settings -->
+        <div class="tab-pane" id="account-settings">
+          <div class="card">
+            <div class="card-body">
+              <h2>Account Settings</h2>
+              <div id="account-summary">
+                <p><strong>Username:</strong> {{ current_user.username }}</p>
+                <p><strong>Password:</strong> ********</p>
+                <p><strong>Email:</strong> sandhanrai1997@gmail.com</p>
+                <p><strong>Notifications:</strong> Enabled</p>
+                <button id="change-username-btn" class="btn btn-primary me-2">Change Username</button>
+                <button id="change-password-btn" class="btn btn-secondary me-2">Change Password</button>
+                <button id="change-notifications-btn" class="btn btn-info">Change Notifications</button>
+              </div>
+              <form id="change-username-form" method="post" action="{{ url_for('update_account_settings') }}" style="display:none;">
+                <div class="mb-3">
+                  <label for="username" class="form-label">New Username:</label>
+                  <input type="text" id="username" name="username" class="form-control" value="{{ current_user.username }}" required>
+                </div>
+                <div class="mb-3">
+                  <label for="current_password_username" class="form-label">Current Password:</label>
+                  <input type="password" id="current_password_username" name="current_password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Username</button>
+                <button type="button" id="cancel-username-btn" class="btn btn-link">Cancel</button>
+              </form>
+              <form id="change-password-form" method="post" action="{{ url_for('update_account_settings') }}" style="display:none;">
+                <div class="mb-3">
+                  <label for="current_password_password" class="form-label">Current Password:</label>
+                  <input type="password" id="current_password_password" name="current_password" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <label for="new_password" class="form-label">New Password:</label>
+                  <input type="password" id="new_password" name="new_password" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <label for="confirm_password" class="form-label">Confirm New Password:</label>
+                  <input type="password" id="confirm_password" name="confirm_password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Password</button>
+                <button type="button" id="cancel-password-btn" class="btn btn-link">Cancel</button>
+              </form>
+              <form id="change-notifications-form" method="post" action="{{ url_for('update_account_settings') }}" style="display:none;">
+                <div class="mb-3">
+                  <label for="notifications" class="form-label">Notifications:</label>
+                  <select id="notifications" name="notifications" class="form-select">
+                    <option value="enabled" {% if profile.notifications == 'enabled' %}selected{% endif %}>Enabled</option>
+                    <option value="disabled" {% if profile.notifications == 'disabled' %}selected{% endif %}>Disabled</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Notifications</button>
+                <button type="button" id="cancel-notifications-btn" class="btn btn-link">Cancel</button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-lg-4">
-      <div class="card mb-4">
-        <div class="card-header bg-info text-white">
-          <h2 class="h5 mb-0"><i class="fas fa-chart-line"></i> Trends</h2>
-        </div>
-        <div class="card-body">
-          {% if past_checks %}
-            <canvas id="trendsChart" width="300" height="200"></canvas>
-          {% else %}
-            <p class="text-muted">No data for trends yet.</p>
-          {% endif %}
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header bg-warning text-white">
-          <h2 class="h5 mb-0"><i class="fas fa-lightbulb"></i> Quick Actions</h2>
-        </div>
-        <div class="card-body">
-          <a href="{{ url_for('symptom_checker') }}" class="btn btn-primary w-100 mb-2"><i class="fas fa-search"></i> New Symptom Check</a>
-          <a href="{{ url_for('find_doctor') }}" class="btn btn-secondary w-100"><i class="fas fa-user-md"></i> Find a Doctor</a>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 <script>
-  {% if past_checks %}
-    {% set dates = [] %}
-    {% set probs = [] %}
-    {% set conditions = [] %}
-    {% for check in past_checks[:10] %}
-      {% set dates = dates + [check.timestamp.strftime('%m/%d')] %}
-      {% set probs = probs + [check.prediction.primary_probability] %}
-      {% if check.prediction.primary_prediction %}
-        {% set conditions = conditions + [check.prediction.primary_prediction] %}
-      {% else %}
-        {% set conditions = conditions + ['Unknown'] %}
-      {% endif %}
-    {% endfor %}
-    const ctx = document.getElementById('trendsChart').getContext('2d');
-    const datesData = {{ dates | reverse | list | tojson }};
-    const probabilitiesData = {{ probs | reverse | list | tojson }};
-    const conditionsData = {{ conditions | reverse | list | tojson }};
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: datesData,
-        datasets: [{
-          label: 'Prediction Confidence (%)',
-          data: probabilitiesData.map(p => p * 100),
-          borderColor: 'rgba(75, 192, 192, 1)',
-          backgroundColor: 'rgba(75, 192, 192, 0.2)',
-          tension: 0.1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        },
-        plugins: {
-          tooltip: {
-            callbacks: {
-              label: function(context) {
-                const index = context.dataIndex;
-                const condition = conditionsData[index] || 'Unknown';
-                return context.dataset.label + ': ' + context.parsed.y.toFixed(1) + '% (Condition: ' + condition + ')';
-              }
-            }
-          }
-        }
+  // Dropdown toggle
+  document.querySelectorAll('.nav-link[data-toggle]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const menuId = this.getAttribute('data-toggle');
+      const menu = document.getElementById(menuId);
+      if (menu.classList.contains('show')) {
+        menu.classList.remove('show');
+      } else {
+        document.querySelectorAll('.sub-menu').forEach(m => m.classList.remove('show'));
+        menu.classList.add('show');
       }
     });
+  });
 
-    // Additional pie chart for condition distribution
-    const ctxPie = document.getElementById('conditionPieChart').getContext('2d');
-    const conditionCounts = {};
-    conditionsData.forEach(cond => {
-      conditionCounts[cond] = (conditionCounts[cond] || 0) + 1;
-    });
-    const pieLabels = Object.keys(conditionCounts);
-    const pieData = Object.values(conditionCounts);
-    const pieColors = pieLabels.map((_, i) => `hsl(${i * 360 / pieLabels.length}, 70%, 60%)`);
-    new Chart(ctxPie, {
-      type: 'pie',
-      data: {
-        labels: pieLabels,
-        datasets: [{
-          data: pieData,
-          backgroundColor: pieColors,
-          borderColor: '#fff',
-          borderWidth: 2
-        }]
-      },
-      options: {
-        plugins: {
-          legend: {
-            position: 'right'
-          },
-          tooltip: {
-            callbacks: {
-              label: function(context) {
-                const label = context.label || '';
-                const value = context.parsed || 0;
-                const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                const percentage = total ? (value / total * 100).toFixed(1) : 0;
-                return label + ': ' + value + ' (' + percentage + '%)';
-              }
-            }
-          }
+  // Tab switching with smooth transition
+  document.querySelectorAll('.sub-link[data-target]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = this.getAttribute('data-target');
+      document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+      document.querySelector(target).classList.add('active');
+      document.querySelectorAll('.sub-link').forEach(l => {
+        l.classList.remove('active-page');
+        const item = l.closest('.nav-item');
+        if (item) {
+          const navLink = item.querySelector('.nav-link');
+          if (navLink) navLink.classList.remove('active-parent');
         }
+      });
+      this.classList.add('active-page');
+      const item = this.closest('.nav-item');
+      if (item) {
+        const navLink = item.querySelector('.nav-link');
+        if (navLink) navLink.classList.add('active-parent');
       }
     });
-  {% endif %}
+  });
+
+  // Hamburger menu toggle
+  const hamburger = document.getElementById('hamburger');
+  const sidebar = document.querySelector('.sidebar');
+  hamburger.addEventListener('click', () => {
+    sidebar.classList.toggle('show');
+  });
+
+  // Account settings toggle
+  document.getElementById('change-username-btn').addEventListener('click', () => {
+    document.getElementById('account-summary').style.display = 'none';
+    document.getElementById('change-username-form').style.display = 'block';
+  });
+  document.getElementById('cancel-username-btn').addEventListener('click', () => {
+    document.getElementById('account-summary').style.display = 'block';
+    document.getElementById('change-username-form').style.display = 'none';
+  });
+  document.getElementById('change-password-btn').addEventListener('click', () => {
+    document.getElementById('account-summary').style.display = 'none';
+    document.getElementById('change-password-form').style.display = 'block';
+  });
+  document.getElementById('cancel-password-btn').addEventListener('click', () => {
+    document.getElementById('account-summary').style.display = 'block';
+    document.getElementById('change-password-form').style.display = 'none';
+  });
+  document.getElementById('change-notifications-btn').addEventListener('click', () => {
+    document.getElementById('account-summary').style.display = 'none';
+    document.getElementById('change-notifications-form').style.display = 'block';
+  });
+  document.getElementById('cancel-notifications-btn').addEventListener('click', () => {
+    document.getElementById('account-summary').style.display = 'block';
+    document.getElementById('change-notifications-form').style.display = 'none';
+  });
 </script>
-<div class="container my-4">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card shadow">
-        <div class="card-header bg-secondary text-white">
-          <h5 class="mb-0"><i class="fas fa-chart-pie"></i> Condition Distribution</h5>
-        </div>
-        <div class="card-body">
-          <canvas id="conditionPieChart" width="400" height="400"></canvas>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 {% endblock %}
